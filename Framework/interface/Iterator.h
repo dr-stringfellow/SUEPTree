@@ -1,5 +1,5 @@
-#ifndef PandaTree_Framework_Iterator_h
-#define PandaTree_Framework_Iterator_h
+#ifndef SUEPTree_Framework_Iterator_h
+#define SUEPTree_Framework_Iterator_h
 
 #include <type_traits>
 

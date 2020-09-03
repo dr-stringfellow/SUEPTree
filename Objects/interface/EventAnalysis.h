@@ -1,5 +1,5 @@
-#ifndef PandaTree_Objects_EventAnalysis_h
-#define PandaTree_Objects_EventAnalysis_h
+#ifndef SUEPTree_Objects_EventAnalysis_h
+#define SUEPTree_Objects_EventAnalysis_h
 #include "Event.h"
 #include "Constants.h"
 #include "UnpackedGenParticle.h"

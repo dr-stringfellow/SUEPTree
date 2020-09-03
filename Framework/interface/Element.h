@@ -1,5 +1,5 @@
-#ifndef PandaTree_Framework_Element_h
-#define PandaTree_Framework_Element_h
+#ifndef SUEPTree_Framework_Element_h
+#define SUEPTree_Framework_Element_h
 
 #include "Object.h"
 #include "IOUtils.h"

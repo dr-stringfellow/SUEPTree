@@ -1,5 +1,5 @@
-#include "PandaTree/Utils/interface/PNode.h"
-#include "PandaTree/Objects/interface/EventAnalysis.h"
+#include "SUEPTree/Utils/interface/PNode.h"
+#include "SUEPTree/Objects/interface/EventAnalysis.h"
 
 #include "TFile.h"
 #include "TTree.h"
@@ -8,10 +8,10 @@
 #include <iostream>
 #include <vector>
 
-struct PNodePanda : public PNode {
-  short motherPanda{-1};
+struct PNodeSUEP : public PNode {
+  short motherSUEP{-1};
 
-  PNodePanda(panda::GenParticleBase const& _part) : PNode() {
+  PNodeSUEP(panda::GenParticleBase const& _part) : PNode() {
     pdgId = _part.pdgid;
     status = _part.finalState ? 1 : 2;
     statusBits = std::bitset<15>(_part.statusFlags);
@@ -19,7 +19,7 @@ struct PNodePanda : public PNode {
     pt = _part.pt();
     eta = _part.eta();
     phi = _part.phi();
-    motherPanda = _part.parent.idx();
+    motherSUEP = _part.parent.idx();
 
     ownDaughters = false;
   }
@@ -76,7 +76,7 @@ main(int argc, char* argv[])
     else
       parts = &event.genParticlesU;
 
-    std::vector<PNodePanda> pnodes;
+    std::vector<PNodeSUEP> pnodes;
     pnodes.reserve(parts->size());
 
     for (auto& gen : *parts)
@@ -84,11 +84,11 @@ main(int argc, char* argv[])
 
     std::vector<PNode*> rootNodes;
     for (auto& pnode : pnodes) {
-      if (pnode.motherPanda == -1) {
+      if (pnode.motherSUEP == -1) {
         rootNodes.push_back(&pnode);
       }
       else {
-        PNodePanda& mother(pnodes[pnode.motherPanda]);
+        PNodeSUEP& mother(pnodes[pnode.motherSUEP]);
         pnode.mother = &mother;
         mother.daughters.push_back(&pnode);
       }

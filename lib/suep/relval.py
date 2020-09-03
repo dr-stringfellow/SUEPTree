@@ -10,7 +10,7 @@ header = """#ifndef IWILLSEEYOULATER
 #include <functional>
 #include <algorithm>
 #include <cassert>
-#include "PandaTree/Objects/interface/Event.h"
+#include "SUEPTree/Objects/interface/Event.h"
 
 namespace testpanda {
 

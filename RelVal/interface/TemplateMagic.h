@@ -4,8 +4,8 @@
 #include <vector>
 #include <functional>
 
-#include "PandaTree/Objects/interface/Event.h"
-#include "PandaTree/RelVal/interface/EnumerateBranches.h"
+#include "SUEPTree/Objects/interface/Event.h"
+#include "SUEPTree/RelVal/interface/EnumerateBranches.h"
 
 // These are the types of functions that plot_looper can take as an argument
 // For all of these, the function action should be different for each branch

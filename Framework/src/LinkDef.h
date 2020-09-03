@@ -1,12 +1,12 @@
-#include "PandaTree/Framework/interface/Object.h"
-#include "PandaTree/Framework/interface/ReaderObject.h"
-#include "PandaTree/Framework/interface/Singlet.h"
-#include "PandaTree/Framework/interface/Element.h"
-#include "PandaTree/Framework/interface/ContainerBase.h"
-#include "PandaTree/Framework/interface/ArrayBase.h"
-#include "PandaTree/Framework/interface/CollectionBase.h"
-#include "PandaTree/Framework/interface/TreeEntry.h"
-#include "PandaTree/Framework/interface/RRNG.h"
+#include "SUEPTree/Framework/interface/Object.h"
+#include "SUEPTree/Framework/interface/ReaderObject.h"
+#include "SUEPTree/Framework/interface/Singlet.h"
+#include "SUEPTree/Framework/interface/Element.h"
+#include "SUEPTree/Framework/interface/ContainerBase.h"
+#include "SUEPTree/Framework/interface/ArrayBase.h"
+#include "SUEPTree/Framework/interface/CollectionBase.h"
+#include "SUEPTree/Framework/interface/TreeEntry.h"
+#include "SUEPTree/Framework/interface/RRNG.h"
 
 #ifdef __CLING__
 #pragma link off all globals;

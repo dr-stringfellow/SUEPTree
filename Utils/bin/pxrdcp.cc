@@ -1,6 +1,6 @@
-#include "PandaTree/Framework/interface/IOUtils.h"
-#include "PandaTree/Objects/interface/Event.h"
-#include "PandaTree/Objects/interface/Run.h"
+#include "SUEPTree/Framework/interface/IOUtils.h"
+#include "SUEPTree/Objects/interface/Event.h"
+#include "SUEPTree/Objects/interface/Run.h"
 
 #include "TFile.h"
 #include "TTree.h"

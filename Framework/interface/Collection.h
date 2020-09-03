@@ -1,5 +1,5 @@
-#ifndef PandaTree_Framework_Collection_h
-#define PandaTree_Framework_Collection_h
+#ifndef SUEPTree_Framework_Collection_h
+#define SUEPTree_Framework_Collection_h
 
 #include "CollectionBase.h"
 #include "Iterator.h"
@@ -11,7 +11,7 @@ namespace panda {
 
   //! Template class for dynamic-size container implementations. Inherits from base_type::collection_type of the element class.
   /*!
-   * For a physics object class E that inherits from B, Panda containers inherit as
+   * For a physics object class E that inherits from B, SUEP containers inherit as
    * Object <- ContainerBase <- ArrayBase <- Array<B> <- Array<E>
    * Object <- ContainerBase <- CollectionBase <- Collection<B> <- Collection<E>
    */

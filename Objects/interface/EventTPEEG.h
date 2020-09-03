@@ -1,5 +1,5 @@
-#ifndef PandaTree_Objects_EventTPEEG_h
-#define PandaTree_Objects_EventTPEEG_h
+#ifndef SUEPTree_Objects_EventTPEEG_h
+#define SUEPTree_Objects_EventTPEEG_h
 #include "EventTPEG.h"
 #include "Constants.h"
 #include "Electron.h"

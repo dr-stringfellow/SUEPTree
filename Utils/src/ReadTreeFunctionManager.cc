@@ -1,9 +1,9 @@
-#ifndef PandaTree_Objects_ReadTreeFunctionManager_h
-#define PandaTree_Objects_ReadTreeFunctionManager_h
+#ifndef SUEPTree_Objects_ReadTreeFunctionManager_h
+#define SUEPTree_Objects_ReadTreeFunctionManager_h
 
 // This standalone class allows you to unpack interactively instead of relying on tabulated info.
-// After compiling PandaAnalysis using scram, you can call the following in CINT:
-//   #include "PandaTree/Utils/src/ReadTreeFunctionManager.cc"
+// After compiling SUEPAnalysis using scram, you can call the following in CINT:
+//   #include "SUEPTree/Utils/src/ReadTreeFunctionManager.cc"
 // and then perform a TTree Draw or Scan e.g.
 //   events->Scan("panda::rtfm::up(genParticles.packedPt)")
 // This is the analog of panda::PackingHelper::unpackUnbound

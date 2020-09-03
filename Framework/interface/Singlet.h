@@ -1,5 +1,5 @@
-#ifndef PandaTree_Framework_Singlet_h
-#define PandaTree_Framework_Singlet_h
+#ifndef SUEPTree_Framework_Singlet_h
+#define SUEPTree_Framework_Singlet_h
 
 #include "ReaderObject.h"
 

@@ -1,5 +1,5 @@
-#ifndef PandaTree_Objects_EventTP2M_h
-#define PandaTree_Objects_EventTP2M_h
+#ifndef SUEPTree_Objects_EventTP2M_h
+#define SUEPTree_Objects_EventTP2M_h
 #include "EventTP.h"
 #include "Constants.h"
 #include "Muon.h"

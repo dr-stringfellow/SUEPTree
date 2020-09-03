@@ -1,5 +1,5 @@
-#ifndef PandaTree_Objects_HLTObjectStore_h
-#define PandaTree_Objects_HLTObjectStore_h
+#ifndef SUEPTree_Objects_HLTObjectStore_h
+#define SUEPTree_Objects_HLTObjectStore_h
 
 #include "HLTObject.h"
 

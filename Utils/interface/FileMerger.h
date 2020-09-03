@@ -1,5 +1,5 @@
-#ifndef PandaTree_Utils_PandaMerger_h
-#define PandaTree_Utils_PandaMerger_h
+#ifndef SUEPTree_Utils_SUEPMerger_h
+#define SUEPTree_Utils_SUEPMerger_h
 
 #include "../../Framework/interface/IOUtils.h"
 

@@ -11,7 +11,7 @@
 #include "TKey.h"
 #include "HLTObjectStore.h"
 #include "GenParticleBase.h"
-#include "PandaTree/Framework/interface/RRNG.h"
+#include "SUEPTree/Framework/interface/RRNG.h"
 
 namespace panda {
 

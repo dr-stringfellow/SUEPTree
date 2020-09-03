@@ -263,12 +263,12 @@ for objdef in phobjects + trees + mixins:
 # write a linkdef file
 linkdef = FileOutput(common.PACKDIR + '/Objects/src/LinkDef.h')
 for objdef in phobjects:
-    linkdef.writeline('#include "PandaTree/Objects/interface/{name}.h"'.format(name = objdef.name))
+    linkdef.writeline('#include "SUEPTree/Objects/interface/{name}.h"'.format(name = objdef.name))
 for tree in trees:
-    linkdef.writeline('#include "PandaTree/Objects/interface/{name}.h"'.format(name = tree.name))
+    linkdef.writeline('#include "SUEPTree/Objects/interface/{name}.h"'.format(name = tree.name))
 
 ## TODO MOVE THIS TO SOMEWHERE THAT MAKES SENSE
-linkdef.writeline('#include "PandaTree/Objects/interface/PackingHelper.h"')
+linkdef.writeline('#include "SUEPTree/Objects/interface/PackingHelper.h"')
 
 linkdef.newline()
 

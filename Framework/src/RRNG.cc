@@ -1,4 +1,4 @@
-#include "PandaTree/Framework/interface/RRNG.h"
+#include "SUEPTree/Framework/interface/RRNG.h"
 #include "Math/QuantFuncMathCore.h"
 #include "TString.h"
 #include <iostream>

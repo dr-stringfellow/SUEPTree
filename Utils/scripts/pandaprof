@@ -3,7 +3,7 @@
 import sys
 from argparse import ArgumentParser
 
-argParser = ArgumentParser(description = 'Panda storage profile')
+argParser = ArgumentParser(description = 'SUEP storage profile')
 argParser.add_argument('source', metavar = 'FILE', nargs = '+', help = 'Files to analyze.')
 argParser.add_argument('--tree', '-t', metavar = 'TREE', dest = 'tree', default = 'events', help = 'Name of the tree to analyze (default: events).')
 argParser.add_argument('--out', '-o', metavar = 'PATH', dest = 'outputFile', default = '', help = 'Write to output.')

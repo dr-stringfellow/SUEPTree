@@ -1,4 +1,4 @@
 <bin name="testpanda" file="testpanda.cpp">
   <use name="root"/>
-  <use name="PandaTree/Objects"/>
+  <use name="SUEPTree/Objects"/>
 </bin>

@@ -1,5 +1,5 @@
-#ifndef PandaTree_Objects_SVDaughter_h
-#define PandaTree_Objects_SVDaughter_h
+#ifndef SUEPTree_Objects_SVDaughter_h
+#define SUEPTree_Objects_SVDaughter_h
 #include "Constants.h"
 #include "UnpackedPFCand.h"
 #include "../../Framework/interface/Array.h"

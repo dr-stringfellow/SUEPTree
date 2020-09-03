@@ -1,5 +1,5 @@
-#ifndef PandaTree_Framework_Ref_h
-#define PandaTree_Framework_Ref_h
+#ifndef SUEPTree_Framework_Ref_h
+#define SUEPTree_Framework_Ref_h
 
 #include "ContainerBase.h"
 

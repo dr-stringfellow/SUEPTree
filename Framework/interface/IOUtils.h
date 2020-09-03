@@ -1,5 +1,5 @@
-#ifndef PandaTree_Interface_IOUtils_h
-#define PandaTree_Interface_IOUtils_h
+#ifndef SUEPTree_Interface_IOUtils_h
+#define SUEPTree_Interface_IOUtils_h
 
 #include "TString.h"
 #include "TTree.h"

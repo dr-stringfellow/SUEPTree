@@ -8,7 +8,7 @@
 int main (int argc, char* argv []) {
 
   if (argc != 2) {
-    std::cerr << "Single argument must be a Panda file." << std::endl;
+    std::cerr << "Single argument must be a SUEP file." << std::endl;
     return 1;
   }
 

@@ -3,7 +3,7 @@
 
 #include <boost/filesystem.hpp>
 
-#include "PandaTree/Utils/interface/JECCorrector.h"
+#include "SUEPTree/Utils/interface/JECCorrector.h"
 
 
 using namespace panda;

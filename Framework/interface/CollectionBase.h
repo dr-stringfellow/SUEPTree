@@ -1,5 +1,5 @@
-#ifndef PandaTree_Framework_CollectionBase_h
-#define PandaTree_Framework_CollectionBase_h
+#ifndef SUEPTree_Framework_CollectionBase_h
+#define SUEPTree_Framework_CollectionBase_h
 
 #include "ContainerBase.h"
 
@@ -10,7 +10,7 @@ namespace panda {
 
   //! Base class for dynamic-size containers.
   /*!
-   * Panda containers can be fixed-size (Array) or dynamic-size (Collection). Dynaic-size containers
+   * SUEP containers can be fixed-size (Array) or dynamic-size (Collection). Dynaic-size containers
    * are similar to std::vectors.
    */
   class CollectionBase : public ContainerBase {

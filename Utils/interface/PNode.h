@@ -1,7 +1,7 @@
-#ifndef PandaProd_Utilities_PNode_h
-#define PandaProd_Utilities_PNode_h
+#ifndef SUEPProd_Utilities_PNode_h
+#define SUEPProd_Utilities_PNode_h
 
-#include "PandaTree/Objects/interface/GenParticle.h"
+#include "SUEPTree/Objects/interface/GenParticle.h"
 
 #include <vector>
 #include <bitset>

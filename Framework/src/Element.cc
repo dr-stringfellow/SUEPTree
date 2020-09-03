@@ -90,7 +90,7 @@ panda::Element::StoreManager::getArray(Element const* _obj) const
     std::cerr << "!!! EXCEPTION !!!" << std::endl;
     std::cerr << "Data was requested for a non-singlet " << _obj->typeName() << " instance." << std::endl;
     std::cerr << "This should not happen under normal circumstances and indicates a bug in" << std::endl;
-    std::cerr << "the framework. Contact a Panda expert to fix the issue." << std::endl;
+    std::cerr << "the framework. Contact a SUEP expert to fix the issue." << std::endl;
     throw;
   }
 }

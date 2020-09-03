@@ -1,5 +1,5 @@
-#ifndef PandaTree_Objects_XPhoton_h
-#define PandaTree_Objects_XPhoton_h
+#ifndef SUEPTree_Objects_XPhoton_h
+#define SUEPTree_Objects_XPhoton_h
 #include "Constants.h"
 #include "Photon.h"
 #include "../../Framework/interface/Array.h"

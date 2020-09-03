@@ -1,5 +1,5 @@
-#ifndef PandaTree_Interface_TreeEntry_h
-#define PandaTree_Interface_TreeEntry_h
+#ifndef SUEPTree_Interface_TreeEntry_h
+#define SUEPTree_Interface_TreeEntry_h
 
 #include "ReaderObject.h"
 #include "IOUtils.h"

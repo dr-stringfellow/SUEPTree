@@ -5,7 +5,7 @@ pipeline {
     SCRAM_ARCH = 'slc6_amd64_gcc630'
     DOSRC = 'source /cvmfs/cms.cern.ch/cmsset_default.sh'
     CMSSW_VERSION = 'CMSSW_9_4_6'
-    PANDA_PROD_USER = 'PandaPhysics'
+    PANDA_PROD_USER = 'SUEPPhysics'
     PANDA_PROD_BRANCH = 'master'
   }
 
@@ -26,17 +26,17 @@ pipeline {
 
         sh 'ls $CMSSW_VERSION/src'
 
-        // Make PandaTree directory for us to recursively copy files into
+        // Make SUEPTree directory for us to recursively copy files into
         sh '''
-           if [ ! -d $CMSSW_VERSION/src/PandaTree ]
+           if [ ! -d $CMSSW_VERSION/src/SUEPTree ]
            then
-               mkdir $CMSSW_VERSION/src/PandaTree
+               mkdir $CMSSW_VERSION/src/SUEPTree
            fi
            '''
 
         // Copy all of the files, and the HEAD where we will get the git tag from
-        sh 'cp --parents $(git ls-files) $CMSSW_VERSION/src/PandaTree'
-        sh 'cp --parents .git/HEAD  $CMSSW_VERSION/src/PandaTree'
+        sh 'cp --parents $(git ls-files) $CMSSW_VERSION/src/SUEPTree'
+        sh 'cp --parents .git/HEAD  $CMSSW_VERSION/src/SUEPTree'
 
         dir ("${env.CMSSW_VERSION}/src") {
           // Compile
@@ -51,7 +51,7 @@ pipeline {
             sh '''
                $DOSRC
                eval `scramv1 runtime -sh`
-               for f in /mnt/hadoop/scratch/jenkins/panda/$PANDA_PROD_USER/PandaProd/$PANDA_PROD_BRANCH/*
+               for f in /mnt/hadoop/scratch/jenkins/panda/$PANDA_PROD_USER/SUEPProd/$PANDA_PROD_BRANCH/*
                do
                    BASE=$(echo $f | perl -ne '/\\/([\\w-]+)\\.root/ && print "$1"')
                    testpanda $f ${JOB_NAME}/${BUILD_NUMBER}/$(tail -n1 $HOME/miniaod/$BASE.txt)

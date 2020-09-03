@@ -1,5 +1,5 @@
-#ifndef PandaTree_Objects_EventSV_h
-#define PandaTree_Objects_EventSV_h
+#ifndef SUEPTree_Objects_EventSV_h
+#define SUEPTree_Objects_EventSV_h
 #include "EventBase.h"
 #include "Constants.h"
 #include "CorrectedSecondaryVertex.h"

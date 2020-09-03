@@ -18,9 +18,9 @@
 #include "TH1I.h"
 #include "TCanvas.h"
 
-#include "PandaTree/Objects/interface/Event.h"
-#include "PandaTree/RelVal/interface/EnumerateBranches.h"
-#include "PandaTree/RelVal/interface/TemplateMagic.h"
+#include "SUEPTree/Objects/interface/Event.h"
+#include "SUEPTree/RelVal/interface/EnumerateBranches.h"
+#include "SUEPTree/RelVal/interface/TemplateMagic.h"
 
 // Constants
 
@@ -120,7 +120,7 @@ int main(int argc, char** argv) {
 
   // Copy web files to relval, if needed
 
-  auto input_web = std::string(getenv("CMSSW_BASE")) + "/src/PandaTree/RelVal/web";
+  auto input_web = std::string(getenv("CMSSW_BASE")) + "/src/SUEPTree/RelVal/web";
   auto* web_dir = opendir(input_web.data());
 
   while (auto* dir_ent = readdir(web_dir)) {
@@ -423,8 +423,8 @@ int main(int argc, char** argv) {
                   << "Time (sec): " << end_time - start_time << std::endl
                   << std::endl
                   << "CMSSW Version:    " << getenv("CMSSW_VERSION") << std::endl
-                  << "PandaTree commit: " << get_git_tag("PandaTree") << std::endl
-                  << "PandaProd commit: " << get_git_tag("PandaProd") << std::endl
+                  << "SUEPTree commit: " << get_git_tag("SUEPTree") << std::endl
+                  << "SUEPProd commit: " << get_git_tag("SUEPProd") << std::endl
       ;
 
     metadata_file.close();

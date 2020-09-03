@@ -1,5 +1,5 @@
-#ifndef PandaTree_Objects_TPPair_h
-#define PandaTree_Objects_TPPair_h
+#ifndef SUEPTree_Objects_TPPair_h
+#define SUEPTree_Objects_TPPair_h
 #include "Constants.h"
 #include "../../Framework/interface/Element.h"
 #include "../../Framework/interface/Array.h"

@@ -2,7 +2,7 @@
 #define PANDATREE_UTILS_JECCORRECTOR_H
 
 
-#include "PandaTree/Objects/interface/Event.h"
+#include "SUEPTree/Objects/interface/Event.h"
 
 #include "CondFormats/JetMETObjects/interface/JetCorrectorParameters.h"
 #include "CondFormats/JetMETObjects/interface/FactorizedJetCorrector.h"
@@ -10,7 +10,7 @@
 
 namespace panda {
   /**
-     @brief A wrapper for CMSSW's FactorizedJetCorrector for Panda JetCollections
+     @brief A wrapper for CMSSW's FactorizedJetCorrector for SUEP JetCollections
   */
   class JECCorrector {
   public:

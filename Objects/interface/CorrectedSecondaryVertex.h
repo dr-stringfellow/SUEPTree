@@ -1,5 +1,5 @@
-#ifndef PandaTree_Objects_CorrectedSecondaryVertex_h
-#define PandaTree_Objects_CorrectedSecondaryVertex_h
+#ifndef SUEPTree_Objects_CorrectedSecondaryVertex_h
+#define SUEPTree_Objects_CorrectedSecondaryVertex_h
 #include "Constants.h"
 #include "SecondaryVertex.h"
 #include "../../Framework/interface/Array.h"

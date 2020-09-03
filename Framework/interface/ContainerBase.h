@@ -1,5 +1,5 @@
-#ifndef PandaTree_Framework_ContainerBase_h
-#define PandaTree_Framework_ContainerBase_h
+#ifndef SUEPTree_Framework_ContainerBase_h
+#define SUEPTree_Framework_ContainerBase_h
 
 #include "ReaderObject.h"
 #include "Element.h"
@@ -13,7 +13,7 @@
 namespace panda {
   //! Base class for all containers.
   /*!
-   * Panda containers can be Array (fixed size) or Collection (dynamic size). Both inherit from ContainerBase.
+   * SUEP containers can be Array (fixed size) or Collection (dynamic size). Both inherit from ContainerBase.
    */
   class ContainerBase : public ReaderObject {
   public:

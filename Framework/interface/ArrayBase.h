@@ -1,5 +1,5 @@
-#ifndef PandaTree_Framework_ArrayBase_h
-#define PandaTree_Framework_ArrayBase_h
+#ifndef SUEPTree_Framework_ArrayBase_h
+#define SUEPTree_Framework_ArrayBase_h
 
 #include "ContainerBase.h"
 
@@ -7,7 +7,7 @@ namespace panda {
 
   //! Base class for fixed-size containers.
   /*!
-   * Panda containers can be fixed-size (Array) or dynamic-size (Collection). Fixed-size containers
+   * SUEP containers can be fixed-size (Array) or dynamic-size (Collection). Fixed-size containers
    * are similar to C arrays, and are more light weight and faster to use.
    */
   class ArrayBase : public ContainerBase {
