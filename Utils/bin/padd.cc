@@ -10,7 +10,7 @@ main(int _argc, char** _argv)
     return 1;
   }
 
-  panda::FileMerger merger;
+  suep::FileMerger merger;
   for (int iA(2); iA != _argc; ++iA)
     merger.addInput(_argv[iA]);
 

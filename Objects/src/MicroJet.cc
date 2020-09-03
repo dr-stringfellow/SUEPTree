@@ -1,8 +1,8 @@
 #include "../interface/MicroJet.h"
 
 /*static*/
-panda::utils::BranchList
-panda::MicroJet::getListOfBranches()
+suep::utils::BranchList
+suep::MicroJet::getListOfBranches()
 {
   utils::BranchList blist;
   blist += ParticleM::getListOfBranches();
@@ -11,7 +11,7 @@ panda::MicroJet::getListOfBranches()
 }
 
 void
-panda::MicroJet::datastore::allocate(UInt_t _nmax)
+suep::MicroJet::datastore::allocate(UInt_t _nmax)
 {
   ParticleM::datastore::allocate(_nmax);
 
@@ -31,7 +31,7 @@ panda::MicroJet::datastore::allocate(UInt_t _nmax)
 }
 
 void
-panda::MicroJet::datastore::deallocate()
+suep::MicroJet::datastore::deallocate()
 {
   ParticleM::datastore::deallocate();
 
@@ -64,7 +64,7 @@ panda::MicroJet::datastore::deallocate()
 }
 
 void
-panda::MicroJet::datastore::setStatus(TTree& _tree, TString const& _name, utils::BranchList const& _branches)
+suep::MicroJet::datastore::setStatus(TTree& _tree, TString const& _name, utils::BranchList const& _branches)
 {
   ParticleM::datastore::setStatus(_tree, _name, _branches);
 
@@ -83,8 +83,8 @@ panda::MicroJet::datastore::setStatus(TTree& _tree, TString const& _name, utils:
   utils::setStatus(_tree, _name, "deepCMVAcc", _branches);
 }
 
-panda::utils::BranchList
-panda::MicroJet::datastore::getStatus(TTree& _tree, TString const& _name) const
+suep::utils::BranchList
+suep::MicroJet::datastore::getStatus(TTree& _tree, TString const& _name) const
 {
   utils::BranchList blist(ParticleM::datastore::getStatus(_tree, _name));
 
@@ -106,7 +106,7 @@ panda::MicroJet::datastore::getStatus(TTree& _tree, TString const& _name) const
 }
 
 void
-panda::MicroJet::datastore::setAddress(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _setStatus/* = kTRUE*/)
+suep::MicroJet::datastore::setAddress(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _setStatus/* = kTRUE*/)
 {
   ParticleM::datastore::setAddress(_tree, _name, _branches, _setStatus);
 
@@ -126,7 +126,7 @@ panda::MicroJet::datastore::setAddress(TTree& _tree, TString const& _name, utils
 }
 
 void
-panda::MicroJet::datastore::book(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _dynamic/* = kTRUE*/)
+suep::MicroJet::datastore::book(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _dynamic/* = kTRUE*/)
 {
   ParticleM::datastore::book(_tree, _name, _branches, _dynamic);
 
@@ -148,7 +148,7 @@ panda::MicroJet::datastore::book(TTree& _tree, TString const& _name, utils::Bran
 }
 
 void
-panda::MicroJet::datastore::releaseTree(TTree& _tree, TString const& _name)
+suep::MicroJet::datastore::releaseTree(TTree& _tree, TString const& _name)
 {
   ParticleM::datastore::releaseTree(_tree, _name);
 
@@ -168,20 +168,20 @@ panda::MicroJet::datastore::releaseTree(TTree& _tree, TString const& _name)
 }
 
 void
-panda::MicroJet::datastore::resizeVectors_(UInt_t _size)
+suep::MicroJet::datastore::resizeVectors_(UInt_t _size)
 {
   ParticleM::datastore::resizeVectors_(_size);
 
 }
 
 
-panda::utils::BranchList
-panda::MicroJet::datastore::getBranchNames(TString const& _name/* = ""*/) const
+suep::utils::BranchList
+suep::MicroJet::datastore::getBranchNames(TString const& _name/* = ""*/) const
 {
   return MicroJet::getListOfBranches().fullNames(_name);
 }
 
-panda::MicroJet::MicroJet(char const* _name/* = ""*/) :
+suep::MicroJet::MicroJet(char const* _name/* = ""*/) :
   ParticleM(new MicroJetArray(1, _name)),
   csv(gStore.getData(this).csv[0]),
   qgl(gStore.getData(this).qgl[0]),
@@ -199,7 +199,7 @@ panda::MicroJet::MicroJet(char const* _name/* = ""*/) :
 {
 }
 
-panda::MicroJet::MicroJet(MicroJet const& _src) :
+suep::MicroJet::MicroJet(MicroJet const& _src) :
   ParticleM(new MicroJetArray(1, _src.getName())),
   csv(gStore.getData(this).csv[0]),
   qgl(gStore.getData(this).qgl[0]),
@@ -218,7 +218,7 @@ panda::MicroJet::MicroJet(MicroJet const& _src) :
   operator=(_src);
 }
 
-panda::MicroJet::MicroJet(datastore& _data, UInt_t _idx) :
+suep::MicroJet::MicroJet(datastore& _data, UInt_t _idx) :
   ParticleM(_data, _idx),
   csv(_data.csv[_idx]),
   qgl(_data.qgl[_idx]),
@@ -236,7 +236,7 @@ panda::MicroJet::MicroJet(datastore& _data, UInt_t _idx) :
 {
 }
 
-panda::MicroJet::MicroJet(ArrayBase* _array) :
+suep::MicroJet::MicroJet(ArrayBase* _array) :
   ParticleM(_array),
   csv(gStore.getData(this).csv[0]),
   qgl(gStore.getData(this).qgl[0]),
@@ -254,13 +254,13 @@ panda::MicroJet::MicroJet(ArrayBase* _array) :
 {
 }
 
-panda::MicroJet::~MicroJet()
+suep::MicroJet::~MicroJet()
 {
   destructor();
 }
 
 void
-panda::MicroJet::destructor(Bool_t _recursive/* = kFALSE*/)
+suep::MicroJet::destructor(Bool_t _recursive/* = kFALSE*/)
 {
   /* BEGIN CUSTOM MicroJet.cc.destructor */
   /* END CUSTOM */
@@ -269,8 +269,8 @@ panda::MicroJet::destructor(Bool_t _recursive/* = kFALSE*/)
     ParticleM::destructor(kTRUE);
 }
 
-panda::MicroJet&
-panda::MicroJet::operator=(MicroJet const& _src)
+suep::MicroJet&
+suep::MicroJet::operator=(MicroJet const& _src)
 {
   ParticleM::operator=(_src);
 
@@ -295,7 +295,7 @@ panda::MicroJet::operator=(MicroJet const& _src)
 }
 
 void
-panda::MicroJet::doBook_(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/)
+suep::MicroJet::doBook_(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/)
 {
   ParticleM::doBook_(_tree, _name, _branches);
 
@@ -315,7 +315,7 @@ panda::MicroJet::doBook_(TTree& _tree, TString const& _name, utils::BranchList c
 }
 
 void
-panda::MicroJet::doInit_()
+suep::MicroJet::doInit_()
 {
   ParticleM::doInit_();
 
@@ -338,7 +338,7 @@ panda::MicroJet::doInit_()
 }
 
 void
-panda::MicroJet::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
+suep::MicroJet::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
 {
   /* BEGIN CUSTOM MicroJet.cc.print */
   MicroJet::dump(_out);
@@ -346,7 +346,7 @@ panda::MicroJet::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/
 }
 
 void
-panda::MicroJet::dump(std::ostream& _out/* = std::cout*/) const
+suep::MicroJet::dump(std::ostream& _out/* = std::cout*/) const
 {
   ParticleM::dump(_out);
 

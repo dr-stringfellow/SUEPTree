@@ -18,7 +18,7 @@
 #include "MetFilters.h"
 #include "Event.h"
 
-namespace panda {
+namespace suep {
 
   class EventMonophoton : public EventBase {
   public:

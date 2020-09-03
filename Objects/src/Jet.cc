@@ -1,8 +1,8 @@
 #include "../interface/Jet.h"
 
 /*static*/
-panda::utils::BranchList
-panda::Jet::getListOfBranches()
+suep::utils::BranchList
+suep::Jet::getListOfBranches()
 {
   utils::BranchList blist;
   blist += MicroJet::getListOfBranches();
@@ -11,7 +11,7 @@ panda::Jet::getListOfBranches()
 }
 
 void
-panda::Jet::datastore::allocate(UInt_t _nmax)
+suep::Jet::datastore::allocate(UInt_t _nmax)
 {
   MicroJet::datastore::allocate(_nmax);
 
@@ -36,7 +36,7 @@ panda::Jet::datastore::allocate(UInt_t _nmax)
 }
 
 void
-panda::Jet::datastore::deallocate()
+suep::Jet::datastore::deallocate()
 {
   MicroJet::datastore::deallocate();
 
@@ -79,7 +79,7 @@ panda::Jet::datastore::deallocate()
 }
 
 void
-panda::Jet::datastore::setStatus(TTree& _tree, TString const& _name, utils::BranchList const& _branches)
+suep::Jet::datastore::setStatus(TTree& _tree, TString const& _name, utils::BranchList const& _branches)
 {
   MicroJet::datastore::setStatus(_tree, _name, _branches);
 
@@ -103,8 +103,8 @@ panda::Jet::datastore::setStatus(TTree& _tree, TString const& _name, utils::Bran
   utils::setStatus(_tree, _name, "secondaryVertex_", _branches);
 }
 
-panda::utils::BranchList
-panda::Jet::datastore::getStatus(TTree& _tree, TString const& _name) const
+suep::utils::BranchList
+suep::Jet::datastore::getStatus(TTree& _tree, TString const& _name) const
 {
   utils::BranchList blist(MicroJet::datastore::getStatus(_tree, _name));
 
@@ -131,7 +131,7 @@ panda::Jet::datastore::getStatus(TTree& _tree, TString const& _name) const
 }
 
 void
-panda::Jet::datastore::setAddress(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _setStatus/* = kTRUE*/)
+suep::Jet::datastore::setAddress(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _setStatus/* = kTRUE*/)
 {
   MicroJet::datastore::setAddress(_tree, _name, _branches, _setStatus);
 
@@ -156,7 +156,7 @@ panda::Jet::datastore::setAddress(TTree& _tree, TString const& _name, utils::Bra
 }
 
 void
-panda::Jet::datastore::book(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _dynamic/* = kTRUE*/)
+suep::Jet::datastore::book(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _dynamic/* = kTRUE*/)
 {
   MicroJet::datastore::book(_tree, _name, _branches, _dynamic);
 
@@ -183,7 +183,7 @@ panda::Jet::datastore::book(TTree& _tree, TString const& _name, utils::BranchLis
 }
 
 void
-panda::Jet::datastore::releaseTree(TTree& _tree, TString const& _name)
+suep::Jet::datastore::releaseTree(TTree& _tree, TString const& _name)
 {
   MicroJet::datastore::releaseTree(_tree, _name);
 
@@ -208,7 +208,7 @@ panda::Jet::datastore::releaseTree(TTree& _tree, TString const& _name)
 }
 
 void
-panda::Jet::datastore::resizeVectors_(UInt_t _size)
+suep::Jet::datastore::resizeVectors_(UInt_t _size)
 {
   MicroJet::datastore::resizeVectors_(_size);
 
@@ -216,13 +216,13 @@ panda::Jet::datastore::resizeVectors_(UInt_t _size)
 }
 
 
-panda::utils::BranchList
-panda::Jet::datastore::getBranchNames(TString const& _name/* = ""*/) const
+suep::utils::BranchList
+suep::Jet::datastore::getBranchNames(TString const& _name/* = ""*/) const
 {
   return Jet::getListOfBranches().fullNames(_name);
 }
 
-panda::Jet::Jet(char const* _name/* = ""*/) :
+suep::Jet::Jet(char const* _name/* = ""*/) :
   MicroJet(new JetArray(1, _name)),
   rawPt(gStore.getData(this).rawPt[0]),
   ptCorrUp(gStore.getData(this).ptCorrUp[0]),
@@ -245,7 +245,7 @@ panda::Jet::Jet(char const* _name/* = ""*/) :
 {
 }
 
-panda::Jet::Jet(Jet const& _src) :
+suep::Jet::Jet(Jet const& _src) :
   MicroJet(new JetArray(1, _src.getName())),
   rawPt(gStore.getData(this).rawPt[0]),
   ptCorrUp(gStore.getData(this).ptCorrUp[0]),
@@ -269,7 +269,7 @@ panda::Jet::Jet(Jet const& _src) :
   operator=(_src);
 }
 
-panda::Jet::Jet(datastore& _data, UInt_t _idx) :
+suep::Jet::Jet(datastore& _data, UInt_t _idx) :
   MicroJet(_data, _idx),
   rawPt(_data.rawPt[_idx]),
   ptCorrUp(_data.ptCorrUp[_idx]),
@@ -292,7 +292,7 @@ panda::Jet::Jet(datastore& _data, UInt_t _idx) :
 {
 }
 
-panda::Jet::Jet(ArrayBase* _array) :
+suep::Jet::Jet(ArrayBase* _array) :
   MicroJet(_array),
   rawPt(gStore.getData(this).rawPt[0]),
   ptCorrUp(gStore.getData(this).ptCorrUp[0]),
@@ -315,13 +315,13 @@ panda::Jet::Jet(ArrayBase* _array) :
 {
 }
 
-panda::Jet::~Jet()
+suep::Jet::~Jet()
 {
   destructor();
 }
 
 void
-panda::Jet::destructor(Bool_t _recursive/* = kFALSE*/)
+suep::Jet::destructor(Bool_t _recursive/* = kFALSE*/)
 {
   /* BEGIN CUSTOM Jet.cc.destructor */
   /* END CUSTOM */
@@ -330,8 +330,8 @@ panda::Jet::destructor(Bool_t _recursive/* = kFALSE*/)
     MicroJet::destructor(kTRUE);
 }
 
-panda::Jet&
-panda::Jet::operator=(Jet const& _src)
+suep::Jet&
+suep::Jet::operator=(Jet const& _src)
 {
   MicroJet::operator=(_src);
 
@@ -361,7 +361,7 @@ panda::Jet::operator=(Jet const& _src)
 }
 
 void
-panda::Jet::doBook_(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/)
+suep::Jet::doBook_(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/)
 {
   MicroJet::doBook_(_tree, _name, _branches);
 
@@ -386,7 +386,7 @@ panda::Jet::doBook_(TTree& _tree, TString const& _name, utils::BranchList const&
 }
 
 void
-panda::Jet::doInit_()
+suep::Jet::doInit_()
 {
   MicroJet::doInit_();
 
@@ -414,7 +414,7 @@ panda::Jet::doInit_()
 }
 
 void
-panda::Jet::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
+suep::Jet::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
 {
   /* BEGIN CUSTOM Jet.cc.print */
   if (_level >= 3) {
@@ -437,7 +437,7 @@ panda::Jet::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) con
 }
 
 void
-panda::Jet::dump(std::ostream& _out/* = std::cout*/) const
+suep::Jet::dump(std::ostream& _out/* = std::cout*/) const
 {
   MicroJet::dump(_out);
 

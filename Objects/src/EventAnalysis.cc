@@ -1,6 +1,6 @@
 #include "../interface/EventAnalysis.h"
 
-panda::EventAnalysis::EventAnalysis() :
+suep::EventAnalysis::EventAnalysis() :
   Event()
 {
   std::vector<Object*> myObjects{{&genParticlesU}};
@@ -13,7 +13,7 @@ panda::EventAnalysis::EventAnalysis() :
   /* END CUSTOM */
 }
 
-panda::EventAnalysis::EventAnalysis(EventAnalysis const& _src) :
+suep::EventAnalysis::EventAnalysis(EventAnalysis const& _src) :
   Event(_src),
   genParticlesU(_src.genParticlesU)
 {
@@ -27,14 +27,14 @@ panda::EventAnalysis::EventAnalysis(EventAnalysis const& _src) :
   /* END CUSTOM */
 }
 
-panda::EventAnalysis::~EventAnalysis()
+suep::EventAnalysis::~EventAnalysis()
 {
   /* BEGIN CUSTOM EventAnalysis.cc.dtor */
   /* END CUSTOM */
 }
 
-panda::EventAnalysis&
-panda::EventAnalysis::operator=(EventAnalysis const& _src)
+suep::EventAnalysis&
+suep::EventAnalysis::operator=(EventAnalysis const& _src)
 {
   Event::operator=(_src);
 
@@ -49,7 +49,7 @@ panda::EventAnalysis::operator=(EventAnalysis const& _src)
 }
 
 void
-panda::EventAnalysis::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
+suep::EventAnalysis::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
 {
   /* BEGIN CUSTOM EventAnalysis.cc.print */
   dump(_out);
@@ -57,7 +57,7 @@ panda::EventAnalysis::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* 
 }
 
 void
-panda::EventAnalysis::dump(std::ostream& _out/* = std::cout*/) const
+suep::EventAnalysis::dump(std::ostream& _out/* = std::cout*/) const
 {
   Event::dump(_out);
 
@@ -65,8 +65,8 @@ panda::EventAnalysis::dump(std::ostream& _out/* = std::cout*/) const
 
 }
 /*static*/
-panda::utils::BranchList
-panda::EventAnalysis::getListOfBranches(Bool_t _direct/* = kFALSE*/)
+suep::utils::BranchList
+suep::EventAnalysis::getListOfBranches(Bool_t _direct/* = kFALSE*/)
 {
   utils::BranchList blist;
   blist += Event::getListOfBranches(_direct);
@@ -82,14 +82,14 @@ panda::EventAnalysis::getListOfBranches(Bool_t _direct/* = kFALSE*/)
 
 /*protected*/
 void
-panda::EventAnalysis::doSetStatus_(TTree& _tree, utils::BranchList const& _branches)
+suep::EventAnalysis::doSetStatus_(TTree& _tree, utils::BranchList const& _branches)
 {
   Event::doSetStatus_(_tree, _branches);
 }
 
 /*protected*/
-panda::utils::BranchList
-panda::EventAnalysis::doGetStatus_(TTree& _tree) const
+suep::utils::BranchList
+suep::EventAnalysis::doGetStatus_(TTree& _tree) const
 {
   utils::BranchList blist;
   blist += Event::doGetStatus_(_tree);
@@ -98,15 +98,15 @@ panda::EventAnalysis::doGetStatus_(TTree& _tree) const
 }
 
 /*protected*/
-panda::utils::BranchList
-panda::EventAnalysis::doGetBranchNames_() const
+suep::utils::BranchList
+suep::EventAnalysis::doGetBranchNames_() const
 {
   return getListOfBranches(true);
 }
 
 /*protected*/
 void
-panda::EventAnalysis::doSetAddress_(TTree& _tree, utils::BranchList const& _branches, Bool_t _setStatus)
+suep::EventAnalysis::doSetAddress_(TTree& _tree, utils::BranchList const& _branches, Bool_t _setStatus)
 {
   Event::doSetAddress_(_tree, _branches, _setStatus);
 
@@ -114,7 +114,7 @@ panda::EventAnalysis::doSetAddress_(TTree& _tree, utils::BranchList const& _bran
 
 /*protected*/
 void
-panda::EventAnalysis::doBook_(TTree& _tree, utils::BranchList const& _branches)
+suep::EventAnalysis::doBook_(TTree& _tree, utils::BranchList const& _branches)
 {
   Event::doBook_(_tree, _branches);
 
@@ -122,7 +122,7 @@ panda::EventAnalysis::doBook_(TTree& _tree, utils::BranchList const& _branches)
 
 /*protected*/
 void
-panda::EventAnalysis::doGetEntry_(TTree& _tree)
+suep::EventAnalysis::doGetEntry_(TTree& _tree)
 {
   Event::doGetEntry_(_tree);
 
@@ -131,7 +131,7 @@ panda::EventAnalysis::doGetEntry_(TTree& _tree)
 }
 
 void
-panda::EventAnalysis::doInit_()
+suep::EventAnalysis::doInit_()
 {
   Event::doInit_();
 
@@ -140,7 +140,7 @@ panda::EventAnalysis::doInit_()
 }
 
 void
-panda::EventAnalysis::doUnlink_(TTree& _tree)
+suep::EventAnalysis::doUnlink_(TTree& _tree)
 {
   Event::doUnlink_(_tree);
 

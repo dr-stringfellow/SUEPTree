@@ -1,8 +1,8 @@
 #include "../interface/Parton.h"
 
 /*static*/
-panda::utils::BranchList
-panda::Parton::getListOfBranches()
+suep::utils::BranchList
+suep::Parton::getListOfBranches()
 {
   utils::BranchList blist;
   blist += ParticleM::getListOfBranches();
@@ -11,7 +11,7 @@ panda::Parton::getListOfBranches()
 }
 
 void
-panda::Parton::datastore::allocate(UInt_t _nmax)
+suep::Parton::datastore::allocate(UInt_t _nmax)
 {
   ParticleM::datastore::allocate(_nmax);
 
@@ -19,7 +19,7 @@ panda::Parton::datastore::allocate(UInt_t _nmax)
 }
 
 void
-panda::Parton::datastore::deallocate()
+suep::Parton::datastore::deallocate()
 {
   ParticleM::datastore::deallocate();
 
@@ -28,15 +28,15 @@ panda::Parton::datastore::deallocate()
 }
 
 void
-panda::Parton::datastore::setStatus(TTree& _tree, TString const& _name, utils::BranchList const& _branches)
+suep::Parton::datastore::setStatus(TTree& _tree, TString const& _name, utils::BranchList const& _branches)
 {
   ParticleM::datastore::setStatus(_tree, _name, _branches);
 
   utils::setStatus(_tree, _name, "pdgid", _branches);
 }
 
-panda::utils::BranchList
-panda::Parton::datastore::getStatus(TTree& _tree, TString const& _name) const
+suep::utils::BranchList
+suep::Parton::datastore::getStatus(TTree& _tree, TString const& _name) const
 {
   utils::BranchList blist(ParticleM::datastore::getStatus(_tree, _name));
 
@@ -46,7 +46,7 @@ panda::Parton::datastore::getStatus(TTree& _tree, TString const& _name) const
 }
 
 void
-panda::Parton::datastore::setAddress(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _setStatus/* = kTRUE*/)
+suep::Parton::datastore::setAddress(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _setStatus/* = kTRUE*/)
 {
   ParticleM::datastore::setAddress(_tree, _name, _branches, _setStatus);
 
@@ -54,7 +54,7 @@ panda::Parton::datastore::setAddress(TTree& _tree, TString const& _name, utils::
 }
 
 void
-panda::Parton::datastore::book(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _dynamic/* = kTRUE*/)
+suep::Parton::datastore::book(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _dynamic/* = kTRUE*/)
 {
   ParticleM::datastore::book(_tree, _name, _branches, _dynamic);
 
@@ -64,7 +64,7 @@ panda::Parton::datastore::book(TTree& _tree, TString const& _name, utils::Branch
 }
 
 void
-panda::Parton::datastore::releaseTree(TTree& _tree, TString const& _name)
+suep::Parton::datastore::releaseTree(TTree& _tree, TString const& _name)
 {
   ParticleM::datastore::releaseTree(_tree, _name);
 
@@ -72,51 +72,51 @@ panda::Parton::datastore::releaseTree(TTree& _tree, TString const& _name)
 }
 
 void
-panda::Parton::datastore::resizeVectors_(UInt_t _size)
+suep::Parton::datastore::resizeVectors_(UInt_t _size)
 {
   ParticleM::datastore::resizeVectors_(_size);
 
 }
 
 
-panda::utils::BranchList
-panda::Parton::datastore::getBranchNames(TString const& _name/* = ""*/) const
+suep::utils::BranchList
+suep::Parton::datastore::getBranchNames(TString const& _name/* = ""*/) const
 {
   return Parton::getListOfBranches().fullNames(_name);
 }
 
-panda::Parton::Parton(char const* _name/* = ""*/) :
+suep::Parton::Parton(char const* _name/* = ""*/) :
   ParticleM(new PartonArray(1, _name)),
   pdgid(gStore.getData(this).pdgid[0])
 {
 }
 
-panda::Parton::Parton(Parton const& _src) :
+suep::Parton::Parton(Parton const& _src) :
   ParticleM(new PartonArray(1, _src.getName())),
   pdgid(gStore.getData(this).pdgid[0])
 {
   operator=(_src);
 }
 
-panda::Parton::Parton(datastore& _data, UInt_t _idx) :
+suep::Parton::Parton(datastore& _data, UInt_t _idx) :
   ParticleM(_data, _idx),
   pdgid(_data.pdgid[_idx])
 {
 }
 
-panda::Parton::Parton(ArrayBase* _array) :
+suep::Parton::Parton(ArrayBase* _array) :
   ParticleM(_array),
   pdgid(gStore.getData(this).pdgid[0])
 {
 }
 
-panda::Parton::~Parton()
+suep::Parton::~Parton()
 {
   destructor();
 }
 
 void
-panda::Parton::destructor(Bool_t _recursive/* = kFALSE*/)
+suep::Parton::destructor(Bool_t _recursive/* = kFALSE*/)
 {
   /* BEGIN CUSTOM Parton.cc.destructor */
   /* END CUSTOM */
@@ -125,8 +125,8 @@ panda::Parton::destructor(Bool_t _recursive/* = kFALSE*/)
     ParticleM::destructor(kTRUE);
 }
 
-panda::Parton&
-panda::Parton::operator=(Parton const& _src)
+suep::Parton&
+suep::Parton::operator=(Parton const& _src)
 {
   ParticleM::operator=(_src);
 
@@ -139,7 +139,7 @@ panda::Parton::operator=(Parton const& _src)
 }
 
 void
-panda::Parton::doBook_(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/)
+suep::Parton::doBook_(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/)
 {
   ParticleM::doBook_(_tree, _name, _branches);
 
@@ -147,7 +147,7 @@ panda::Parton::doBook_(TTree& _tree, TString const& _name, utils::BranchList con
 }
 
 void
-panda::Parton::doInit_()
+suep::Parton::doInit_()
 {
   ParticleM::doInit_();
 
@@ -158,7 +158,7 @@ panda::Parton::doInit_()
 }
 
 void
-panda::Parton::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
+suep::Parton::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
 {
   /* BEGIN CUSTOM Parton.cc.print */
   dump(_out);
@@ -166,7 +166,7 @@ panda::Parton::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) 
 }
 
 void
-panda::Parton::dump(std::ostream& _out/* = std::cout*/) const
+suep::Parton::dump(std::ostream& _out/* = std::cout*/) const
 {
   ParticleM::dump(_out);
 

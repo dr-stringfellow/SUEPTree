@@ -3,7 +3,7 @@
 
 #include <sstream>
 
-panda::CollectionBase::~CollectionBase()
+suep::CollectionBase::~CollectionBase()
 {
   unsigned iT(0);
   while (iT != outputs_.size()) {
@@ -15,7 +15,7 @@ panda::CollectionBase::~CollectionBase()
 }
 
 void
-panda::CollectionBase::setStatus(TTree& _tree, utils::BranchList const& _branches)
+suep::CollectionBase::setStatus(TTree& _tree, utils::BranchList const& _branches)
 {
   // If the size branch does not exist, there is nothing to read from this tree.
   // See comments in IOUtils.cc checkStatus for the ordering of function calls here.
@@ -31,8 +31,8 @@ panda::CollectionBase::setStatus(TTree& _tree, utils::BranchList const& _branche
   getData().setStatus(_tree, name_, _branches);
 }
 
-panda::utils::BranchList
-panda::CollectionBase::getStatus(TTree& _tree) const
+suep::utils::BranchList
+suep::CollectionBase::getStatus(TTree& _tree) const
 {
   utils::BranchList blist;
 
@@ -46,8 +46,8 @@ panda::CollectionBase::getStatus(TTree& _tree) const
   return blist;
 }
 
-panda::utils::BranchList
-panda::CollectionBase::getBranchNames(Bool_t _fullName/* = kTRUE*/, Bool_t/* = kFALSE*/) const
+suep::utils::BranchList
+suep::CollectionBase::getBranchNames(Bool_t _fullName/* = kTRUE*/, Bool_t/* = kFALSE*/) const
 {
   //IMPORTANT
   // Don't change the order of size and other branches! We rely on the size branch
@@ -68,7 +68,7 @@ panda::CollectionBase::getBranchNames(Bool_t _fullName/* = kTRUE*/, Bool_t/* = k
 }
 
 UInt_t
-panda::CollectionBase::setAddress(TTree& _tree, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _setStatus/* = kTRUE*/)
+suep::CollectionBase::setAddress(TTree& _tree, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _setStatus/* = kTRUE*/)
 {
   doSetAddress_(_tree, _branches, _setStatus, true);
 
@@ -82,7 +82,7 @@ panda::CollectionBase::setAddress(TTree& _tree, utils::BranchList const& _branch
 }
 
 void
-panda::CollectionBase::book(TTree& _tree, utils::BranchList const& _branches/* = {"*"}*/)
+suep::CollectionBase::book(TTree& _tree, utils::BranchList const& _branches/* = {"*"}*/)
 {
   if (!_branches.matchesAny(getBranchNames(false)))
     return;
@@ -104,7 +104,7 @@ panda::CollectionBase::book(TTree& _tree, utils::BranchList const& _branches/* =
 }
 
 Int_t
-panda::CollectionBase::getEntry(UInt_t _treeId, Long64_t _entry, Bool_t _localEntry/* = kFALSE*/)
+suep::CollectionBase::getEntry(UInt_t _treeId, Long64_t _entry, Bool_t _localEntry/* = kFALSE*/)
 {
   init();
 
@@ -153,7 +153,7 @@ panda::CollectionBase::getEntry(UInt_t _treeId, Long64_t _entry, Bool_t _localEn
 }
 
 Int_t
-panda::CollectionBase::fill(TTree& _tree)
+suep::CollectionBase::fill(TTree& _tree)
 {
   prepareFill(_tree);
 
@@ -161,14 +161,14 @@ panda::CollectionBase::fill(TTree& _tree)
 }
 
 void
-panda::CollectionBase::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
+suep::CollectionBase::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
 {
   _out << "size: " << size() << ", allocated size: " << getData().nmax() << std::endl;
   ContainerBase::print(_out, _level);
 }
 
 void
-panda::CollectionBase::dump(std::ostream& _out/* = std::cout*/) const
+suep::CollectionBase::dump(std::ostream& _out/* = std::cout*/) const
 {
   _out << "size_ = " << size_ << std::endl;
   _out << "sizeIn_ = " << sizeIn_ << std::endl;
@@ -176,7 +176,7 @@ panda::CollectionBase::dump(std::ostream& _out/* = std::cout*/) const
 }
 
 void
-panda::CollectionBase::unlink(TTree& _tree)
+suep::CollectionBase::unlink(TTree& _tree)
 {
   ReaderObject::unlink(_tree);
 
@@ -189,7 +189,7 @@ panda::CollectionBase::unlink(TTree& _tree)
 }
 
 void
-panda::CollectionBase::resize(UInt_t _size)
+suep::CollectionBase::resize(UInt_t _size)
 {
   if (_size > getData().nmax()) {
     UInt_t nmax(getData().nmax());
@@ -214,7 +214,7 @@ panda::CollectionBase::resize(UInt_t _size)
 }
 
 void
-panda::CollectionBase::reserve(UInt_t _size)
+suep::CollectionBase::reserve(UInt_t _size)
 {
   if (_size > getData().nmax()) {
     reallocate_(_size);
@@ -227,7 +227,7 @@ panda::CollectionBase::reserve(UInt_t _size)
 }
 
 void
-panda::CollectionBase::prepareFill(TTree& _tree)
+suep::CollectionBase::prepareFill(TTree& _tree)
 {
   if (outputs_.empty())
     return;
@@ -245,7 +245,7 @@ panda::CollectionBase::prepareFill(TTree& _tree)
 
 /*private*/
 void
-panda::CollectionBase::doSetAddress_(TTree& _tree, utils::BranchList const& _branches, Bool_t _setStatus, Bool_t _asInput)
+suep::CollectionBase::doSetAddress_(TTree& _tree, utils::BranchList const& _branches, Bool_t _setStatus, Bool_t _asInput)
 {
   if (!_branches.matchesAny(getBranchNames(false)))
     return;

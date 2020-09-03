@@ -5,7 +5,7 @@ import os
 from argparse import ArgumentParser
 thisdir = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 sys.path.append(thisdir + '/lib')
-from panda import *
+from suep import *
 
 argParser = ArgumentParser(description = 'Generate C++ code for a flat tree')
 argParser.add_argument('configs', metavar = 'CONFIG', nargs = '*', help = 'Tree definition files.')

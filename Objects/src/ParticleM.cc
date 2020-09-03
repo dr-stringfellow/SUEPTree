@@ -1,8 +1,8 @@
 #include "../interface/ParticleM.h"
 
 /*static*/
-panda::utils::BranchList
-panda::ParticleM::getListOfBranches()
+suep::utils::BranchList
+suep::ParticleM::getListOfBranches()
 {
   utils::BranchList blist;
   blist += Particle::getListOfBranches();
@@ -11,7 +11,7 @@ panda::ParticleM::getListOfBranches()
 }
 
 void
-panda::ParticleM::datastore::allocate(UInt_t _nmax)
+suep::ParticleM::datastore::allocate(UInt_t _nmax)
 {
   Particle::datastore::allocate(_nmax);
 
@@ -22,7 +22,7 @@ panda::ParticleM::datastore::allocate(UInt_t _nmax)
 }
 
 void
-panda::ParticleM::datastore::deallocate()
+suep::ParticleM::datastore::deallocate()
 {
   Particle::datastore::deallocate();
 
@@ -37,7 +37,7 @@ panda::ParticleM::datastore::deallocate()
 }
 
 void
-panda::ParticleM::datastore::setStatus(TTree& _tree, TString const& _name, utils::BranchList const& _branches)
+suep::ParticleM::datastore::setStatus(TTree& _tree, TString const& _name, utils::BranchList const& _branches)
 {
   Particle::datastore::setStatus(_tree, _name, _branches);
 
@@ -47,8 +47,8 @@ panda::ParticleM::datastore::setStatus(TTree& _tree, TString const& _name, utils
   utils::setStatus(_tree, _name, "mass_", _branches);
 }
 
-panda::utils::BranchList
-panda::ParticleM::datastore::getStatus(TTree& _tree, TString const& _name) const
+suep::utils::BranchList
+suep::ParticleM::datastore::getStatus(TTree& _tree, TString const& _name) const
 {
   utils::BranchList blist(Particle::datastore::getStatus(_tree, _name));
 
@@ -61,7 +61,7 @@ panda::ParticleM::datastore::getStatus(TTree& _tree, TString const& _name) const
 }
 
 void
-panda::ParticleM::datastore::setAddress(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _setStatus/* = kTRUE*/)
+suep::ParticleM::datastore::setAddress(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _setStatus/* = kTRUE*/)
 {
   Particle::datastore::setAddress(_tree, _name, _branches, _setStatus);
 
@@ -72,7 +72,7 @@ panda::ParticleM::datastore::setAddress(TTree& _tree, TString const& _name, util
 }
 
 void
-panda::ParticleM::datastore::book(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _dynamic/* = kTRUE*/)
+suep::ParticleM::datastore::book(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _dynamic/* = kTRUE*/)
 {
   Particle::datastore::book(_tree, _name, _branches, _dynamic);
 
@@ -85,7 +85,7 @@ panda::ParticleM::datastore::book(TTree& _tree, TString const& _name, utils::Bra
 }
 
 void
-panda::ParticleM::datastore::releaseTree(TTree& _tree, TString const& _name)
+suep::ParticleM::datastore::releaseTree(TTree& _tree, TString const& _name)
 {
   Particle::datastore::releaseTree(_tree, _name);
 
@@ -96,51 +96,51 @@ panda::ParticleM::datastore::releaseTree(TTree& _tree, TString const& _name)
 }
 
 void
-panda::ParticleM::datastore::resizeVectors_(UInt_t _size)
+suep::ParticleM::datastore::resizeVectors_(UInt_t _size)
 {
   Particle::datastore::resizeVectors_(_size);
 
 }
 
 
-panda::utils::BranchList
-panda::ParticleM::datastore::getBranchNames(TString const& _name/* = ""*/) const
+suep::utils::BranchList
+suep::ParticleM::datastore::getBranchNames(TString const& _name/* = ""*/) const
 {
   return ParticleM::getListOfBranches().fullNames(_name);
 }
 
-panda::ParticleM::ParticleM(char const* _name/* = ""*/) :
+suep::ParticleM::ParticleM(char const* _name/* = ""*/) :
   Particle(new ParticleMArray(1, _name)),
   PtEtaPhiMMixin(gStore.getData(this), 0)
 {
 }
 
-panda::ParticleM::ParticleM(ParticleM const& _src) :
+suep::ParticleM::ParticleM(ParticleM const& _src) :
   Particle(new ParticleMArray(1, _src.getName())),
   PtEtaPhiMMixin(gStore.getData(this), 0)
 {
   operator=(_src);
 }
 
-panda::ParticleM::ParticleM(datastore& _data, UInt_t _idx) :
+suep::ParticleM::ParticleM(datastore& _data, UInt_t _idx) :
   Particle(_data, _idx),
   PtEtaPhiMMixin(_data, _idx)
 {
 }
 
-panda::ParticleM::ParticleM(ArrayBase* _array) :
+suep::ParticleM::ParticleM(ArrayBase* _array) :
   Particle(_array),
   PtEtaPhiMMixin(gStore.getData(this), 0)
 {
 }
 
-panda::ParticleM::~ParticleM()
+suep::ParticleM::~ParticleM()
 {
   destructor();
 }
 
 void
-panda::ParticleM::destructor(Bool_t _recursive/* = kFALSE*/)
+suep::ParticleM::destructor(Bool_t _recursive/* = kFALSE*/)
 {
   /* BEGIN CUSTOM ParticleM.cc.destructor */
   /* END CUSTOM */
@@ -149,8 +149,8 @@ panda::ParticleM::destructor(Bool_t _recursive/* = kFALSE*/)
     Particle::destructor(kTRUE);
 }
 
-panda::ParticleM&
-panda::ParticleM::operator=(ParticleM const& _src)
+suep::ParticleM&
+suep::ParticleM::operator=(ParticleM const& _src)
 {
   Particle::operator=(_src);
 
@@ -166,7 +166,7 @@ panda::ParticleM::operator=(ParticleM const& _src)
 }
 
 void
-panda::ParticleM::doBook_(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/)
+suep::ParticleM::doBook_(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/)
 {
   Particle::doBook_(_tree, _name, _branches);
 
@@ -177,7 +177,7 @@ panda::ParticleM::doBook_(TTree& _tree, TString const& _name, utils::BranchList 
 }
 
 void
-panda::ParticleM::doInit_()
+suep::ParticleM::doInit_()
 {
   Particle::doInit_();
 
@@ -191,7 +191,7 @@ panda::ParticleM::doInit_()
 }
 
 void
-panda::ParticleM::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
+suep::ParticleM::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
 {
   /* BEGIN CUSTOM ParticleM.cc.print */
   ParticleM::dump(_out);
@@ -199,7 +199,7 @@ panda::ParticleM::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*
 }
 
 void
-panda::ParticleM::dump(std::ostream& _out/* = std::cout*/) const
+suep::ParticleM::dump(std::ostream& _out/* = std::cout*/) const
 {
   Particle::dump(_out);
 
@@ -210,7 +210,7 @@ panda::ParticleM::dump(std::ostream& _out/* = std::cout*/) const
 }
 
 void
-panda::ParticleM::setPtEtaPhiM(double pt, double eta, double phi, double m)
+suep::ParticleM::setPtEtaPhiM(double pt, double eta, double phi, double m)
 {
   pt_ = pt;
   eta_ = eta;
@@ -219,7 +219,7 @@ panda::ParticleM::setPtEtaPhiM(double pt, double eta, double phi, double m)
 }
 
 void
-panda::ParticleM::setXYZE(double px, double py, double pz, double e)
+suep::ParticleM::setXYZE(double px, double py, double pz, double e)
 {
   pt_ = std::sqrt(px * px + py * py);
   double p(std::sqrt(px * px + py * py + pz * pz));

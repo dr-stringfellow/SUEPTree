@@ -1,6 +1,6 @@
 #include "../interface/PFCandBase.h"
 
-TString panda::PFCandBase::PTypeName[] = {
+TString suep::PFCandBase::PTypeName[] = {
   "hp",
   "hm",
   "ep",
@@ -17,13 +17,13 @@ TString panda::PFCandBase::PTypeName[] = {
 };
 
 /*static*/
-int const panda::PFCandBase::q_[nPTypes] = {1, -1, 1, -1, 1, -1, 0, 0, 0, 0, 1, -1, 0};
+int const suep::PFCandBase::q_[nPTypes] = {1, -1, 1, -1, 1, -1, 0, 0, 0, 0, 1, -1, 0};
 /*static*/
-int const panda::PFCandBase::pdgId_[nPTypes] = {211, -211, -11, 11, -13, 13, 22, 130, 1, 2, 0, 0, 0};
+int const suep::PFCandBase::pdgId_[nPTypes] = {211, -211, -11, 11, -13, 13, 22, 130, 1, 2, 0, 0, 0};
 
 /*static*/
-panda::utils::BranchList
-panda::PFCandBase::getListOfBranches()
+suep::utils::BranchList
+suep::PFCandBase::getListOfBranches()
 {
   utils::BranchList blist;
   blist += Particle::getListOfBranches();
@@ -32,7 +32,7 @@ panda::PFCandBase::getListOfBranches()
 }
 
 void
-panda::PFCandBase::datastore::allocate(UInt_t _nmax)
+suep::PFCandBase::datastore::allocate(UInt_t _nmax)
 {
   Particle::datastore::allocate(_nmax);
 
@@ -43,7 +43,7 @@ panda::PFCandBase::datastore::allocate(UInt_t _nmax)
 }
 
 void
-panda::PFCandBase::datastore::deallocate()
+suep::PFCandBase::datastore::deallocate()
 {
   Particle::datastore::deallocate();
 
@@ -58,7 +58,7 @@ panda::PFCandBase::datastore::deallocate()
 }
 
 void
-panda::PFCandBase::datastore::setStatus(TTree& _tree, TString const& _name, utils::BranchList const& _branches)
+suep::PFCandBase::datastore::setStatus(TTree& _tree, TString const& _name, utils::BranchList const& _branches)
 {
   Particle::datastore::setStatus(_tree, _name, _branches);
 
@@ -66,8 +66,8 @@ panda::PFCandBase::datastore::setStatus(TTree& _tree, TString const& _name, util
   utils::setStatus(_tree, _name, "hCalFrac", _branches);
 }
 
-panda::utils::BranchList
-panda::PFCandBase::datastore::getStatus(TTree& _tree, TString const& _name) const
+suep::utils::BranchList
+suep::PFCandBase::datastore::getStatus(TTree& _tree, TString const& _name) const
 {
   utils::BranchList blist(Particle::datastore::getStatus(_tree, _name));
 
@@ -78,7 +78,7 @@ panda::PFCandBase::datastore::getStatus(TTree& _tree, TString const& _name) cons
 }
 
 void
-panda::PFCandBase::datastore::setAddress(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _setStatus/* = kTRUE*/)
+suep::PFCandBase::datastore::setAddress(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _setStatus/* = kTRUE*/)
 {
   Particle::datastore::setAddress(_tree, _name, _branches, _setStatus);
 
@@ -87,7 +87,7 @@ panda::PFCandBase::datastore::setAddress(TTree& _tree, TString const& _name, uti
 }
 
 void
-panda::PFCandBase::datastore::book(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _dynamic/* = kTRUE*/)
+suep::PFCandBase::datastore::book(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _dynamic/* = kTRUE*/)
 {
   Particle::datastore::book(_tree, _name, _branches, _dynamic);
 
@@ -98,7 +98,7 @@ panda::PFCandBase::datastore::book(TTree& _tree, TString const& _name, utils::Br
 }
 
 void
-panda::PFCandBase::datastore::releaseTree(TTree& _tree, TString const& _name)
+suep::PFCandBase::datastore::releaseTree(TTree& _tree, TString const& _name)
 {
   Particle::datastore::releaseTree(_tree, _name);
 
@@ -107,20 +107,20 @@ panda::PFCandBase::datastore::releaseTree(TTree& _tree, TString const& _name)
 }
 
 void
-panda::PFCandBase::datastore::resizeVectors_(UInt_t _size)
+suep::PFCandBase::datastore::resizeVectors_(UInt_t _size)
 {
   Particle::datastore::resizeVectors_(_size);
 
 }
 
 
-panda::utils::BranchList
-panda::PFCandBase::datastore::getBranchNames(TString const& _name/* = ""*/) const
+suep::utils::BranchList
+suep::PFCandBase::datastore::getBranchNames(TString const& _name/* = ""*/) const
 {
   return PFCandBase::getListOfBranches().fullNames(_name);
 }
 
-panda::PFCandBase::PFCandBase(datastore& _data, UInt_t _idx) :
+suep::PFCandBase::PFCandBase(datastore& _data, UInt_t _idx) :
   Particle(_data, _idx),
   ptype(_data.ptype[_idx]),
   vertex(_data.vertexContainer_, _data.vertex_[_idx]),
@@ -129,7 +129,7 @@ panda::PFCandBase::PFCandBase(datastore& _data, UInt_t _idx) :
 {
 }
 
-panda::PFCandBase::PFCandBase(ArrayBase* _array) :
+suep::PFCandBase::PFCandBase(ArrayBase* _array) :
   Particle(_array),
   ptype(gStore.getData(this).ptype[0]),
   vertex(gStore.getData(this).vertexContainer_, gStore.getData(this).vertex_[0]),
@@ -138,13 +138,13 @@ panda::PFCandBase::PFCandBase(ArrayBase* _array) :
 {
 }
 
-panda::PFCandBase::~PFCandBase()
+suep::PFCandBase::~PFCandBase()
 {
   destructor();
 }
 
 void
-panda::PFCandBase::destructor(Bool_t _recursive/* = kFALSE*/)
+suep::PFCandBase::destructor(Bool_t _recursive/* = kFALSE*/)
 {
   /* BEGIN CUSTOM PFCandBase.cc.destructor */
   /* END CUSTOM */
@@ -153,8 +153,8 @@ panda::PFCandBase::destructor(Bool_t _recursive/* = kFALSE*/)
     Particle::destructor(kTRUE);
 }
 
-panda::PFCandBase&
-panda::PFCandBase::operator=(PFCandBase const& _src)
+suep::PFCandBase&
+suep::PFCandBase::operator=(PFCandBase const& _src)
 {
   Particle::operator=(_src);
 
@@ -170,7 +170,7 @@ panda::PFCandBase::operator=(PFCandBase const& _src)
 }
 
 void
-panda::PFCandBase::doBook_(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/)
+suep::PFCandBase::doBook_(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/)
 {
   Particle::doBook_(_tree, _name, _branches);
 
@@ -179,7 +179,7 @@ panda::PFCandBase::doBook_(TTree& _tree, TString const& _name, utils::BranchList
 }
 
 void
-panda::PFCandBase::doInit_()
+suep::PFCandBase::doInit_()
 {
   Particle::doInit_();
 
@@ -193,7 +193,7 @@ panda::PFCandBase::doInit_()
 }
 
 void
-panda::PFCandBase::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
+suep::PFCandBase::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
 {
   /* BEGIN CUSTOM PFCandBase.cc.print */
   dump(_out);
@@ -201,7 +201,7 @@ panda::PFCandBase::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1
 }
 
 void
-panda::PFCandBase::dump(std::ostream& _out/* = std::cout*/) const
+suep::PFCandBase::dump(std::ostream& _out/* = std::cout*/) const
 {
   Particle::dump(_out);
 
@@ -214,7 +214,7 @@ panda::PFCandBase::dump(std::ostream& _out/* = std::cout*/) const
 
 /* BEGIN CUSTOM PFCandBase.cc.global */
 TVector3
-panda::PFCandBase::pca() const
+suep::PFCandBase::pca() const
 {
   if (!vertex.isValid() || !track.isValid())
     return TVector3();
@@ -228,7 +228,7 @@ panda::PFCandBase::pca() const
 }
 
 double
-panda::PFCandBase::dxy(TVector3 const& point) const
+suep::PFCandBase::dxy(TVector3 const& point) const
 {
   if (!vertex.isValid() || !track.isValid())
     return 0.;
@@ -241,7 +241,7 @@ panda::PFCandBase::dxy(TVector3 const& point) const
 }
 
 double
-panda::PFCandBase::dz(TVector3 const& point) const
+suep::PFCandBase::dz(TVector3 const& point) const
 {
   if (!vertex.isValid() || !track.isValid())
     return 0.;

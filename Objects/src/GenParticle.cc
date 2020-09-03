@@ -1,8 +1,8 @@
 #include "../interface/GenParticle.h"
 
 /*static*/
-panda::utils::BranchList
-panda::GenParticle::getListOfBranches()
+suep::utils::BranchList
+suep::GenParticle::getListOfBranches()
 {
   utils::BranchList blist;
   blist += GenParticleBase::getListOfBranches();
@@ -11,7 +11,7 @@ panda::GenParticle::getListOfBranches()
 }
 
 void
-panda::GenParticle::datastore::allocate(UInt_t _nmax)
+suep::GenParticle::datastore::allocate(UInt_t _nmax)
 {
   GenParticleBase::datastore::allocate(_nmax);
 
@@ -22,7 +22,7 @@ panda::GenParticle::datastore::allocate(UInt_t _nmax)
 }
 
 void
-panda::GenParticle::datastore::deallocate()
+suep::GenParticle::datastore::deallocate()
 {
   GenParticleBase::datastore::deallocate();
 
@@ -37,7 +37,7 @@ panda::GenParticle::datastore::deallocate()
 }
 
 void
-panda::GenParticle::datastore::setStatus(TTree& _tree, TString const& _name, utils::BranchList const& _branches)
+suep::GenParticle::datastore::setStatus(TTree& _tree, TString const& _name, utils::BranchList const& _branches)
 {
   GenParticleBase::datastore::setStatus(_tree, _name, _branches);
 
@@ -47,8 +47,8 @@ panda::GenParticle::datastore::setStatus(TTree& _tree, TString const& _name, uti
   utils::setStatus(_tree, _name, "packedM", _branches);
 }
 
-panda::utils::BranchList
-panda::GenParticle::datastore::getStatus(TTree& _tree, TString const& _name) const
+suep::utils::BranchList
+suep::GenParticle::datastore::getStatus(TTree& _tree, TString const& _name) const
 {
   utils::BranchList blist(GenParticleBase::datastore::getStatus(_tree, _name));
 
@@ -61,7 +61,7 @@ panda::GenParticle::datastore::getStatus(TTree& _tree, TString const& _name) con
 }
 
 void
-panda::GenParticle::datastore::setAddress(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _setStatus/* = kTRUE*/)
+suep::GenParticle::datastore::setAddress(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _setStatus/* = kTRUE*/)
 {
   GenParticleBase::datastore::setAddress(_tree, _name, _branches, _setStatus);
 
@@ -72,7 +72,7 @@ panda::GenParticle::datastore::setAddress(TTree& _tree, TString const& _name, ut
 }
 
 void
-panda::GenParticle::datastore::book(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _dynamic/* = kTRUE*/)
+suep::GenParticle::datastore::book(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _dynamic/* = kTRUE*/)
 {
   GenParticleBase::datastore::book(_tree, _name, _branches, _dynamic);
 
@@ -85,7 +85,7 @@ panda::GenParticle::datastore::book(TTree& _tree, TString const& _name, utils::B
 }
 
 void
-panda::GenParticle::datastore::releaseTree(TTree& _tree, TString const& _name)
+suep::GenParticle::datastore::releaseTree(TTree& _tree, TString const& _name)
 {
   GenParticleBase::datastore::releaseTree(_tree, _name);
 
@@ -96,51 +96,51 @@ panda::GenParticle::datastore::releaseTree(TTree& _tree, TString const& _name)
 }
 
 void
-panda::GenParticle::datastore::resizeVectors_(UInt_t _size)
+suep::GenParticle::datastore::resizeVectors_(UInt_t _size)
 {
   GenParticleBase::datastore::resizeVectors_(_size);
 
 }
 
 
-panda::utils::BranchList
-panda::GenParticle::datastore::getBranchNames(TString const& _name/* = ""*/) const
+suep::utils::BranchList
+suep::GenParticle::datastore::getBranchNames(TString const& _name/* = ""*/) const
 {
   return GenParticle::getListOfBranches().fullNames(_name);
 }
 
-panda::GenParticle::GenParticle(char const* _name/* = ""*/) :
+suep::GenParticle::GenParticle(char const* _name/* = ""*/) :
   GenParticleBase(new GenParticleArray(1, _name)),
   PackedMomentumMixin(gStore.getData(this), 0)
 {
 }
 
-panda::GenParticle::GenParticle(GenParticle const& _src) :
+suep::GenParticle::GenParticle(GenParticle const& _src) :
   GenParticleBase(new GenParticleArray(1, _src.getName())),
   PackedMomentumMixin(gStore.getData(this), 0)
 {
   operator=(_src);
 }
 
-panda::GenParticle::GenParticle(datastore& _data, UInt_t _idx) :
+suep::GenParticle::GenParticle(datastore& _data, UInt_t _idx) :
   GenParticleBase(_data, _idx),
   PackedMomentumMixin(_data, _idx)
 {
 }
 
-panda::GenParticle::GenParticle(ArrayBase* _array) :
+suep::GenParticle::GenParticle(ArrayBase* _array) :
   GenParticleBase(_array),
   PackedMomentumMixin(gStore.getData(this), 0)
 {
 }
 
-panda::GenParticle::~GenParticle()
+suep::GenParticle::~GenParticle()
 {
   destructor();
 }
 
 void
-panda::GenParticle::destructor(Bool_t _recursive/* = kFALSE*/)
+suep::GenParticle::destructor(Bool_t _recursive/* = kFALSE*/)
 {
   /* BEGIN CUSTOM GenParticle.cc.destructor */
   /* END CUSTOM */
@@ -149,8 +149,8 @@ panda::GenParticle::destructor(Bool_t _recursive/* = kFALSE*/)
     GenParticleBase::destructor(kTRUE);
 }
 
-panda::GenParticle&
-panda::GenParticle::operator=(GenParticle const& _src)
+suep::GenParticle&
+suep::GenParticle::operator=(GenParticle const& _src)
 {
   GenParticleBase::operator=(_src);
 
@@ -166,7 +166,7 @@ panda::GenParticle::operator=(GenParticle const& _src)
 }
 
 void
-panda::GenParticle::doBook_(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/)
+suep::GenParticle::doBook_(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/)
 {
   GenParticleBase::doBook_(_tree, _name, _branches);
 
@@ -177,7 +177,7 @@ panda::GenParticle::doBook_(TTree& _tree, TString const& _name, utils::BranchLis
 }
 
 void
-panda::GenParticle::doInit_()
+suep::GenParticle::doInit_()
 {
   GenParticleBase::doInit_();
 
@@ -191,7 +191,7 @@ panda::GenParticle::doInit_()
 }
 
 void
-panda::GenParticle::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
+suep::GenParticle::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
 {
   /* BEGIN CUSTOM GenParticle.cc.print */
   _out << "GenParticle " << pdgid << " (" << pt() << ", " << eta() << ", " << phi() << ") "
@@ -203,7 +203,7 @@ panda::GenParticle::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 
 }
 
 void
-panda::GenParticle::dump(std::ostream& _out/* = std::cout*/) const
+suep::GenParticle::dump(std::ostream& _out/* = std::cout*/) const
 {
   GenParticleBase::dump(_out);
 
@@ -217,8 +217,8 @@ panda::GenParticle::dump(std::ostream& _out/* = std::cout*/) const
 /* BEGIN CUSTOM GenParticle.cc.global */
 #include "../interface/UnpackedGenParticle.h"
 
-panda::GenParticle&
-panda::GenParticle::operator=(UnpackedGenParticle const& _rhs)
+suep::GenParticle&
+suep::GenParticle::operator=(UnpackedGenParticle const& _rhs)
 {
   GenParticleBase::operator=(static_cast<GenParticleBase const&>(_rhs));
   setPtEtaPhiM(_rhs.pt(), _rhs.eta(), _rhs.phi(), _rhs.m());

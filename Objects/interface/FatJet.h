@@ -8,7 +8,7 @@
 #include "../../Framework/interface/RefVector.h"
 #include "MicroJet.h"
 
-namespace panda {
+namespace suep {
 
   class FatJet : public Jet {
   public:

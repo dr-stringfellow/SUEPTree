@@ -4,7 +4,7 @@
 #include "Constants.h"
 #include "Muon.h"
 
-namespace panda {
+namespace suep {
 
   class EventTP2M : public EventTP {
   public:

@@ -9,13 +9,13 @@
 #include <stdexcept>
 #include <list>
 
-panda::utils::BranchName::BranchName(BranchName const& _src) :
+suep::utils::BranchName::BranchName(BranchName const& _src) :
   std::vector<TString>(_src),
   isVeto_(_src.isVeto_)
 {
 }
 
-panda::utils::BranchName::BranchName(char const* _name)
+suep::utils::BranchName::BranchName(char const* _name)
 {
   TString name(_name);
   if (name[0] == '!') {
@@ -31,7 +31,7 @@ panda::utils::BranchName::BranchName(char const* _name)
   delete parts;
 }
 
-panda::utils::BranchName::operator TString() const
+suep::utils::BranchName::operator TString() const
 {
   TString name;
 
@@ -47,7 +47,7 @@ panda::utils::BranchName::operator TString() const
 }
 
 TString
-panda::utils::BranchName::fullName(TString const& _objName/* = ""*/) const
+suep::utils::BranchName::fullName(TString const& _objName/* = ""*/) const
 {
   TString bFullName(*this);
 
@@ -69,7 +69,7 @@ panda::utils::BranchName::fullName(TString const& _objName/* = ""*/) const
 }
 
 bool
-panda::utils::BranchName::match(BranchName const& _rhs) const
+suep::utils::BranchName::match(BranchName const& _rhs) const
 {
   // case 1. Both names are null. -> no match
   if (size() == 0 || _rhs.size() == 0)
@@ -93,7 +93,7 @@ panda::utils::BranchName::match(BranchName const& _rhs) const
 }
 
 bool
-panda::utils::BranchName::in(BranchList const& _list) const
+suep::utils::BranchName::in(BranchList const& _list) const
 {
   // last match determines the result
 
@@ -105,7 +105,7 @@ panda::utils::BranchName::in(BranchList const& _list) const
 }
 
 bool
-panda::utils::BranchName::vetoed(BranchList const& _list) const
+suep::utils::BranchName::vetoed(BranchList const& _list) const
 {
   // last match determines the result
 
@@ -116,8 +116,8 @@ panda::utils::BranchName::vetoed(BranchList const& _list) const
   return false;
 }
 
-panda::utils::BranchList
-panda::utils::BranchList::subList(TString const& _objName) const
+suep::utils::BranchList
+suep::utils::BranchList::subList(TString const& _objName) const
 {
   BranchList list;
   list.setVerbosity(getVerbosity());
@@ -143,7 +143,7 @@ panda::utils::BranchList::subList(TString const& _objName) const
 }
 
 bool
-panda::utils::BranchList::matchesAny(BranchList const& _list) const
+suep::utils::BranchList::matchesAny(BranchList const& _list) const
 {
   // loop over given branch names
   for (auto& b : _list) {
@@ -155,15 +155,15 @@ panda::utils::BranchList::matchesAny(BranchList const& _list) const
   return false;
 }
 
-panda::utils::BranchList&
-panda::utils::BranchList::operator+=(BranchList const& _rhs)
+suep::utils::BranchList&
+suep::utils::BranchList::operator+=(BranchList const& _rhs)
 {
   insert(end(), _rhs.begin(), _rhs.end());
   return *this;
 }
 
 void
-panda::utils::BranchList::collapse()
+suep::utils::BranchList::collapse()
 {
   std::list<BranchName> blist{begin(), end()};
 
@@ -190,8 +190,8 @@ panda::utils::BranchList::collapse()
   assign(blist.begin(), blist.end());
 }
 
-panda::utils::BranchList
-panda::utils::BranchList::fullNames(TString const& _objName/* = ""*/) const
+suep::utils::BranchList
+suep::utils::BranchList::fullNames(TString const& _objName/* = ""*/) const
 {
   BranchList blist;
   for (auto& name : *this)
@@ -201,8 +201,8 @@ panda::utils::BranchList::fullNames(TString const& _objName/* = ""*/) const
 }
 
 /*static*/
-panda::utils::BranchList
-panda::utils::BranchList::makeList(TTree& _tree)
+suep::utils::BranchList
+suep::utils::BranchList::makeList(TTree& _tree)
 {
   BranchList blist;
 
@@ -214,7 +214,7 @@ panda::utils::BranchList::makeList(TTree& _tree)
 }
 
 Int_t
-panda::utils::checkStatus(TTree& _tree, TString const& _fullName, Bool_t _status)
+suep::utils::checkStatus(TTree& _tree, TString const& _fullName, Bool_t _status)
 {
   // If _tree is a TChain, paths may not be added yet. Then GetBranch returns 0
   // but that does not necessarily mean that the branch does not exist in the trees
@@ -230,7 +230,7 @@ panda::utils::checkStatus(TTree& _tree, TString const& _fullName, Bool_t _status
 }
 
 Int_t
-panda::utils::setStatus(TTree& _tree, TString const& _objName, BranchName const& _bName, BranchList const& _bList)
+suep::utils::setStatus(TTree& _tree, TString const& _objName, BranchName const& _bName, BranchList const& _bList)
 {
   TString fullName(_bName.fullName(_objName));
 
@@ -262,8 +262,8 @@ panda::utils::setStatus(TTree& _tree, TString const& _objName, BranchName const&
   return 1;
 }
 
-panda::utils::BranchName
-panda::utils::getStatus(TTree& _tree, TString const& _objName, BranchName const& _bName)
+suep::utils::BranchName
+suep::utils::getStatus(TTree& _tree, TString const& _objName, BranchName const& _bName)
 {
   TString fullName(_bName.fullName(_objName));
 
@@ -276,7 +276,7 @@ panda::utils::getStatus(TTree& _tree, TString const& _objName, BranchName const&
 }
 
 Int_t
-panda::utils::setAddress(TTree& _tree, TString const& _objName, BranchName const& _bName, void* _bPtr, BranchList const& _bList, Bool_t _setStatus)
+suep::utils::setAddress(TTree& _tree, TString const& _objName, BranchName const& _bName, void* _bPtr, BranchList const& _bList, Bool_t _setStatus)
 {
   Int_t returnCode(0);
 
@@ -325,7 +325,7 @@ panda::utils::setAddress(TTree& _tree, TString const& _objName, BranchName const
 }
 
 Int_t 
-panda::utils::book(TTree& _tree, TString const& _objName, BranchName const& _bName, TString const& _size, char _lType, void* _bPtr, BranchList const& _bList)
+suep::utils::book(TTree& _tree, TString const& _objName, BranchName const& _bName, TString const& _size, char _lType, void* _bPtr, BranchList const& _bList)
 {
   // objName: electrons
   // bName: pt
@@ -350,7 +350,7 @@ panda::utils::book(TTree& _tree, TString const& _objName, BranchName const& _bNa
 }
 
 Int_t 
-panda::utils::resetAddress(TTree& _tree, TString const& _objName, BranchName const& _bName)
+suep::utils::resetAddress(TTree& _tree, TString const& _objName, BranchName const& _bName)
 {
   // bName: electrons.pt
   auto* branch(_tree.GetBranch(_bName.fullName(_objName)));
@@ -368,7 +368,7 @@ panda::utils::resetAddress(TTree& _tree, TString const& _objName, BranchName con
 }
 
 TTree*
-panda::utils::makeDocTree(TString const& _treeName, TString _names[], UInt_t _size)
+suep::utils::makeDocTree(TString const& _treeName, TString _names[], UInt_t _size)
 {
   auto* tree(new TTree(_treeName, _treeName));
   TString* name(new TString);
@@ -382,13 +382,13 @@ panda::utils::makeDocTree(TString const& _treeName, TString _names[], UInt_t _si
   return tree;
 }
 
-panda::utils::TNotify::TNotify()
+suep::utils::TNotify::TNotify()
 {
   SetBit(kIsOnHeap); // this object is added to tree UserInfo, which deletes all IsOnHeap objects at the end
 }
 
 Bool_t
-panda::utils::TNotify::Notify()
+suep::utils::TNotify::Notify()
 {
   for (int iN(0); iN != GetEntriesFast(); ++iN)
     UncheckedAt(iN)->Notify();
@@ -396,26 +396,26 @@ panda::utils::TNotify::Notify()
   return true;
 }
 
-panda::utils::BranchArrayUpdator::BranchArrayUpdator(ReaderObject& _obj, TTree& _tree) :
+suep::utils::BranchArrayUpdator::BranchArrayUpdator(ReaderObject& _obj, TTree& _tree) :
   obj_(_obj),
   tree_(_tree)
 {
   SetBit(kIsOnHeap);
 }
 
-panda::utils::BranchArrayUpdator::~BranchArrayUpdator()
+suep::utils::BranchArrayUpdator::~BranchArrayUpdator()
 {
   obj_.unlink(tree_);
 }
 
 char const*
-panda::utils::BranchArrayUpdator::GetName() const
+suep::utils::BranchArrayUpdator::GetName() const
 {
   return obj_.getName();
 }
 
 Bool_t
-panda::utils::BranchArrayUpdator::Notify()
+suep::utils::BranchArrayUpdator::Notify()
 {
   obj_.updateBranchArray(tree_);
 
@@ -423,7 +423,7 @@ panda::utils::BranchArrayUpdator::Notify()
 }
 
 Bool_t
-panda::utils::removeBranchArrayUpdator(ReaderObject& _obj, TTree& _tree)
+suep::utils::removeBranchArrayUpdator(ReaderObject& _obj, TTree& _tree)
 {
   auto* uinfo(_tree.GetUserInfo());
   for (auto* uobj : *uinfo) {
@@ -442,13 +442,13 @@ panda::utils::removeBranchArrayUpdator(ReaderObject& _obj, TTree& _tree)
 }
 
 std::ostream&
-operator<<(std::ostream& os, panda::utils::BranchName const& bn)
+operator<<(std::ostream& os, suep::utils::BranchName const& bn)
 {
   return (os << TString(bn));
 }
 
 std::ostream&
-operator<<(std::ostream& os, panda::utils::BranchList const& bl)
+operator<<(std::ostream& os, suep::utils::BranchList const& bl)
 {
   for (unsigned iN(0); iN != bl.size(); ++iN) {
     os << bl[iN].fullName();

@@ -1,6 +1,6 @@
 #include "../interface/EventTP.h"
 
-panda::EventTP::EventTP() :
+suep::EventTP::EventTP() :
   EventBase()
 {
   std::vector<Object*> myObjects{{&electrons, &muons, &photons, &tp, &jets, &t1Met}};
@@ -11,7 +11,7 @@ panda::EventTP::EventTP() :
   /* END CUSTOM */
 }
 
-panda::EventTP::EventTP(EventTP const& _src) :
+suep::EventTP::EventTP(EventTP const& _src) :
   EventBase(_src),
   electrons(_src.electrons),
   muons(_src.muons),
@@ -31,14 +31,14 @@ panda::EventTP::EventTP(EventTP const& _src) :
   /* END CUSTOM */
 }
 
-panda::EventTP::~EventTP()
+suep::EventTP::~EventTP()
 {
   /* BEGIN CUSTOM EventTP.cc.dtor */
   /* END CUSTOM */
 }
 
-panda::EventTP&
-panda::EventTP::operator=(EventTP const& _src)
+suep::EventTP&
+suep::EventTP::operator=(EventTP const& _src)
 {
   EventBase::operator=(_src);
 
@@ -59,7 +59,7 @@ panda::EventTP::operator=(EventTP const& _src)
 }
 
 void
-panda::EventTP::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
+suep::EventTP::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
 {
   /* BEGIN CUSTOM EventTP.cc.print */
   dump(_out);
@@ -67,7 +67,7 @@ panda::EventTP::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/)
 }
 
 void
-panda::EventTP::dump(std::ostream& _out/* = std::cout*/) const
+suep::EventTP::dump(std::ostream& _out/* = std::cout*/) const
 {
   EventBase::dump(_out);
 
@@ -83,8 +83,8 @@ panda::EventTP::dump(std::ostream& _out/* = std::cout*/) const
 
 }
 /*static*/
-panda::utils::BranchList
-panda::EventTP::getListOfBranches(Bool_t _direct/* = kFALSE*/)
+suep::utils::BranchList
+suep::EventTP::getListOfBranches(Bool_t _direct/* = kFALSE*/)
 {
   utils::BranchList blist;
   blist += EventBase::getListOfBranches(_direct);
@@ -105,7 +105,7 @@ panda::EventTP::getListOfBranches(Bool_t _direct/* = kFALSE*/)
 
 /*protected*/
 void
-panda::EventTP::doSetStatus_(TTree& _tree, utils::BranchList const& _branches)
+suep::EventTP::doSetStatus_(TTree& _tree, utils::BranchList const& _branches)
 {
   EventBase::doSetStatus_(_tree, _branches);
   utils::setStatus(_tree, "", "rho", _branches);
@@ -113,8 +113,8 @@ panda::EventTP::doSetStatus_(TTree& _tree, utils::BranchList const& _branches)
 }
 
 /*protected*/
-panda::utils::BranchList
-panda::EventTP::doGetStatus_(TTree& _tree) const
+suep::utils::BranchList
+suep::EventTP::doGetStatus_(TTree& _tree) const
 {
   utils::BranchList blist;
   blist += EventBase::doGetStatus_(_tree);
@@ -125,15 +125,15 @@ panda::EventTP::doGetStatus_(TTree& _tree) const
 }
 
 /*protected*/
-panda::utils::BranchList
-panda::EventTP::doGetBranchNames_() const
+suep::utils::BranchList
+suep::EventTP::doGetBranchNames_() const
 {
   return getListOfBranches(true);
 }
 
 /*protected*/
 void
-panda::EventTP::doSetAddress_(TTree& _tree, utils::BranchList const& _branches, Bool_t _setStatus)
+suep::EventTP::doSetAddress_(TTree& _tree, utils::BranchList const& _branches, Bool_t _setStatus)
 {
   EventBase::doSetAddress_(_tree, _branches, _setStatus);
 
@@ -143,7 +143,7 @@ panda::EventTP::doSetAddress_(TTree& _tree, utils::BranchList const& _branches, 
 
 /*protected*/
 void
-panda::EventTP::doBook_(TTree& _tree, utils::BranchList const& _branches)
+suep::EventTP::doBook_(TTree& _tree, utils::BranchList const& _branches)
 {
   EventBase::doBook_(_tree, _branches);
 
@@ -153,7 +153,7 @@ panda::EventTP::doBook_(TTree& _tree, utils::BranchList const& _branches)
 
 /*protected*/
 void
-panda::EventTP::doGetEntry_(TTree& _tree)
+suep::EventTP::doGetEntry_(TTree& _tree)
 {
   EventBase::doGetEntry_(_tree);
 
@@ -162,7 +162,7 @@ panda::EventTP::doGetEntry_(TTree& _tree)
 }
 
 void
-panda::EventTP::doInit_()
+suep::EventTP::doInit_()
 {
   EventBase::doInit_();
 
@@ -173,7 +173,7 @@ panda::EventTP::doInit_()
 }
 
 void
-panda::EventTP::doUnlink_(TTree& _tree)
+suep::EventTP::doUnlink_(TTree& _tree)
 {
   EventBase::doUnlink_(_tree);
 

@@ -1,6 +1,6 @@
 import os
 
-NAMESPACE = 'panda'
+NAMESPACE = 'suep'
 PACKDIR = os.path.realpath(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
 PACKAGE = os.path.basename(PACKDIR)
 

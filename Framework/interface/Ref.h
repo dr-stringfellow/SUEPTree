@@ -5,7 +5,7 @@
 
 #include <stdexcept>
 
-namespace panda {
+namespace suep {
 
   //! A reference to an element in a container.
   /*!
@@ -245,7 +245,7 @@ namespace panda {
 }
 
 template<class E>
-std::ostream& operator<<(std::ostream& _out, panda::Ref<E> const& _ref)
+std::ostream& operator<<(std::ostream& _out, suep::Ref<E> const& _ref)
 {
   _out << "Ref<" << E::typeName() << ">";
   if (_ref.isValid())
@@ -257,7 +257,7 @@ std::ostream& operator<<(std::ostream& _out, panda::Ref<E> const& _ref)
 }
 
 template<class E>
-std::ostream& operator<<(std::ostream& _out, panda::ConstRef<E> const& _ref)
+std::ostream& operator<<(std::ostream& _out, suep::ConstRef<E> const& _ref)
 {
   _out << "Ref<" << E::typeName() << ">";
   if (_ref.isValid())

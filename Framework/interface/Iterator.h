@@ -3,7 +3,7 @@
 
 #include <type_traits>
 
-namespace panda {
+namespace suep {
   namespace utils {
 
     //! Iterator class for containers.

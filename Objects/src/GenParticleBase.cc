@@ -1,6 +1,6 @@
 #include "../interface/GenParticleBase.h"
 
-TString panda::GenParticleBase::StatusFlagName[] = {
+TString suep::GenParticleBase::StatusFlagName[] = {
   "kIsPrompt",
   "kIsDecayedLeptonHadron",
   "kIsTauDecayProduct",
@@ -19,8 +19,8 @@ TString panda::GenParticleBase::StatusFlagName[] = {
 };
 
 /*static*/
-panda::utils::BranchList
-panda::GenParticleBase::getListOfBranches()
+suep::utils::BranchList
+suep::GenParticleBase::getListOfBranches()
 {
   utils::BranchList blist;
   blist += Particle::getListOfBranches();
@@ -29,7 +29,7 @@ panda::GenParticleBase::getListOfBranches()
 }
 
 void
-panda::GenParticleBase::datastore::allocate(UInt_t _nmax)
+suep::GenParticleBase::datastore::allocate(UInt_t _nmax)
 {
   Particle::datastore::allocate(_nmax);
 
@@ -41,7 +41,7 @@ panda::GenParticleBase::datastore::allocate(UInt_t _nmax)
 }
 
 void
-panda::GenParticleBase::datastore::deallocate()
+suep::GenParticleBase::datastore::deallocate()
 {
   Particle::datastore::deallocate();
 
@@ -58,7 +58,7 @@ panda::GenParticleBase::datastore::deallocate()
 }
 
 void
-panda::GenParticleBase::datastore::setStatus(TTree& _tree, TString const& _name, utils::BranchList const& _branches)
+suep::GenParticleBase::datastore::setStatus(TTree& _tree, TString const& _name, utils::BranchList const& _branches)
 {
   Particle::datastore::setStatus(_tree, _name, _branches);
 
@@ -69,8 +69,8 @@ panda::GenParticleBase::datastore::setStatus(TTree& _tree, TString const& _name,
   utils::setStatus(_tree, _name, "parent_", _branches);
 }
 
-panda::utils::BranchList
-panda::GenParticleBase::datastore::getStatus(TTree& _tree, TString const& _name) const
+suep::utils::BranchList
+suep::GenParticleBase::datastore::getStatus(TTree& _tree, TString const& _name) const
 {
   utils::BranchList blist(Particle::datastore::getStatus(_tree, _name));
 
@@ -84,7 +84,7 @@ panda::GenParticleBase::datastore::getStatus(TTree& _tree, TString const& _name)
 }
 
 void
-panda::GenParticleBase::datastore::setAddress(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _setStatus/* = kTRUE*/)
+suep::GenParticleBase::datastore::setAddress(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _setStatus/* = kTRUE*/)
 {
   Particle::datastore::setAddress(_tree, _name, _branches, _setStatus);
 
@@ -96,7 +96,7 @@ panda::GenParticleBase::datastore::setAddress(TTree& _tree, TString const& _name
 }
 
 void
-panda::GenParticleBase::datastore::book(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _dynamic/* = kTRUE*/)
+suep::GenParticleBase::datastore::book(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _dynamic/* = kTRUE*/)
 {
   Particle::datastore::book(_tree, _name, _branches, _dynamic);
 
@@ -110,7 +110,7 @@ panda::GenParticleBase::datastore::book(TTree& _tree, TString const& _name, util
 }
 
 void
-panda::GenParticleBase::datastore::releaseTree(TTree& _tree, TString const& _name)
+suep::GenParticleBase::datastore::releaseTree(TTree& _tree, TString const& _name)
 {
   Particle::datastore::releaseTree(_tree, _name);
 
@@ -122,20 +122,20 @@ panda::GenParticleBase::datastore::releaseTree(TTree& _tree, TString const& _nam
 }
 
 void
-panda::GenParticleBase::datastore::resizeVectors_(UInt_t _size)
+suep::GenParticleBase::datastore::resizeVectors_(UInt_t _size)
 {
   Particle::datastore::resizeVectors_(_size);
 
 }
 
 
-panda::utils::BranchList
-panda::GenParticleBase::datastore::getBranchNames(TString const& _name/* = ""*/) const
+suep::utils::BranchList
+suep::GenParticleBase::datastore::getBranchNames(TString const& _name/* = ""*/) const
 {
   return GenParticleBase::getListOfBranches().fullNames(_name);
 }
 
-panda::GenParticleBase::GenParticleBase(char const* _name/* = ""*/) :
+suep::GenParticleBase::GenParticleBase(char const* _name/* = ""*/) :
   Particle(new GenParticleBaseArray(1, _name)),
   pdgid(gStore.getData(this).pdgid[0]),
   finalState(gStore.getData(this).finalState[0]),
@@ -145,7 +145,7 @@ panda::GenParticleBase::GenParticleBase(char const* _name/* = ""*/) :
 {
 }
 
-panda::GenParticleBase::GenParticleBase(GenParticleBase const& _src) :
+suep::GenParticleBase::GenParticleBase(GenParticleBase const& _src) :
   Particle(new GenParticleBaseArray(1, _src.getName())),
   pdgid(gStore.getData(this).pdgid[0]),
   finalState(gStore.getData(this).finalState[0]),
@@ -156,7 +156,7 @@ panda::GenParticleBase::GenParticleBase(GenParticleBase const& _src) :
   operator=(_src);
 }
 
-panda::GenParticleBase::GenParticleBase(datastore& _data, UInt_t _idx) :
+suep::GenParticleBase::GenParticleBase(datastore& _data, UInt_t _idx) :
   Particle(_data, _idx),
   pdgid(_data.pdgid[_idx]),
   finalState(_data.finalState[_idx]),
@@ -166,7 +166,7 @@ panda::GenParticleBase::GenParticleBase(datastore& _data, UInt_t _idx) :
 {
 }
 
-panda::GenParticleBase::GenParticleBase(ArrayBase* _array) :
+suep::GenParticleBase::GenParticleBase(ArrayBase* _array) :
   Particle(_array),
   pdgid(gStore.getData(this).pdgid[0]),
   finalState(gStore.getData(this).finalState[0]),
@@ -176,13 +176,13 @@ panda::GenParticleBase::GenParticleBase(ArrayBase* _array) :
 {
 }
 
-panda::GenParticleBase::~GenParticleBase()
+suep::GenParticleBase::~GenParticleBase()
 {
   destructor();
 }
 
 void
-panda::GenParticleBase::destructor(Bool_t _recursive/* = kFALSE*/)
+suep::GenParticleBase::destructor(Bool_t _recursive/* = kFALSE*/)
 {
   /* BEGIN CUSTOM GenParticleBase.cc.destructor */
   /* END CUSTOM */
@@ -191,8 +191,8 @@ panda::GenParticleBase::destructor(Bool_t _recursive/* = kFALSE*/)
     Particle::destructor(kTRUE);
 }
 
-panda::GenParticleBase&
-panda::GenParticleBase::operator=(GenParticleBase const& _src)
+suep::GenParticleBase&
+suep::GenParticleBase::operator=(GenParticleBase const& _src)
 {
   Particle::operator=(_src);
 
@@ -209,7 +209,7 @@ panda::GenParticleBase::operator=(GenParticleBase const& _src)
 }
 
 void
-panda::GenParticleBase::doBook_(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/)
+suep::GenParticleBase::doBook_(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/)
 {
   Particle::doBook_(_tree, _name, _branches);
 
@@ -221,7 +221,7 @@ panda::GenParticleBase::doBook_(TTree& _tree, TString const& _name, utils::Branc
 }
 
 void
-panda::GenParticleBase::doInit_()
+suep::GenParticleBase::doInit_()
 {
   Particle::doInit_();
 
@@ -236,7 +236,7 @@ panda::GenParticleBase::doInit_()
 }
 
 void
-panda::GenParticleBase::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
+suep::GenParticleBase::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
 {
   /* BEGIN CUSTOM GenParticleBase.cc.print */
   dump(_out);
@@ -244,7 +244,7 @@ panda::GenParticleBase::print(std::ostream& _out/* = std::cout*/, UInt_t _level/
 }
 
 void
-panda::GenParticleBase::dump(std::ostream& _out/* = std::cout*/) const
+suep::GenParticleBase::dump(std::ostream& _out/* = std::cout*/) const
 {
   Particle::dump(_out);
 

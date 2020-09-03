@@ -1,8 +1,8 @@
 #include "../interface/SVDaughter.h"
 
 /*static*/
-panda::utils::BranchList
-panda::SVDaughter::getListOfBranches()
+suep::utils::BranchList
+suep::SVDaughter::getListOfBranches()
 {
   utils::BranchList blist;
   blist += UnpackedPFCand::getListOfBranches();
@@ -11,7 +11,7 @@ panda::SVDaughter::getListOfBranches()
 }
 
 void
-panda::SVDaughter::datastore::allocate(UInt_t _nmax)
+suep::SVDaughter::datastore::allocate(UInt_t _nmax)
 {
   UnpackedPFCand::datastore::allocate(_nmax);
 
@@ -24,7 +24,7 @@ panda::SVDaughter::datastore::allocate(UInt_t _nmax)
 }
 
 void
-panda::SVDaughter::datastore::deallocate()
+suep::SVDaughter::datastore::deallocate()
 {
   UnpackedPFCand::datastore::deallocate();
 
@@ -43,7 +43,7 @@ panda::SVDaughter::datastore::deallocate()
 }
 
 void
-panda::SVDaughter::datastore::setStatus(TTree& _tree, TString const& _name, utils::BranchList const& _branches)
+suep::SVDaughter::datastore::setStatus(TTree& _tree, TString const& _name, utils::BranchList const& _branches)
 {
   UnpackedPFCand::datastore::setStatus(_tree, _name, _branches);
 
@@ -55,8 +55,8 @@ panda::SVDaughter::datastore::setStatus(TTree& _tree, TString const& _name, util
   utils::setStatus(_tree, _name, "plAxis", _branches);
 }
 
-panda::utils::BranchList
-panda::SVDaughter::datastore::getStatus(TTree& _tree, TString const& _name) const
+suep::utils::BranchList
+suep::SVDaughter::datastore::getStatus(TTree& _tree, TString const& _name) const
 {
   utils::BranchList blist(UnpackedPFCand::datastore::getStatus(_tree, _name));
 
@@ -71,7 +71,7 @@ panda::SVDaughter::datastore::getStatus(TTree& _tree, TString const& _name) cons
 }
 
 void
-panda::SVDaughter::datastore::setAddress(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _setStatus/* = kTRUE*/)
+suep::SVDaughter::datastore::setAddress(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _setStatus/* = kTRUE*/)
 {
   UnpackedPFCand::datastore::setAddress(_tree, _name, _branches, _setStatus);
 
@@ -84,7 +84,7 @@ panda::SVDaughter::datastore::setAddress(TTree& _tree, TString const& _name, uti
 }
 
 void
-panda::SVDaughter::datastore::book(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _dynamic/* = kTRUE*/)
+suep::SVDaughter::datastore::book(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _dynamic/* = kTRUE*/)
 {
   UnpackedPFCand::datastore::book(_tree, _name, _branches, _dynamic);
 
@@ -99,7 +99,7 @@ panda::SVDaughter::datastore::book(TTree& _tree, TString const& _name, utils::Br
 }
 
 void
-panda::SVDaughter::datastore::releaseTree(TTree& _tree, TString const& _name)
+suep::SVDaughter::datastore::releaseTree(TTree& _tree, TString const& _name)
 {
   UnpackedPFCand::datastore::releaseTree(_tree, _name);
 
@@ -112,20 +112,20 @@ panda::SVDaughter::datastore::releaseTree(TTree& _tree, TString const& _name)
 }
 
 void
-panda::SVDaughter::datastore::resizeVectors_(UInt_t _size)
+suep::SVDaughter::datastore::resizeVectors_(UInt_t _size)
 {
   UnpackedPFCand::datastore::resizeVectors_(_size);
 
 }
 
 
-panda::utils::BranchList
-panda::SVDaughter::datastore::getBranchNames(TString const& _name/* = ""*/) const
+suep::utils::BranchList
+suep::SVDaughter::datastore::getBranchNames(TString const& _name/* = ""*/) const
 {
   return SVDaughter::getListOfBranches().fullNames(_name);
 }
 
-panda::SVDaughter::SVDaughter(char const* _name/* = ""*/) :
+suep::SVDaughter::SVDaughter(char const* _name/* = ""*/) :
   UnpackedPFCand(new SVDaughterArray(1, _name)),
   dxySV(gStore.getData(this).dxySV[0]),
   dzSV(gStore.getData(this).dzSV[0]),
@@ -136,7 +136,7 @@ panda::SVDaughter::SVDaughter(char const* _name/* = ""*/) :
 {
 }
 
-panda::SVDaughter::SVDaughter(SVDaughter const& _src) :
+suep::SVDaughter::SVDaughter(SVDaughter const& _src) :
   UnpackedPFCand(new SVDaughterArray(1, _src.getName())),
   dxySV(gStore.getData(this).dxySV[0]),
   dzSV(gStore.getData(this).dzSV[0]),
@@ -148,7 +148,7 @@ panda::SVDaughter::SVDaughter(SVDaughter const& _src) :
   operator=(_src);
 }
 
-panda::SVDaughter::SVDaughter(datastore& _data, UInt_t _idx) :
+suep::SVDaughter::SVDaughter(datastore& _data, UInt_t _idx) :
   UnpackedPFCand(_data, _idx),
   dxySV(_data.dxySV[_idx]),
   dzSV(_data.dzSV[_idx]),
@@ -159,7 +159,7 @@ panda::SVDaughter::SVDaughter(datastore& _data, UInt_t _idx) :
 {
 }
 
-panda::SVDaughter::SVDaughter(ArrayBase* _array) :
+suep::SVDaughter::SVDaughter(ArrayBase* _array) :
   UnpackedPFCand(_array),
   dxySV(gStore.getData(this).dxySV[0]),
   dzSV(gStore.getData(this).dzSV[0]),
@@ -170,13 +170,13 @@ panda::SVDaughter::SVDaughter(ArrayBase* _array) :
 {
 }
 
-panda::SVDaughter::~SVDaughter()
+suep::SVDaughter::~SVDaughter()
 {
   destructor();
 }
 
 void
-panda::SVDaughter::destructor(Bool_t _recursive/* = kFALSE*/)
+suep::SVDaughter::destructor(Bool_t _recursive/* = kFALSE*/)
 {
   /* BEGIN CUSTOM SVDaughter.cc.destructor */
   /* END CUSTOM */
@@ -185,8 +185,8 @@ panda::SVDaughter::destructor(Bool_t _recursive/* = kFALSE*/)
     UnpackedPFCand::destructor(kTRUE);
 }
 
-panda::SVDaughter&
-panda::SVDaughter::operator=(SVDaughter const& _src)
+suep::SVDaughter&
+suep::SVDaughter::operator=(SVDaughter const& _src)
 {
   UnpackedPFCand::operator=(_src);
 
@@ -204,7 +204,7 @@ panda::SVDaughter::operator=(SVDaughter const& _src)
 }
 
 void
-panda::SVDaughter::doBook_(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/)
+suep::SVDaughter::doBook_(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/)
 {
   UnpackedPFCand::doBook_(_tree, _name, _branches);
 
@@ -217,7 +217,7 @@ panda::SVDaughter::doBook_(TTree& _tree, TString const& _name, utils::BranchList
 }
 
 void
-panda::SVDaughter::doInit_()
+suep::SVDaughter::doInit_()
 {
   UnpackedPFCand::doInit_();
 
@@ -233,7 +233,7 @@ panda::SVDaughter::doInit_()
 }
 
 void
-panda::SVDaughter::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
+suep::SVDaughter::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
 {
   /* BEGIN CUSTOM SVDaughter.cc.print */
   dump(_out);
@@ -241,7 +241,7 @@ panda::SVDaughter::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1
 }
 
 void
-panda::SVDaughter::dump(std::ostream& _out/* = std::cout*/) const
+suep::SVDaughter::dump(std::ostream& _out/* = std::cout*/) const
 {
   UnpackedPFCand::dump(_out);
 

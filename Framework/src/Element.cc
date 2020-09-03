@@ -1,22 +1,22 @@
 #include "../interface/Element.h"
 #include "../interface/ArrayBase.h"
 
-panda::Element::StoreManager panda::Element::gStore;
+suep::Element::StoreManager suep::Element::gStore;
 
 /*protected*/
-panda::Element::Element(ArrayBase* _array)
+suep::Element::Element(ArrayBase* _array)
 {
   gStore.emplace(this, _array);
 }
 
-panda::Element::~Element()
+suep::Element::~Element()
 {
   delete &gStore.getArray(this);
   gStore.erase(this);
 }
 
 char const*
-panda::Element::getName() const
+suep::Element::getName() const
 {
   // Must return an empty string when called for a non-singlet instance (i.e. a member of a Container)
   auto oItr(gStore.find(this));
@@ -27,27 +27,27 @@ panda::Element::getName() const
 }
 
 void
-panda::Element::setName(char const* _name)
+suep::Element::setName(char const* _name)
 {
   gStore.getArray(this).setName(_name);
 }
 
 void
-panda::Element::setStatus(TTree& _tree, utils::BranchList const& _branches)
+suep::Element::setStatus(TTree& _tree, utils::BranchList const& _branches)
 {
   auto& array(gStore.getArray(this));
   array.getData().setStatus(_tree, array.getName(), _branches);
 }
 
-panda::utils::BranchList
-panda::Element::getStatus(TTree& _tree) const
+suep::utils::BranchList
+suep::Element::getStatus(TTree& _tree) const
 {
   auto& array(gStore.getArray(this));
   return array.getData().getStatus(_tree, array.getName());
 }
 
-panda::utils::BranchList
-panda::Element::getBranchNames(Bool_t _fullName/* = kTRUE*/, Bool_t/* = kFALSE*/) const
+suep::utils::BranchList
+suep::Element::getBranchNames(Bool_t _fullName/* = kTRUE*/, Bool_t/* = kFALSE*/) const
 {
   auto& array(gStore.getArray(this));
   if (_fullName)
@@ -57,31 +57,31 @@ panda::Element::getBranchNames(Bool_t _fullName/* = kTRUE*/, Bool_t/* = kFALSE*/
 }
 
 UInt_t
-panda::Element::setAddress(TTree& _tree, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _setStatus/* = kTRUE*/)
+suep::Element::setAddress(TTree& _tree, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _setStatus/* = kTRUE*/)
 {
   return gStore.getArray(this).setAddress(_tree, _branches, _setStatus);
 }
 
 void
-panda::Element::book(TTree& _tree, utils::BranchList const& _branches/* = {"*"}*/)
+suep::Element::book(TTree& _tree, utils::BranchList const& _branches/* = {"*"}*/)
 {
   doBook_(_tree, gStore.getName(this), _branches);
 }
 
 Int_t
-panda::Element::getEntry(TTree& _tree, Long64_t _entry, Bool_t _localEntry/* = kFALSE*/)
+suep::Element::getEntry(TTree& _tree, Long64_t _entry, Bool_t _localEntry/* = kFALSE*/)
 {
   return gStore.getArray(this).getEntry(_tree, _entry, _localEntry);
 }
 
 Int_t
-panda::Element::getEntry(UInt_t _treeId, Long64_t _entry, Bool_t _localEntry/* = kFALSE*/)
+suep::Element::getEntry(UInt_t _treeId, Long64_t _entry, Bool_t _localEntry/* = kFALSE*/)
 {
   return gStore.getArray(this).getEntry(_treeId, _entry, _localEntry);
 }
 
-panda::ArrayBase&
-panda::Element::StoreManager::getArray(Element const* _obj) const
+suep::ArrayBase&
+suep::Element::StoreManager::getArray(Element const* _obj) const
 {
   try {
     return *at(_obj);
@@ -96,7 +96,7 @@ panda::Element::StoreManager::getArray(Element const* _obj) const
 }
 
 char const*
-panda::Element::StoreManager::getName(Element const* _obj) const
+suep::Element::StoreManager::getName(Element const* _obj) const
 {
   return getArray(_obj).getName();
 }

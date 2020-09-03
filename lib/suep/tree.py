@@ -258,7 +258,7 @@ class Tree(Definition, Object):
         src.writeline('}')
 
         src.writeline('/*static*/')
-        src.writeline('panda::utils::BranchList')
+        src.writeline('suep::utils::BranchList')
         src.writeline('{NAMESPACE}::{name}::getListOfBranches(Bool_t _direct/* = kFALSE*/)'.format(NAMESPACE = NAMESPACE, name = self.name))
         src.writeline('{')
         src.indent += 1
@@ -300,7 +300,7 @@ class Tree(Definition, Object):
         src.newline()
 
         src.writeline('/*protected*/')
-        src.writeline('panda::utils::BranchList')
+        src.writeline('suep::utils::BranchList')
         src.writeline('{NAMESPACE}::{name}::doGetStatus_(TTree& _tree) const'.format(NAMESPACE = NAMESPACE, name = self.name))
         src.writeline('{')
         src.indent += 1
@@ -317,7 +317,7 @@ class Tree(Definition, Object):
         src.newline()
 
         src.writeline('/*protected*/')
-        src.writeline('panda::utils::BranchList')
+        src.writeline('suep::utils::BranchList')
         src.writeline('{NAMESPACE}::{name}::doGetBranchNames_() const'.format(NAMESPACE = NAMESPACE, name = self.name))
         src.writeline('{')
         src.indent += 1

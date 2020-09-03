@@ -9,7 +9,7 @@
 #include "RecoVertex.h"
 #include "PackedTrack.h"
 
-namespace panda {
+namespace suep {
 
   class PFCandBase : public Particle {
   public:

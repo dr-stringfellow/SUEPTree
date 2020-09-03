@@ -10,7 +10,7 @@
 #include "GenParticleBase.h"
 #include "Vertex.h"
 
-namespace panda {
+namespace suep {
 
   class Lepton : public ParticleP {
   public:

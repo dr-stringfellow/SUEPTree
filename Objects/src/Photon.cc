@@ -1,8 +1,8 @@
 #include "../interface/Photon.h"
 
 /*static*/
-panda::utils::BranchList
-panda::Photon::getListOfBranches()
+suep::utils::BranchList
+suep::Photon::getListOfBranches()
 {
   utils::BranchList blist;
   blist += ParticleP::getListOfBranches();
@@ -11,7 +11,7 @@ panda::Photon::getListOfBranches()
 }
 
 void
-panda::Photon::datastore::allocate(UInt_t _nmax)
+suep::Photon::datastore::allocate(UInt_t _nmax)
 {
   ParticleP::datastore::allocate(_nmax);
 
@@ -56,7 +56,7 @@ panda::Photon::datastore::allocate(UInt_t _nmax)
 }
 
 void
-panda::Photon::datastore::deallocate()
+suep::Photon::datastore::deallocate()
 {
   ParticleP::datastore::deallocate();
 
@@ -139,7 +139,7 @@ panda::Photon::datastore::deallocate()
 }
 
 void
-panda::Photon::datastore::setStatus(TTree& _tree, TString const& _name, utils::BranchList const& _branches)
+suep::Photon::datastore::setStatus(TTree& _tree, TString const& _name, utils::BranchList const& _branches)
 {
   ParticleP::datastore::setStatus(_tree, _name, _branches);
 
@@ -183,8 +183,8 @@ panda::Photon::datastore::setStatus(TTree& _tree, TString const& _name, utils::B
   utils::setStatus(_tree, _name, "matchedGen_", _branches);
 }
 
-panda::utils::BranchList
-panda::Photon::datastore::getStatus(TTree& _tree, TString const& _name) const
+suep::utils::BranchList
+suep::Photon::datastore::getStatus(TTree& _tree, TString const& _name) const
 {
   utils::BranchList blist(ParticleP::datastore::getStatus(_tree, _name));
 
@@ -231,7 +231,7 @@ panda::Photon::datastore::getStatus(TTree& _tree, TString const& _name) const
 }
 
 void
-panda::Photon::datastore::setAddress(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _setStatus/* = kTRUE*/)
+suep::Photon::datastore::setAddress(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _setStatus/* = kTRUE*/)
 {
   ParticleP::datastore::setAddress(_tree, _name, _branches, _setStatus);
 
@@ -276,7 +276,7 @@ panda::Photon::datastore::setAddress(TTree& _tree, TString const& _name, utils::
 }
 
 void
-panda::Photon::datastore::book(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _dynamic/* = kTRUE*/)
+suep::Photon::datastore::book(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _dynamic/* = kTRUE*/)
 {
   ParticleP::datastore::book(_tree, _name, _branches, _dynamic);
 
@@ -323,7 +323,7 @@ panda::Photon::datastore::book(TTree& _tree, TString const& _name, utils::Branch
 }
 
 void
-panda::Photon::datastore::releaseTree(TTree& _tree, TString const& _name)
+suep::Photon::datastore::releaseTree(TTree& _tree, TString const& _name)
 {
   ParticleP::datastore::releaseTree(_tree, _name);
 
@@ -368,20 +368,20 @@ panda::Photon::datastore::releaseTree(TTree& _tree, TString const& _name)
 }
 
 void
-panda::Photon::datastore::resizeVectors_(UInt_t _size)
+suep::Photon::datastore::resizeVectors_(UInt_t _size)
 {
   ParticleP::datastore::resizeVectors_(_size);
 
 }
 
 
-panda::utils::BranchList
-panda::Photon::datastore::getBranchNames(TString const& _name/* = ""*/) const
+suep::utils::BranchList
+suep::Photon::datastore::getBranchNames(TString const& _name/* = ""*/) const
 {
   return Photon::getListOfBranches().fullNames(_name);
 }
 
-panda::Photon::Photon(char const* _name/* = ""*/) :
+suep::Photon::Photon(char const* _name/* = ""*/) :
   ParticleP(new PhotonArray(1, _name)),
   pfPt(gStore.getData(this).pfPt[0]),
   chIso(gStore.getData(this).chIso[0]),
@@ -424,7 +424,7 @@ panda::Photon::Photon(char const* _name/* = ""*/) :
 {
 }
 
-panda::Photon::Photon(Photon const& _src) :
+suep::Photon::Photon(Photon const& _src) :
   ParticleP(new PhotonArray(1, _src.getName())),
   pfPt(gStore.getData(this).pfPt[0]),
   chIso(gStore.getData(this).chIso[0]),
@@ -468,7 +468,7 @@ panda::Photon::Photon(Photon const& _src) :
   operator=(_src);
 }
 
-panda::Photon::Photon(datastore& _data, UInt_t _idx) :
+suep::Photon::Photon(datastore& _data, UInt_t _idx) :
   ParticleP(_data, _idx),
   pfPt(_data.pfPt[_idx]),
   chIso(_data.chIso[_idx]),
@@ -511,7 +511,7 @@ panda::Photon::Photon(datastore& _data, UInt_t _idx) :
 {
 }
 
-panda::Photon::Photon(ArrayBase* _array) :
+suep::Photon::Photon(ArrayBase* _array) :
   ParticleP(_array),
   pfPt(gStore.getData(this).pfPt[0]),
   chIso(gStore.getData(this).chIso[0]),
@@ -554,13 +554,13 @@ panda::Photon::Photon(ArrayBase* _array) :
 {
 }
 
-panda::Photon::~Photon()
+suep::Photon::~Photon()
 {
   destructor();
 }
 
 void
-panda::Photon::destructor(Bool_t _recursive/* = kFALSE*/)
+suep::Photon::destructor(Bool_t _recursive/* = kFALSE*/)
 {
   /* BEGIN CUSTOM Photon.cc.destructor */
   /* END CUSTOM */
@@ -569,8 +569,8 @@ panda::Photon::destructor(Bool_t _recursive/* = kFALSE*/)
     ParticleP::destructor(kTRUE);
 }
 
-panda::Photon&
-panda::Photon::operator=(Photon const& _src)
+suep::Photon&
+suep::Photon::operator=(Photon const& _src)
 {
   ParticleP::operator=(_src);
 
@@ -620,7 +620,7 @@ panda::Photon::operator=(Photon const& _src)
 }
 
 void
-panda::Photon::doBook_(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/)
+suep::Photon::doBook_(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/)
 {
   ParticleP::doBook_(_tree, _name, _branches);
 
@@ -665,7 +665,7 @@ panda::Photon::doBook_(TTree& _tree, TString const& _name, utils::BranchList con
 }
 
 void
-panda::Photon::doInit_()
+suep::Photon::doInit_()
 {
   ParticleP::doInit_();
 
@@ -713,7 +713,7 @@ panda::Photon::doInit_()
 }
 
 void
-panda::Photon::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
+suep::Photon::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
 {
   /* BEGIN CUSTOM Photon.cc.print */
   if (_level >= 3) {
@@ -742,7 +742,7 @@ panda::Photon::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) 
 }
 
 void
-panda::Photon::dump(std::ostream& _out/* = std::cout*/) const
+suep::Photon::dump(std::ostream& _out/* = std::cout*/) const
 {
   ParticleP::dump(_out);
 

@@ -8,7 +8,7 @@
 #include "../../Framework/interface/RefVector.h"
 #include "GenParticleBase.h"
 
-namespace panda {
+namespace suep {
 
   class GenJet : public ParticleM {
   public:

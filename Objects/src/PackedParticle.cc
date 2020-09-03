@@ -1,8 +1,8 @@
 #include "../interface/PackedParticle.h"
 
 /*static*/
-panda::utils::BranchList
-panda::PackedParticle::getListOfBranches()
+suep::utils::BranchList
+suep::PackedParticle::getListOfBranches()
 {
   utils::BranchList blist;
   blist += Particle::getListOfBranches();
@@ -11,7 +11,7 @@ panda::PackedParticle::getListOfBranches()
 }
 
 void
-panda::PackedParticle::datastore::allocate(UInt_t _nmax)
+suep::PackedParticle::datastore::allocate(UInt_t _nmax)
 {
   Particle::datastore::allocate(_nmax);
 
@@ -22,7 +22,7 @@ panda::PackedParticle::datastore::allocate(UInt_t _nmax)
 }
 
 void
-panda::PackedParticle::datastore::deallocate()
+suep::PackedParticle::datastore::deallocate()
 {
   Particle::datastore::deallocate();
 
@@ -37,7 +37,7 @@ panda::PackedParticle::datastore::deallocate()
 }
 
 void
-panda::PackedParticle::datastore::setStatus(TTree& _tree, TString const& _name, utils::BranchList const& _branches)
+suep::PackedParticle::datastore::setStatus(TTree& _tree, TString const& _name, utils::BranchList const& _branches)
 {
   Particle::datastore::setStatus(_tree, _name, _branches);
 
@@ -47,8 +47,8 @@ panda::PackedParticle::datastore::setStatus(TTree& _tree, TString const& _name, 
   utils::setStatus(_tree, _name, "packedM", _branches);
 }
 
-panda::utils::BranchList
-panda::PackedParticle::datastore::getStatus(TTree& _tree, TString const& _name) const
+suep::utils::BranchList
+suep::PackedParticle::datastore::getStatus(TTree& _tree, TString const& _name) const
 {
   utils::BranchList blist(Particle::datastore::getStatus(_tree, _name));
 
@@ -61,7 +61,7 @@ panda::PackedParticle::datastore::getStatus(TTree& _tree, TString const& _name) 
 }
 
 void
-panda::PackedParticle::datastore::setAddress(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _setStatus/* = kTRUE*/)
+suep::PackedParticle::datastore::setAddress(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _setStatus/* = kTRUE*/)
 {
   Particle::datastore::setAddress(_tree, _name, _branches, _setStatus);
 
@@ -72,7 +72,7 @@ panda::PackedParticle::datastore::setAddress(TTree& _tree, TString const& _name,
 }
 
 void
-panda::PackedParticle::datastore::book(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _dynamic/* = kTRUE*/)
+suep::PackedParticle::datastore::book(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _dynamic/* = kTRUE*/)
 {
   Particle::datastore::book(_tree, _name, _branches, _dynamic);
 
@@ -85,7 +85,7 @@ panda::PackedParticle::datastore::book(TTree& _tree, TString const& _name, utils
 }
 
 void
-panda::PackedParticle::datastore::releaseTree(TTree& _tree, TString const& _name)
+suep::PackedParticle::datastore::releaseTree(TTree& _tree, TString const& _name)
 {
   Particle::datastore::releaseTree(_tree, _name);
 
@@ -96,51 +96,51 @@ panda::PackedParticle::datastore::releaseTree(TTree& _tree, TString const& _name
 }
 
 void
-panda::PackedParticle::datastore::resizeVectors_(UInt_t _size)
+suep::PackedParticle::datastore::resizeVectors_(UInt_t _size)
 {
   Particle::datastore::resizeVectors_(_size);
 
 }
 
 
-panda::utils::BranchList
-panda::PackedParticle::datastore::getBranchNames(TString const& _name/* = ""*/) const
+suep::utils::BranchList
+suep::PackedParticle::datastore::getBranchNames(TString const& _name/* = ""*/) const
 {
   return PackedParticle::getListOfBranches().fullNames(_name);
 }
 
-panda::PackedParticle::PackedParticle(char const* _name/* = ""*/) :
+suep::PackedParticle::PackedParticle(char const* _name/* = ""*/) :
   Particle(new PackedParticleArray(1, _name)),
   PackedMomentumMixin(gStore.getData(this), 0)
 {
 }
 
-panda::PackedParticle::PackedParticle(PackedParticle const& _src) :
+suep::PackedParticle::PackedParticle(PackedParticle const& _src) :
   Particle(new PackedParticleArray(1, _src.getName())),
   PackedMomentumMixin(gStore.getData(this), 0)
 {
   operator=(_src);
 }
 
-panda::PackedParticle::PackedParticle(datastore& _data, UInt_t _idx) :
+suep::PackedParticle::PackedParticle(datastore& _data, UInt_t _idx) :
   Particle(_data, _idx),
   PackedMomentumMixin(_data, _idx)
 {
 }
 
-panda::PackedParticle::PackedParticle(ArrayBase* _array) :
+suep::PackedParticle::PackedParticle(ArrayBase* _array) :
   Particle(_array),
   PackedMomentumMixin(gStore.getData(this), 0)
 {
 }
 
-panda::PackedParticle::~PackedParticle()
+suep::PackedParticle::~PackedParticle()
 {
   destructor();
 }
 
 void
-panda::PackedParticle::destructor(Bool_t _recursive/* = kFALSE*/)
+suep::PackedParticle::destructor(Bool_t _recursive/* = kFALSE*/)
 {
   /* BEGIN CUSTOM PackedParticle.cc.destructor */
   /* END CUSTOM */
@@ -149,8 +149,8 @@ panda::PackedParticle::destructor(Bool_t _recursive/* = kFALSE*/)
     Particle::destructor(kTRUE);
 }
 
-panda::PackedParticle&
-panda::PackedParticle::operator=(PackedParticle const& _src)
+suep::PackedParticle&
+suep::PackedParticle::operator=(PackedParticle const& _src)
 {
   Particle::operator=(_src);
 
@@ -171,7 +171,7 @@ panda::PackedParticle::operator=(PackedParticle const& _src)
 }
 
 void
-panda::PackedParticle::doBook_(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/)
+suep::PackedParticle::doBook_(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/)
 {
   Particle::doBook_(_tree, _name, _branches);
 
@@ -182,7 +182,7 @@ panda::PackedParticle::doBook_(TTree& _tree, TString const& _name, utils::Branch
 }
 
 void
-panda::PackedParticle::doInit_()
+suep::PackedParticle::doInit_()
 {
   Particle::doInit_();
 
@@ -201,7 +201,7 @@ panda::PackedParticle::doInit_()
 }
 
 void
-panda::PackedParticle::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
+suep::PackedParticle::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
 {
   /* BEGIN CUSTOM PackedParticle.cc.print */
   dump(_out);
@@ -209,7 +209,7 @@ panda::PackedParticle::print(std::ostream& _out/* = std::cout*/, UInt_t _level/*
 }
 
 void
-panda::PackedParticle::dump(std::ostream& _out/* = std::cout*/) const
+suep::PackedParticle::dump(std::ostream& _out/* = std::cout*/) const
 {
   Particle::dump(_out);
 

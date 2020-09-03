@@ -10,7 +10,7 @@
 #include "PFCandBase.h"
 #include "SecondaryVertex.h"
 
-namespace panda {
+namespace suep {
 
   class Jet : public MicroJet {
   public:

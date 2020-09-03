@@ -2,7 +2,7 @@
 #define SUEPTree_Objects_PackedMomentumMixin_h
 #include "../../Framework/interface/Element.h"
 
-namespace panda {
+namespace suep {
 
   class PackedMomentumMixin {
   public:

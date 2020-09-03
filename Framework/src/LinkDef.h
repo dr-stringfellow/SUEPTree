@@ -14,16 +14,16 @@
 #pragma link off all functions;
 #pragma link C++ nestedclass;
 #pragma link C++ nestedtypedef;
-#pragma link C++ namespace panda;
+#pragma link C++ namespace suep;
 
-#pragma link C++ class panda::Object;
-#pragma link C++ class panda::ReaderObject;
-#pragma link C++ class panda::Singlet;
-#pragma link C++ class panda::Element;
-#pragma link C++ class panda::ContainerBase;
-#pragma link C++ class panda::ArrayBase;
-#pragma link C++ class panda::CollectionBase;
-#pragma link C++ class panda::TreeEntry;
-#pragma link C++ class panda::RRNG;
+#pragma link C++ class suep::Object;
+#pragma link C++ class suep::ReaderObject;
+#pragma link C++ class suep::Singlet;
+#pragma link C++ class suep::Element;
+#pragma link C++ class suep::ContainerBase;
+#pragma link C++ class suep::ArrayBase;
+#pragma link C++ class suep::CollectionBase;
+#pragma link C++ class suep::TreeEntry;
+#pragma link C++ class suep::RRNG;
 
 #endif

@@ -10,7 +10,7 @@
 #include "PFCandBase.h"
 #include "GenParticleBase.h"
 
-namespace panda {
+namespace suep {
 
   class Photon : public ParticleP {
   public:

@@ -475,7 +475,7 @@ class PhysicsObject(Definition, Object):
 
         src.newline()
         src.writeline('/*static*/')
-        src.writeline('panda::utils::BranchList')
+        src.writeline('suep::utils::BranchList')
         src.writeline('{NAMESPACE}::{name}::getListOfBranches()'.format(**subst))
         src.writeline('{')
         src.indent += 1
@@ -533,7 +533,7 @@ class PhysicsObject(Definition, Object):
             methods = [
                 ('operator=', '{NAMESPACE}::{name}&'.format(**subst), [('{name} const&'.format(**subst), '_src')], 'write_assign', '*this'),
                 ('doSetStatus_', 'void', [('TTree&', '_tree'), ('utils::BranchList const&', '_branches')], 'write_set_status', None),
-                ('doGetStatus_ const', 'panda::utils::BranchList', [('TTree&', '_tree')], 'write_get_status', 'blist', [], 'utils::BranchList blist'),
+                ('doGetStatus_ const', 'suep::utils::BranchList', [('TTree&', '_tree')], 'write_get_status', 'blist', [], 'utils::BranchList blist'),
                 ('doSetAddress_', 'void', [('TTree&', '_tree'), ('utils::BranchList const&', '_branches', '{"*"}'), ('Bool_t', '_setStatus', 'kTRUE')], 'write_set_address', None),
                 ('doBook_', 'void', [('TTree&', '_tree'), ('utils::BranchList const&', '_branches', '{"*"}')], 'write_book', None),
                 ('doInit_', 'void', [], 'write_init', None)
@@ -544,7 +544,7 @@ class PhysicsObject(Definition, Object):
                 self._write_method(src, 'Singlet', method, custom_block = (method[0] in ['operator=', 'doInit_']))
 
             src.newline()
-            src.writeline('panda::utils::BranchList')
+            src.writeline('suep::utils::BranchList')
             src.writeline('{NAMESPACE}::{name}::doGetBranchNames_(Bool_t _fullName) const'.format(**subst))
             src.writeline('{')
             src.indent += 1
@@ -562,7 +562,7 @@ class PhysicsObject(Definition, Object):
                 ('allocate', 'void', [('UInt_t', '_nmax')], 'write_allocate', None),
                 ('deallocate', 'void', [], 'write_deallocate', None),
                 ('setStatus', 'void', [('TTree&', '_tree'), ('TString const&', '_name'), ('utils::BranchList const&', '_branches')], 'write_set_status', None),
-                ('getStatus const', 'panda::utils::BranchList', [('TTree&', '_tree'), ('TString const&', '_name')], 'write_get_status', 'blist', [], 'utils::BranchList blist'),
+                ('getStatus const', 'suep::utils::BranchList', [('TTree&', '_tree'), ('TString const&', '_name')], 'write_get_status', 'blist', [], 'utils::BranchList blist'),
                 ('setAddress', 'void', [('TTree&', '_tree'), ('TString const&', '_name'), ('utils::BranchList const&', '_branches', '{"*"}'), ('Bool_t', '_setStatus', 'kTRUE')], 'write_set_address', None),
                 ('book', 'void', [('TTree&', '_tree'), ('TString const&', '_name'), ('utils::BranchList const&', '_branches', '{"*"}'), ('Bool_t', '_dynamic', 'kTRUE')], 'write_book', None, size_lines),
                 ('releaseTree', 'void', [('TTree&', '_tree'), ('TString const&', '_name')], 'write_release_tree', None),
@@ -575,7 +575,7 @@ class PhysicsObject(Definition, Object):
 
             src.newline()
             src.newline()
-            src.writeline('panda::utils::BranchList')
+            src.writeline('suep::utils::BranchList')
             src.writeline('{NAMESPACE}::{name}::datastore::getBranchNames(TString const& _name/* = ""*/) const'.format(**subst))
             src.writeline('{')
             src.indent += 1

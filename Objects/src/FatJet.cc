@@ -1,8 +1,8 @@
 #include "../interface/FatJet.h"
 
 /*static*/
-panda::utils::BranchList
-panda::FatJet::getListOfBranches()
+suep::utils::BranchList
+suep::FatJet::getListOfBranches()
 {
   utils::BranchList blist;
   blist += Jet::getListOfBranches();
@@ -11,7 +11,7 @@ panda::FatJet::getListOfBranches()
 }
 
 void
-panda::FatJet::datastore::allocate(UInt_t _nmax)
+suep::FatJet::datastore::allocate(UInt_t _nmax)
 {
   Jet::datastore::allocate(_nmax);
 
@@ -33,7 +33,7 @@ panda::FatJet::datastore::allocate(UInt_t _nmax)
 }
 
 void
-panda::FatJet::datastore::deallocate()
+suep::FatJet::datastore::deallocate()
 {
   Jet::datastore::deallocate();
 
@@ -70,7 +70,7 @@ panda::FatJet::datastore::deallocate()
 }
 
 void
-panda::FatJet::datastore::setStatus(TTree& _tree, TString const& _name, utils::BranchList const& _branches)
+suep::FatJet::datastore::setStatus(TTree& _tree, TString const& _name, utils::BranchList const& _branches)
 {
   Jet::datastore::setStatus(_tree, _name, _branches);
 
@@ -91,8 +91,8 @@ panda::FatJet::datastore::setStatus(TTree& _tree, TString const& _name, utils::B
   utils::setStatus(_tree, _name, "subjets_", _branches);
 }
 
-panda::utils::BranchList
-panda::FatJet::datastore::getStatus(TTree& _tree, TString const& _name) const
+suep::utils::BranchList
+suep::FatJet::datastore::getStatus(TTree& _tree, TString const& _name) const
 {
   utils::BranchList blist(Jet::datastore::getStatus(_tree, _name));
 
@@ -116,7 +116,7 @@ panda::FatJet::datastore::getStatus(TTree& _tree, TString const& _name) const
 }
 
 void
-panda::FatJet::datastore::setAddress(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _setStatus/* = kTRUE*/)
+suep::FatJet::datastore::setAddress(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _setStatus/* = kTRUE*/)
 {
   Jet::datastore::setAddress(_tree, _name, _branches, _setStatus);
 
@@ -138,7 +138,7 @@ panda::FatJet::datastore::setAddress(TTree& _tree, TString const& _name, utils::
 }
 
 void
-panda::FatJet::datastore::book(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _dynamic/* = kTRUE*/)
+suep::FatJet::datastore::book(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _dynamic/* = kTRUE*/)
 {
   Jet::datastore::book(_tree, _name, _branches, _dynamic);
 
@@ -162,7 +162,7 @@ panda::FatJet::datastore::book(TTree& _tree, TString const& _name, utils::Branch
 }
 
 void
-panda::FatJet::datastore::releaseTree(TTree& _tree, TString const& _name)
+suep::FatJet::datastore::releaseTree(TTree& _tree, TString const& _name)
 {
   Jet::datastore::releaseTree(_tree, _name);
 
@@ -184,7 +184,7 @@ panda::FatJet::datastore::releaseTree(TTree& _tree, TString const& _name)
 }
 
 void
-panda::FatJet::datastore::resizeVectors_(UInt_t _size)
+suep::FatJet::datastore::resizeVectors_(UInt_t _size)
 {
   Jet::datastore::resizeVectors_(_size);
 
@@ -192,13 +192,13 @@ panda::FatJet::datastore::resizeVectors_(UInt_t _size)
 }
 
 
-panda::utils::BranchList
-panda::FatJet::datastore::getBranchNames(TString const& _name/* = ""*/) const
+suep::utils::BranchList
+suep::FatJet::datastore::getBranchNames(TString const& _name/* = ""*/) const
 {
   return FatJet::getListOfBranches().fullNames(_name);
 }
 
-panda::FatJet::FatJet(char const* _name/* = ""*/) :
+suep::FatJet::FatJet(char const* _name/* = ""*/) :
   Jet(new FatJetArray(1, _name)),
   tau1(gStore.getData(this).tau1[0]),
   tau2(gStore.getData(this).tau2[0]),
@@ -218,7 +218,7 @@ panda::FatJet::FatJet(char const* _name/* = ""*/) :
 {
 }
 
-panda::FatJet::FatJet(FatJet const& _src) :
+suep::FatJet::FatJet(FatJet const& _src) :
   Jet(new FatJetArray(1, _src.getName())),
   tau1(gStore.getData(this).tau1[0]),
   tau2(gStore.getData(this).tau2[0]),
@@ -239,7 +239,7 @@ panda::FatJet::FatJet(FatJet const& _src) :
   operator=(_src);
 }
 
-panda::FatJet::FatJet(datastore& _data, UInt_t _idx) :
+suep::FatJet::FatJet(datastore& _data, UInt_t _idx) :
   Jet(_data, _idx),
   tau1(_data.tau1[_idx]),
   tau2(_data.tau2[_idx]),
@@ -259,7 +259,7 @@ panda::FatJet::FatJet(datastore& _data, UInt_t _idx) :
 {
 }
 
-panda::FatJet::FatJet(ArrayBase* _array) :
+suep::FatJet::FatJet(ArrayBase* _array) :
   Jet(_array),
   tau1(gStore.getData(this).tau1[0]),
   tau2(gStore.getData(this).tau2[0]),
@@ -279,13 +279,13 @@ panda::FatJet::FatJet(ArrayBase* _array) :
 {
 }
 
-panda::FatJet::~FatJet()
+suep::FatJet::~FatJet()
 {
   destructor();
 }
 
 void
-panda::FatJet::destructor(Bool_t _recursive/* = kFALSE*/)
+suep::FatJet::destructor(Bool_t _recursive/* = kFALSE*/)
 {
   /* BEGIN CUSTOM FatJet.cc.destructor */
   /* END CUSTOM */
@@ -294,8 +294,8 @@ panda::FatJet::destructor(Bool_t _recursive/* = kFALSE*/)
     Jet::destructor(kTRUE);
 }
 
-panda::FatJet&
-panda::FatJet::operator=(FatJet const& _src)
+suep::FatJet&
+suep::FatJet::operator=(FatJet const& _src)
 {
   Jet::operator=(_src);
 
@@ -322,7 +322,7 @@ panda::FatJet::operator=(FatJet const& _src)
 }
 
 void
-panda::FatJet::doBook_(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/)
+suep::FatJet::doBook_(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/)
 {
   Jet::doBook_(_tree, _name, _branches);
 
@@ -344,7 +344,7 @@ panda::FatJet::doBook_(TTree& _tree, TString const& _name, utils::BranchList con
 }
 
 void
-panda::FatJet::doInit_()
+suep::FatJet::doInit_()
 {
   Jet::doInit_();
 
@@ -369,7 +369,7 @@ panda::FatJet::doInit_()
 }
 
 void
-panda::FatJet::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
+suep::FatJet::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
 {
   /* BEGIN CUSTOM FatJet.cc.print */
   dump(_out);
@@ -377,7 +377,7 @@ panda::FatJet::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) 
 }
 
 void
-panda::FatJet::dump(std::ostream& _out/* = std::cout*/) const
+suep::FatJet::dump(std::ostream& _out/* = std::cout*/) const
 {
   Jet::dump(_out);
 
@@ -399,7 +399,7 @@ panda::FatJet::dump(std::ostream& _out/* = std::cout*/) const
 }
 
 double
-panda::FatJet::get_ecf(int o_, int N_, int ib_) const
+suep::FatJet::get_ecf(int o_, int N_, int ib_) const
 {
   if (o_<1 || o_>3 || N_<1 || N_>4 || ib_<0 || ib_>3) 
     return -1.;
@@ -407,7 +407,7 @@ panda::FatJet::get_ecf(int o_, int N_, int ib_) const
 }
 
 bool
-panda::FatJet::set_ecf(int o_, int N_, int ib_, float x_)
+suep::FatJet::set_ecf(int o_, int N_, int ib_, float x_)
 {
   if (o_<1 || o_>3 || N_<1 || N_>4 || ib_<0 || ib_>3) 
     return false;

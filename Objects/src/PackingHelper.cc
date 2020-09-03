@@ -2,7 +2,7 @@
 
 #include <cmath>
 
-panda::PackingHelper::PackingHelper()
+suep::PackingHelper::PackingHelper()
 {
   // ==== mantissatable ===
   // -- zero --
@@ -74,7 +74,7 @@ panda::PackingHelper::PackingHelper()
 
 /*static*/
 UShort_t
-panda::PackingHelper::packUnbound(Double_t x)
+suep::PackingHelper::packUnbound(Double_t x)
 {
   // Implementation copied from DataFormats/PatCandidates/interface/libminifloat.h
   // float32to16
@@ -99,7 +99,7 @@ panda::PackingHelper::packUnbound(Double_t x)
 
 /*static*/
 Double_t
-panda::PackingHelper::unpackUnbound(UShort_t p)
+suep::PackingHelper::unpackUnbound(UShort_t p)
 {
   auto& helper(singleton());
 
@@ -114,7 +114,7 @@ panda::PackingHelper::unpackUnbound(UShort_t p)
 
 /*static*/
 Char_t
-panda::PackingHelper::pack8LogBound(Double_t x, Double_t min, Double_t max, UChar_t baseminus1)
+suep::PackingHelper::pack8LogBound(Double_t x, Double_t min, Double_t max, UChar_t baseminus1)
 {
   if (baseminus1 > 127)
     baseminus1 = 127;
@@ -139,7 +139,7 @@ panda::PackingHelper::pack8LogBound(Double_t x, Double_t min, Double_t max, UCha
 
 /*static*/
 Double_t
-panda::PackingHelper::unpack8LogBound(Char_t i, Double_t min, Double_t max, UChar_t baseminus1)
+suep::PackingHelper::unpack8LogBound(Char_t i, Double_t min, Double_t max, UChar_t baseminus1)
 {
   if (baseminus1 > 127)
     baseminus1 = 127;

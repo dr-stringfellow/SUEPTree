@@ -7,7 +7,7 @@
 #include <stdexcept>
 #include <memory>
 
-namespace panda {
+namespace suep {
 
   //! Template class for dynamic-size container implementations. Inherits from base_type::collection_type of the element class.
   /*!
@@ -165,7 +165,7 @@ namespace panda {
   }
 
   template<class E>
-  typename panda::Collection<E>::reference
+  typename suep::Collection<E>::reference
   Collection<E>::create_back()
   {
     CollectionBase::resize(CollectionBase::size() + 1);

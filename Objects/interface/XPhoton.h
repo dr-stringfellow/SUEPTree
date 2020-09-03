@@ -8,7 +8,7 @@
 #include "../../Framework/interface/RefVector.h"
 #include <array>
 
-namespace panda {
+namespace suep {
 
   class XPhoton : public Photon {
   public:

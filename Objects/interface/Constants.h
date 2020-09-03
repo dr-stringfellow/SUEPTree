@@ -9,7 +9,7 @@
 #include <cmath>
 #include <cstring>
 
-namespace panda {
+namespace suep {
 
   /* BEGIN CUSTOM Constants.h.global */
   /* END CUSTOM */

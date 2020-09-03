@@ -1,8 +1,8 @@
 #include "../interface/CorrectedSecondaryVertex.h"
 
 /*static*/
-panda::utils::BranchList
-panda::CorrectedSecondaryVertex::getListOfBranches()
+suep::utils::BranchList
+suep::CorrectedSecondaryVertex::getListOfBranches()
 {
   utils::BranchList blist;
   blist += SecondaryVertex::getListOfBranches();
@@ -11,7 +11,7 @@ panda::CorrectedSecondaryVertex::getListOfBranches()
 }
 
 void
-panda::CorrectedSecondaryVertex::datastore::allocate(UInt_t _nmax)
+suep::CorrectedSecondaryVertex::datastore::allocate(UInt_t _nmax)
 {
   SecondaryVertex::datastore::allocate(_nmax);
 
@@ -30,7 +30,7 @@ panda::CorrectedSecondaryVertex::datastore::allocate(UInt_t _nmax)
 }
 
 void
-panda::CorrectedSecondaryVertex::datastore::deallocate()
+suep::CorrectedSecondaryVertex::datastore::deallocate()
 {
   SecondaryVertex::datastore::deallocate();
 
@@ -61,7 +61,7 @@ panda::CorrectedSecondaryVertex::datastore::deallocate()
 }
 
 void
-panda::CorrectedSecondaryVertex::datastore::setStatus(TTree& _tree, TString const& _name, utils::BranchList const& _branches)
+suep::CorrectedSecondaryVertex::datastore::setStatus(TTree& _tree, TString const& _name, utils::BranchList const& _branches)
 {
   SecondaryVertex::datastore::setStatus(_tree, _name, _branches);
 
@@ -79,8 +79,8 @@ panda::CorrectedSecondaryVertex::datastore::setStatus(TTree& _tree, TString cons
   utils::setStatus(_tree, _name, "phIso", _branches);
 }
 
-panda::utils::BranchList
-panda::CorrectedSecondaryVertex::datastore::getStatus(TTree& _tree, TString const& _name) const
+suep::utils::BranchList
+suep::CorrectedSecondaryVertex::datastore::getStatus(TTree& _tree, TString const& _name) const
 {
   utils::BranchList blist(SecondaryVertex::datastore::getStatus(_tree, _name));
 
@@ -101,7 +101,7 @@ panda::CorrectedSecondaryVertex::datastore::getStatus(TTree& _tree, TString cons
 }
 
 void
-panda::CorrectedSecondaryVertex::datastore::setAddress(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _setStatus/* = kTRUE*/)
+suep::CorrectedSecondaryVertex::datastore::setAddress(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _setStatus/* = kTRUE*/)
 {
   SecondaryVertex::datastore::setAddress(_tree, _name, _branches, _setStatus);
 
@@ -120,7 +120,7 @@ panda::CorrectedSecondaryVertex::datastore::setAddress(TTree& _tree, TString con
 }
 
 void
-panda::CorrectedSecondaryVertex::datastore::book(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _dynamic/* = kTRUE*/)
+suep::CorrectedSecondaryVertex::datastore::book(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _dynamic/* = kTRUE*/)
 {
   SecondaryVertex::datastore::book(_tree, _name, _branches, _dynamic);
 
@@ -141,7 +141,7 @@ panda::CorrectedSecondaryVertex::datastore::book(TTree& _tree, TString const& _n
 }
 
 void
-panda::CorrectedSecondaryVertex::datastore::releaseTree(TTree& _tree, TString const& _name)
+suep::CorrectedSecondaryVertex::datastore::releaseTree(TTree& _tree, TString const& _name)
 {
   SecondaryVertex::datastore::releaseTree(_tree, _name);
 
@@ -160,20 +160,20 @@ panda::CorrectedSecondaryVertex::datastore::releaseTree(TTree& _tree, TString co
 }
 
 void
-panda::CorrectedSecondaryVertex::datastore::resizeVectors_(UInt_t _size)
+suep::CorrectedSecondaryVertex::datastore::resizeVectors_(UInt_t _size)
 {
   SecondaryVertex::datastore::resizeVectors_(_size);
 
 }
 
 
-panda::utils::BranchList
-panda::CorrectedSecondaryVertex::datastore::getBranchNames(TString const& _name/* = ""*/) const
+suep::utils::BranchList
+suep::CorrectedSecondaryVertex::datastore::getBranchNames(TString const& _name/* = ""*/) const
 {
   return CorrectedSecondaryVertex::getListOfBranches().fullNames(_name);
 }
 
-panda::CorrectedSecondaryVertex::CorrectedSecondaryVertex(char const* _name/* = ""*/) :
+suep::CorrectedSecondaryVertex::CorrectedSecondaryVertex(char const* _name/* = ""*/) :
   SecondaryVertex(new CorrectedSecondaryVertexArray(1, _name)),
   r(gStore.getData(this).r[0]),
   rawPt(gStore.getData(this).rawPt[0]),
@@ -190,7 +190,7 @@ panda::CorrectedSecondaryVertex::CorrectedSecondaryVertex(char const* _name/* = 
 {
 }
 
-panda::CorrectedSecondaryVertex::CorrectedSecondaryVertex(CorrectedSecondaryVertex const& _src) :
+suep::CorrectedSecondaryVertex::CorrectedSecondaryVertex(CorrectedSecondaryVertex const& _src) :
   SecondaryVertex(new CorrectedSecondaryVertexArray(1, _src.getName())),
   r(gStore.getData(this).r[0]),
   rawPt(gStore.getData(this).rawPt[0]),
@@ -208,7 +208,7 @@ panda::CorrectedSecondaryVertex::CorrectedSecondaryVertex(CorrectedSecondaryVert
   operator=(_src);
 }
 
-panda::CorrectedSecondaryVertex::CorrectedSecondaryVertex(datastore& _data, UInt_t _idx) :
+suep::CorrectedSecondaryVertex::CorrectedSecondaryVertex(datastore& _data, UInt_t _idx) :
   SecondaryVertex(_data, _idx),
   r(_data.r[_idx]),
   rawPt(_data.rawPt[_idx]),
@@ -225,7 +225,7 @@ panda::CorrectedSecondaryVertex::CorrectedSecondaryVertex(datastore& _data, UInt
 {
 }
 
-panda::CorrectedSecondaryVertex::CorrectedSecondaryVertex(ArrayBase* _array) :
+suep::CorrectedSecondaryVertex::CorrectedSecondaryVertex(ArrayBase* _array) :
   SecondaryVertex(_array),
   r(gStore.getData(this).r[0]),
   rawPt(gStore.getData(this).rawPt[0]),
@@ -242,13 +242,13 @@ panda::CorrectedSecondaryVertex::CorrectedSecondaryVertex(ArrayBase* _array) :
 {
 }
 
-panda::CorrectedSecondaryVertex::~CorrectedSecondaryVertex()
+suep::CorrectedSecondaryVertex::~CorrectedSecondaryVertex()
 {
   destructor();
 }
 
 void
-panda::CorrectedSecondaryVertex::destructor(Bool_t _recursive/* = kFALSE*/)
+suep::CorrectedSecondaryVertex::destructor(Bool_t _recursive/* = kFALSE*/)
 {
   /* BEGIN CUSTOM CorrectedSecondaryVertex.cc.destructor */
   /* END CUSTOM */
@@ -257,8 +257,8 @@ panda::CorrectedSecondaryVertex::destructor(Bool_t _recursive/* = kFALSE*/)
     SecondaryVertex::destructor(kTRUE);
 }
 
-panda::CorrectedSecondaryVertex&
-panda::CorrectedSecondaryVertex::operator=(CorrectedSecondaryVertex const& _src)
+suep::CorrectedSecondaryVertex&
+suep::CorrectedSecondaryVertex::operator=(CorrectedSecondaryVertex const& _src)
 {
   SecondaryVertex::operator=(_src);
 
@@ -282,7 +282,7 @@ panda::CorrectedSecondaryVertex::operator=(CorrectedSecondaryVertex const& _src)
 }
 
 void
-panda::CorrectedSecondaryVertex::doBook_(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/)
+suep::CorrectedSecondaryVertex::doBook_(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/)
 {
   SecondaryVertex::doBook_(_tree, _name, _branches);
 
@@ -301,7 +301,7 @@ panda::CorrectedSecondaryVertex::doBook_(TTree& _tree, TString const& _name, uti
 }
 
 void
-panda::CorrectedSecondaryVertex::doInit_()
+suep::CorrectedSecondaryVertex::doInit_()
 {
   SecondaryVertex::doInit_();
 
@@ -323,7 +323,7 @@ panda::CorrectedSecondaryVertex::doInit_()
 }
 
 void
-panda::CorrectedSecondaryVertex::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
+suep::CorrectedSecondaryVertex::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
 {
   /* BEGIN CUSTOM CorrectedSecondaryVertex.cc.print */
   dump(_out);
@@ -331,7 +331,7 @@ panda::CorrectedSecondaryVertex::print(std::ostream& _out/* = std::cout*/, UInt_
 }
 
 void
-panda::CorrectedSecondaryVertex::dump(std::ostream& _out/* = std::cout*/) const
+suep::CorrectedSecondaryVertex::dump(std::ostream& _out/* = std::cout*/) const
 {
   SecondaryVertex::dump(_out);
 
@@ -353,8 +353,8 @@ panda::CorrectedSecondaryVertex::dump(std::ostream& _out/* = std::cout*/) const
 /* BEGIN CUSTOM CorrectedSecondaryVertex.cc.global */
 #include "../interface/PFCandBase.h"
 
-panda::CorrectedSecondaryVertex&
-panda::CorrectedSecondaryVertex::operator=(SecondaryVertex const& _rhs)
+suep::CorrectedSecondaryVertex&
+suep::CorrectedSecondaryVertex::operator=(SecondaryVertex const& _rhs)
 {
   SecondaryVertex::operator=(_rhs);
   
@@ -388,7 +388,7 @@ panda::CorrectedSecondaryVertex::operator=(SecondaryVertex const& _rhs)
 }
 
 void
-panda::CorrectedSecondaryVertex::setPV(VertexCollection const& _vertices)
+suep::CorrectedSecondaryVertex::setPV(VertexCollection const& _vertices)
 {
   iPV = -1;
   drPV = 0.;

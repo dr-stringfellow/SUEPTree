@@ -8,7 +8,7 @@
 
 #include <vector>
 
-namespace panda {
+namespace suep {
 
   class CollectionBase;
 

@@ -1,6 +1,6 @@
 #include "../interface/Event.h"
 
-panda::Event::Event() :
+suep::Event::Event() :
   EventBase()
 {
   std::vector<Object*> myObjects{{&genReweight, &pfCandidates, &vertices, &secondaryVertices, &tracks, &superClusters, &electrons, &muons, &taus, &photons, &chsAK4Jets, &puppiAK4Jets, &puppiAK8Jets, &puppiAK8Subjets, &puppiCA15Jets, &puppiCA15Subjets, &ak4GenJets, &ak8GenJets, &ca15GenJets, &genParticles, &protons, &pfMet, &puppiMet, &rawMet, &caloMet, &noMuMet, &noHFMet, &trkMet, &neutralMet, &photonMet, &hfMet, &genMet, &metFilters, &recoil}};
@@ -46,7 +46,7 @@ panda::Event::Event() :
   /* END CUSTOM */
 }
 
-panda::Event::Event(Event const& _src) :
+suep::Event::Event(Event const& _src) :
   EventBase(_src),
   genReweight(_src.genReweight),
   pfCandidates(_src.pfCandidates),
@@ -129,14 +129,14 @@ panda::Event::Event(Event const& _src) :
   /* END CUSTOM */
 }
 
-panda::Event::~Event()
+suep::Event::~Event()
 {
   /* BEGIN CUSTOM Event.cc.dtor */
   /* END CUSTOM */
 }
 
-panda::Event&
-panda::Event::operator=(Event const& _src)
+suep::Event&
+suep::Event::operator=(Event const& _src)
 {
   EventBase::operator=(_src);
 
@@ -220,7 +220,7 @@ panda::Event::operator=(Event const& _src)
 }
 
 void
-panda::Event::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
+suep::Event::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
 {
   /* BEGIN CUSTOM Event.cc.print */
   if (_level >= 3) {
@@ -241,7 +241,7 @@ panda::Event::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) c
 }
 
 void
-panda::Event::dump(std::ostream& _out/* = std::cout*/) const
+suep::Event::dump(std::ostream& _out/* = std::cout*/) const
 {
   EventBase::dump(_out);
 
@@ -285,8 +285,8 @@ panda::Event::dump(std::ostream& _out/* = std::cout*/) const
 
 }
 /*static*/
-panda::utils::BranchList
-panda::Event::getListOfBranches(Bool_t _direct/* = kFALSE*/)
+suep::utils::BranchList
+suep::Event::getListOfBranches(Bool_t _direct/* = kFALSE*/)
 {
   utils::BranchList blist;
   blist += EventBase::getListOfBranches(_direct);
@@ -335,7 +335,7 @@ panda::Event::getListOfBranches(Bool_t _direct/* = kFALSE*/)
 
 /*protected*/
 void
-panda::Event::doSetStatus_(TTree& _tree, utils::BranchList const& _branches)
+suep::Event::doSetStatus_(TTree& _tree, utils::BranchList const& _branches)
 {
   EventBase::doSetStatus_(_tree, _branches);
   utils::setStatus(_tree, "", "rho", _branches);
@@ -343,8 +343,8 @@ panda::Event::doSetStatus_(TTree& _tree, utils::BranchList const& _branches)
 }
 
 /*protected*/
-panda::utils::BranchList
-panda::Event::doGetStatus_(TTree& _tree) const
+suep::utils::BranchList
+suep::Event::doGetStatus_(TTree& _tree) const
 {
   utils::BranchList blist;
   blist += EventBase::doGetStatus_(_tree);
@@ -355,15 +355,15 @@ panda::Event::doGetStatus_(TTree& _tree) const
 }
 
 /*protected*/
-panda::utils::BranchList
-panda::Event::doGetBranchNames_() const
+suep::utils::BranchList
+suep::Event::doGetBranchNames_() const
 {
   return getListOfBranches(true);
 }
 
 /*protected*/
 void
-panda::Event::doSetAddress_(TTree& _tree, utils::BranchList const& _branches, Bool_t _setStatus)
+suep::Event::doSetAddress_(TTree& _tree, utils::BranchList const& _branches, Bool_t _setStatus)
 {
   EventBase::doSetAddress_(_tree, _branches, _setStatus);
 
@@ -373,7 +373,7 @@ panda::Event::doSetAddress_(TTree& _tree, utils::BranchList const& _branches, Bo
 
 /*protected*/
 void
-panda::Event::doBook_(TTree& _tree, utils::BranchList const& _branches)
+suep::Event::doBook_(TTree& _tree, utils::BranchList const& _branches)
 {
   EventBase::doBook_(_tree, _branches);
 
@@ -383,7 +383,7 @@ panda::Event::doBook_(TTree& _tree, utils::BranchList const& _branches)
 
 /*protected*/
 void
-panda::Event::doGetEntry_(TTree& _tree)
+suep::Event::doGetEntry_(TTree& _tree)
 {
   EventBase::doGetEntry_(_tree);
 
@@ -428,7 +428,7 @@ panda::Event::doGetEntry_(TTree& _tree)
 }
 
 void
-panda::Event::doInit_()
+suep::Event::doInit_()
 {
   EventBase::doInit_();
 
@@ -439,7 +439,7 @@ panda::Event::doInit_()
 }
 
 void
-panda::Event::doUnlink_(TTree& _tree)
+suep::Event::doUnlink_(TTree& _tree)
 {
   EventBase::doUnlink_(_tree);
 

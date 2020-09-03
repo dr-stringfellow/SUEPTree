@@ -1,8 +1,8 @@
 #include "../interface/RecoMet.h"
 
 /*static*/
-panda::utils::BranchList
-panda::RecoMet::getListOfBranches()
+suep::utils::BranchList
+suep::RecoMet::getListOfBranches()
 {
   utils::BranchList blist;
   blist += Met::getListOfBranches();
@@ -10,12 +10,12 @@ panda::RecoMet::getListOfBranches()
   return blist;
 }
 
-panda::RecoMet::RecoMet(char const* _name/* = ""*/) :
+suep::RecoMet::RecoMet(char const* _name/* = ""*/) :
   Met(_name)
 {
 }
 
-panda::RecoMet::RecoMet(RecoMet const& _src) :
+suep::RecoMet::RecoMet(RecoMet const& _src) :
   Met(_src),
   sumETRaw(_src.sumETRaw),
   ptCorrUp(_src.ptCorrUp),
@@ -40,12 +40,12 @@ panda::RecoMet::RecoMet(RecoMet const& _src) :
   significance = _src.significance;
 }
 
-panda::RecoMet::~RecoMet()
+suep::RecoMet::~RecoMet()
 {
 }
 
-panda::RecoMet&
-panda::RecoMet::operator=(RecoMet const& _src)
+suep::RecoMet&
+suep::RecoMet::operator=(RecoMet const& _src)
 {
   Met::operator=(_src);
 
@@ -67,7 +67,7 @@ panda::RecoMet::operator=(RecoMet const& _src)
 }
 
 void
-panda::RecoMet::doSetStatus_(TTree& _tree, utils::BranchList const& _branches)
+suep::RecoMet::doSetStatus_(TTree& _tree, utils::BranchList const& _branches)
 {
   Met::doSetStatus_(_tree, _branches);
 
@@ -83,8 +83,8 @@ panda::RecoMet::doSetStatus_(TTree& _tree, utils::BranchList const& _branches)
   utils::setStatus(_tree, name_, "significance", _branches);
 }
 
-panda::utils::BranchList
-panda::RecoMet::doGetStatus_(TTree& _tree) const
+suep::utils::BranchList
+suep::RecoMet::doGetStatus_(TTree& _tree) const
 {
   utils::BranchList blist(Met::doGetStatus_(_tree));
 
@@ -103,7 +103,7 @@ panda::RecoMet::doGetStatus_(TTree& _tree) const
 }
 
 void
-panda::RecoMet::doSetAddress_(TTree& _tree, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _setStatus/* = kTRUE*/)
+suep::RecoMet::doSetAddress_(TTree& _tree, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _setStatus/* = kTRUE*/)
 {
   Met::doSetAddress_(_tree, _branches, _setStatus);
 
@@ -120,7 +120,7 @@ panda::RecoMet::doSetAddress_(TTree& _tree, utils::BranchList const& _branches/*
 }
 
 void
-panda::RecoMet::doBook_(TTree& _tree, utils::BranchList const& _branches/* = {"*"}*/)
+suep::RecoMet::doBook_(TTree& _tree, utils::BranchList const& _branches/* = {"*"}*/)
 {
   Met::doBook_(_tree, _branches);
 
@@ -137,7 +137,7 @@ panda::RecoMet::doBook_(TTree& _tree, utils::BranchList const& _branches/* = {"*
 }
 
 void
-panda::RecoMet::doInit_()
+suep::RecoMet::doInit_()
 {
   Met::doInit_();
 
@@ -156,8 +156,8 @@ panda::RecoMet::doInit_()
   /* END CUSTOM */
 }
 
-panda::utils::BranchList
-panda::RecoMet::doGetBranchNames_(Bool_t _fullName) const
+suep::utils::BranchList
+suep::RecoMet::doGetBranchNames_(Bool_t _fullName) const
 {
   if (_fullName)
     return getListOfBranches().fullNames(name_);
@@ -166,7 +166,7 @@ panda::RecoMet::doGetBranchNames_(Bool_t _fullName) const
 }
 
 void
-panda::RecoMet::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
+suep::RecoMet::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
 {
   /* BEGIN CUSTOM RecoMet.cc.print */
   if (_level >= 3) {
@@ -182,7 +182,7 @@ panda::RecoMet::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/)
 }
 
 void
-panda::RecoMet::dump(std::ostream& _out/* = std::cout*/) const
+suep::RecoMet::dump(std::ostream& _out/* = std::cout*/) const
 {
   Met::dump(_out);
 
@@ -199,7 +199,7 @@ panda::RecoMet::dump(std::ostream& _out/* = std::cout*/) const
 }
 
 TVector2
-panda::RecoMet::vCorr(int corr/* = 0*/) const
+suep::RecoMet::vCorr(int corr/* = 0*/) const
 {
   if (corr == 0)
     return v();

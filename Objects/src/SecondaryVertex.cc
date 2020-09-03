@@ -1,8 +1,8 @@
 #include "../interface/SecondaryVertex.h"
 
 /*static*/
-panda::utils::BranchList
-panda::SecondaryVertex::getListOfBranches()
+suep::utils::BranchList
+suep::SecondaryVertex::getListOfBranches()
 {
   utils::BranchList blist;
   blist += ParticleM::getListOfBranches();
@@ -11,7 +11,7 @@ panda::SecondaryVertex::getListOfBranches()
 }
 
 void
-panda::SecondaryVertex::datastore::allocate(UInt_t _nmax)
+suep::SecondaryVertex::datastore::allocate(UInt_t _nmax)
 {
   ParticleM::datastore::allocate(_nmax);
 
@@ -28,7 +28,7 @@ panda::SecondaryVertex::datastore::allocate(UInt_t _nmax)
 }
 
 void
-panda::SecondaryVertex::datastore::deallocate()
+suep::SecondaryVertex::datastore::deallocate()
 {
   ParticleM::datastore::deallocate();
 
@@ -55,7 +55,7 @@ panda::SecondaryVertex::datastore::deallocate()
 }
 
 void
-panda::SecondaryVertex::datastore::setStatus(TTree& _tree, TString const& _name, utils::BranchList const& _branches)
+suep::SecondaryVertex::datastore::setStatus(TTree& _tree, TString const& _name, utils::BranchList const& _branches)
 {
   ParticleM::datastore::setStatus(_tree, _name, _branches);
 
@@ -71,8 +71,8 @@ panda::SecondaryVertex::datastore::setStatus(TTree& _tree, TString const& _name,
   utils::setStatus(_tree, _name, "vtx3DeVal", _branches);
 }
 
-panda::utils::BranchList
-panda::SecondaryVertex::datastore::getStatus(TTree& _tree, TString const& _name) const
+suep::utils::BranchList
+suep::SecondaryVertex::datastore::getStatus(TTree& _tree, TString const& _name) const
 {
   utils::BranchList blist(ParticleM::datastore::getStatus(_tree, _name));
 
@@ -91,7 +91,7 @@ panda::SecondaryVertex::datastore::getStatus(TTree& _tree, TString const& _name)
 }
 
 void
-panda::SecondaryVertex::datastore::setAddress(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _setStatus/* = kTRUE*/)
+suep::SecondaryVertex::datastore::setAddress(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _setStatus/* = kTRUE*/)
 {
   ParticleM::datastore::setAddress(_tree, _name, _branches, _setStatus);
 
@@ -108,7 +108,7 @@ panda::SecondaryVertex::datastore::setAddress(TTree& _tree, TString const& _name
 }
 
 void
-panda::SecondaryVertex::datastore::book(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _dynamic/* = kTRUE*/)
+suep::SecondaryVertex::datastore::book(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _dynamic/* = kTRUE*/)
 {
   ParticleM::datastore::book(_tree, _name, _branches, _dynamic);
 
@@ -127,7 +127,7 @@ panda::SecondaryVertex::datastore::book(TTree& _tree, TString const& _name, util
 }
 
 void
-panda::SecondaryVertex::datastore::releaseTree(TTree& _tree, TString const& _name)
+suep::SecondaryVertex::datastore::releaseTree(TTree& _tree, TString const& _name)
 {
   ParticleM::datastore::releaseTree(_tree, _name);
 
@@ -144,7 +144,7 @@ panda::SecondaryVertex::datastore::releaseTree(TTree& _tree, TString const& _nam
 }
 
 void
-panda::SecondaryVertex::datastore::resizeVectors_(UInt_t _size)
+suep::SecondaryVertex::datastore::resizeVectors_(UInt_t _size)
 {
   ParticleM::datastore::resizeVectors_(_size);
 
@@ -152,13 +152,13 @@ panda::SecondaryVertex::datastore::resizeVectors_(UInt_t _size)
 }
 
 
-panda::utils::BranchList
-panda::SecondaryVertex::datastore::getBranchNames(TString const& _name/* = ""*/) const
+suep::utils::BranchList
+suep::SecondaryVertex::datastore::getBranchNames(TString const& _name/* = ""*/) const
 {
   return SecondaryVertex::getListOfBranches().fullNames(_name);
 }
 
-panda::SecondaryVertex::SecondaryVertex(char const* _name/* = ""*/) :
+suep::SecondaryVertex::SecondaryVertex(char const* _name/* = ""*/) :
   ParticleM(new SecondaryVertexArray(1, _name)),
   x(gStore.getData(this).x[0]),
   y(gStore.getData(this).y[0]),
@@ -173,7 +173,7 @@ panda::SecondaryVertex::SecondaryVertex(char const* _name/* = ""*/) :
 {
 }
 
-panda::SecondaryVertex::SecondaryVertex(SecondaryVertex const& _src) :
+suep::SecondaryVertex::SecondaryVertex(SecondaryVertex const& _src) :
   ParticleM(new SecondaryVertexArray(1, _src.getName())),
   x(gStore.getData(this).x[0]),
   y(gStore.getData(this).y[0]),
@@ -189,7 +189,7 @@ panda::SecondaryVertex::SecondaryVertex(SecondaryVertex const& _src) :
   operator=(_src);
 }
 
-panda::SecondaryVertex::SecondaryVertex(datastore& _data, UInt_t _idx) :
+suep::SecondaryVertex::SecondaryVertex(datastore& _data, UInt_t _idx) :
   ParticleM(_data, _idx),
   x(_data.x[_idx]),
   y(_data.y[_idx]),
@@ -204,7 +204,7 @@ panda::SecondaryVertex::SecondaryVertex(datastore& _data, UInt_t _idx) :
 {
 }
 
-panda::SecondaryVertex::SecondaryVertex(ArrayBase* _array) :
+suep::SecondaryVertex::SecondaryVertex(ArrayBase* _array) :
   ParticleM(_array),
   x(gStore.getData(this).x[0]),
   y(gStore.getData(this).y[0]),
@@ -219,13 +219,13 @@ panda::SecondaryVertex::SecondaryVertex(ArrayBase* _array) :
 {
 }
 
-panda::SecondaryVertex::~SecondaryVertex()
+suep::SecondaryVertex::~SecondaryVertex()
 {
   destructor();
 }
 
 void
-panda::SecondaryVertex::destructor(Bool_t _recursive/* = kFALSE*/)
+suep::SecondaryVertex::destructor(Bool_t _recursive/* = kFALSE*/)
 {
   /* BEGIN CUSTOM SecondaryVertex.cc.destructor */
   /* END CUSTOM */
@@ -234,8 +234,8 @@ panda::SecondaryVertex::destructor(Bool_t _recursive/* = kFALSE*/)
     ParticleM::destructor(kTRUE);
 }
 
-panda::SecondaryVertex&
-panda::SecondaryVertex::operator=(SecondaryVertex const& _src)
+suep::SecondaryVertex&
+suep::SecondaryVertex::operator=(SecondaryVertex const& _src)
 {
   ParticleM::operator=(_src);
 
@@ -257,7 +257,7 @@ panda::SecondaryVertex::operator=(SecondaryVertex const& _src)
 }
 
 void
-panda::SecondaryVertex::doBook_(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/)
+suep::SecondaryVertex::doBook_(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/)
 {
   ParticleM::doBook_(_tree, _name, _branches);
 
@@ -274,7 +274,7 @@ panda::SecondaryVertex::doBook_(TTree& _tree, TString const& _name, utils::Branc
 }
 
 void
-panda::SecondaryVertex::doInit_()
+suep::SecondaryVertex::doInit_()
 {
   ParticleM::doInit_();
 
@@ -294,7 +294,7 @@ panda::SecondaryVertex::doInit_()
 }
 
 void
-panda::SecondaryVertex::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
+suep::SecondaryVertex::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
 {
   /* BEGIN CUSTOM SecondaryVertex.cc.print */
   dump(_out);
@@ -302,7 +302,7 @@ panda::SecondaryVertex::print(std::ostream& _out/* = std::cout*/, UInt_t _level/
 }
 
 void
-panda::SecondaryVertex::dump(std::ostream& _out/* = std::cout*/) const
+suep::SecondaryVertex::dump(std::ostream& _out/* = std::cout*/) const
 {
   ParticleM::dump(_out);
 

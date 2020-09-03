@@ -6,7 +6,7 @@
 #include "SUEPTree/Utils/interface/JECCorrector.h"
 
 
-using namespace panda;
+using namespace suep;
 
 
 namespace {
@@ -47,7 +47,7 @@ JECCorrector::JECCorrector (const std::string& files_base, const std::string& je
   m_corrector {m_corrector_params} {}
 
 
-void JECCorrector::update_event (const panda::Event& event, const panda::JetCollection& jets, const RecoMet& met) {
+void JECCorrector::update_event (const suep::Event& event, const suep::JetCollection& jets, const RecoMet& met) {
 
   // Copy jets over
   m_corrected_jets = jets;
@@ -82,7 +82,7 @@ void JECCorrector::update_event (const panda::Event& event, const panda::JetColl
     jet.setPtEtaPhiM(new_pt, jet.eta(), jet.phi(), jet.m());
   }
 
-  m_corrected_jets.sort(panda::Particle::PtGreater);
+  m_corrected_jets.sort(suep::Particle::PtGreater);
 
   // Change stored MET
   m_corrected_met.setXY(new_met.X(), new_met.Y());

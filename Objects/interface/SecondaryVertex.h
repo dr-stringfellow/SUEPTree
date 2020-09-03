@@ -8,7 +8,7 @@
 #include "../../Framework/interface/RefVector.h"
 #include "PFCandBase.h"
 
-namespace panda {
+namespace suep {
 
   class SecondaryVertex : public ParticleM {
   public:

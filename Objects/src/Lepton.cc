@@ -1,8 +1,8 @@
 #include "../interface/Lepton.h"
 
 /*static*/
-panda::utils::BranchList
-panda::Lepton::getListOfBranches()
+suep::utils::BranchList
+suep::Lepton::getListOfBranches()
 {
   utils::BranchList blist;
   blist += ParticleP::getListOfBranches();
@@ -11,7 +11,7 @@ panda::Lepton::getListOfBranches()
 }
 
 void
-panda::Lepton::datastore::allocate(UInt_t _nmax)
+suep::Lepton::datastore::allocate(UInt_t _nmax)
 {
   ParticleP::datastore::allocate(_nmax);
 
@@ -33,7 +33,7 @@ panda::Lepton::datastore::allocate(UInt_t _nmax)
 }
 
 void
-panda::Lepton::datastore::deallocate()
+suep::Lepton::datastore::deallocate()
 {
   ParticleP::datastore::deallocate();
 
@@ -70,7 +70,7 @@ panda::Lepton::datastore::deallocate()
 }
 
 void
-panda::Lepton::datastore::setStatus(TTree& _tree, TString const& _name, utils::BranchList const& _branches)
+suep::Lepton::datastore::setStatus(TTree& _tree, TString const& _name, utils::BranchList const& _branches)
 {
   ParticleP::datastore::setStatus(_tree, _name, _branches);
 
@@ -91,8 +91,8 @@ panda::Lepton::datastore::setStatus(TTree& _tree, TString const& _name, utils::B
   utils::setStatus(_tree, _name, "vertex_", _branches);
 }
 
-panda::utils::BranchList
-panda::Lepton::datastore::getStatus(TTree& _tree, TString const& _name) const
+suep::utils::BranchList
+suep::Lepton::datastore::getStatus(TTree& _tree, TString const& _name) const
 {
   utils::BranchList blist(ParticleP::datastore::getStatus(_tree, _name));
 
@@ -116,7 +116,7 @@ panda::Lepton::datastore::getStatus(TTree& _tree, TString const& _name) const
 }
 
 void
-panda::Lepton::datastore::setAddress(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _setStatus/* = kTRUE*/)
+suep::Lepton::datastore::setAddress(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _setStatus/* = kTRUE*/)
 {
   ParticleP::datastore::setAddress(_tree, _name, _branches, _setStatus);
 
@@ -138,7 +138,7 @@ panda::Lepton::datastore::setAddress(TTree& _tree, TString const& _name, utils::
 }
 
 void
-panda::Lepton::datastore::book(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _dynamic/* = kTRUE*/)
+suep::Lepton::datastore::book(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _dynamic/* = kTRUE*/)
 {
   ParticleP::datastore::book(_tree, _name, _branches, _dynamic);
 
@@ -162,7 +162,7 @@ panda::Lepton::datastore::book(TTree& _tree, TString const& _name, utils::Branch
 }
 
 void
-panda::Lepton::datastore::releaseTree(TTree& _tree, TString const& _name)
+suep::Lepton::datastore::releaseTree(TTree& _tree, TString const& _name)
 {
   ParticleP::datastore::releaseTree(_tree, _name);
 
@@ -184,20 +184,20 @@ panda::Lepton::datastore::releaseTree(TTree& _tree, TString const& _name)
 }
 
 void
-panda::Lepton::datastore::resizeVectors_(UInt_t _size)
+suep::Lepton::datastore::resizeVectors_(UInt_t _size)
 {
   ParticleP::datastore::resizeVectors_(_size);
 
 }
 
 
-panda::utils::BranchList
-panda::Lepton::datastore::getBranchNames(TString const& _name/* = ""*/) const
+suep::utils::BranchList
+suep::Lepton::datastore::getBranchNames(TString const& _name/* = ""*/) const
 {
   return Lepton::getListOfBranches().fullNames(_name);
 }
 
-panda::Lepton::Lepton(char const* _name/* = ""*/) :
+suep::Lepton::Lepton(char const* _name/* = ""*/) :
   ParticleP(new LeptonArray(1, _name)),
   pfPt(gStore.getData(this).pfPt[0]),
   charge(gStore.getData(this).charge[0]),
@@ -217,7 +217,7 @@ panda::Lepton::Lepton(char const* _name/* = ""*/) :
 {
 }
 
-panda::Lepton::Lepton(Lepton const& _src) :
+suep::Lepton::Lepton(Lepton const& _src) :
   ParticleP(new LeptonArray(1, _src.getName())),
   pfPt(gStore.getData(this).pfPt[0]),
   charge(gStore.getData(this).charge[0]),
@@ -238,7 +238,7 @@ panda::Lepton::Lepton(Lepton const& _src) :
   operator=(_src);
 }
 
-panda::Lepton::Lepton(datastore& _data, UInt_t _idx) :
+suep::Lepton::Lepton(datastore& _data, UInt_t _idx) :
   ParticleP(_data, _idx),
   pfPt(_data.pfPt[_idx]),
   charge(_data.charge[_idx]),
@@ -258,7 +258,7 @@ panda::Lepton::Lepton(datastore& _data, UInt_t _idx) :
 {
 }
 
-panda::Lepton::Lepton(ArrayBase* _array) :
+suep::Lepton::Lepton(ArrayBase* _array) :
   ParticleP(_array),
   pfPt(gStore.getData(this).pfPt[0]),
   charge(gStore.getData(this).charge[0]),
@@ -278,13 +278,13 @@ panda::Lepton::Lepton(ArrayBase* _array) :
 {
 }
 
-panda::Lepton::~Lepton()
+suep::Lepton::~Lepton()
 {
   destructor();
 }
 
 void
-panda::Lepton::destructor(Bool_t _recursive/* = kFALSE*/)
+suep::Lepton::destructor(Bool_t _recursive/* = kFALSE*/)
 {
   /* BEGIN CUSTOM Lepton.cc.destructor */
   /* END CUSTOM */
@@ -293,8 +293,8 @@ panda::Lepton::destructor(Bool_t _recursive/* = kFALSE*/)
     ParticleP::destructor(kTRUE);
 }
 
-panda::Lepton&
-panda::Lepton::operator=(Lepton const& _src)
+suep::Lepton&
+suep::Lepton::operator=(Lepton const& _src)
 {
   ParticleP::operator=(_src);
 
@@ -321,7 +321,7 @@ panda::Lepton::operator=(Lepton const& _src)
 }
 
 void
-panda::Lepton::doBook_(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/)
+suep::Lepton::doBook_(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/)
 {
   ParticleP::doBook_(_tree, _name, _branches);
 
@@ -343,7 +343,7 @@ panda::Lepton::doBook_(TTree& _tree, TString const& _name, utils::BranchList con
 }
 
 void
-panda::Lepton::doInit_()
+suep::Lepton::doInit_()
 {
   ParticleP::doInit_();
 
@@ -368,7 +368,7 @@ panda::Lepton::doInit_()
 }
 
 void
-panda::Lepton::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
+suep::Lepton::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
 {
   /* BEGIN CUSTOM Lepton.cc.print */
   if (_level >= 3) {
@@ -389,7 +389,7 @@ panda::Lepton::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) 
 }
 
 void
-panda::Lepton::dump(std::ostream& _out/* = std::cout*/) const
+suep::Lepton::dump(std::ostream& _out/* = std::cout*/) const
 {
   ParticleP::dump(_out);
 

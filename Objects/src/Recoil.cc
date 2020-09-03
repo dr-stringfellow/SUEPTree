@@ -1,6 +1,6 @@
 #include "../interface/Recoil.h"
 
-TString panda::Recoil::CategoryName[] = {
+TString suep::Recoil::CategoryName[] = {
   "rMET",
   "rMonoMu",
   "rMonoE",
@@ -10,20 +10,20 @@ TString panda::Recoil::CategoryName[] = {
 };
 
 /*static*/
-panda::utils::BranchList
-panda::Recoil::getListOfBranches()
+suep::utils::BranchList
+suep::Recoil::getListOfBranches()
 {
   utils::BranchList blist;
   blist += {"met", "monoMu", "monoE", "diMu", "diE", "gamma", "max"};
   return blist;
 }
 
-panda::Recoil::Recoil(char const* _name/* = ""*/) :
+suep::Recoil::Recoil(char const* _name/* = ""*/) :
   Singlet(_name)
 {
 }
 
-panda::Recoil::Recoil(Recoil const& _src) :
+suep::Recoil::Recoil(Recoil const& _src) :
   Singlet(_src),
   met(_src.met),
   monoMu(_src.monoMu),
@@ -42,12 +42,12 @@ panda::Recoil::Recoil(Recoil const& _src) :
   max = _src.max;
 }
 
-panda::Recoil::~Recoil()
+suep::Recoil::~Recoil()
 {
 }
 
-panda::Recoil&
-panda::Recoil::operator=(Recoil const& _src)
+suep::Recoil&
+suep::Recoil::operator=(Recoil const& _src)
 {
   met = _src.met;
   monoMu = _src.monoMu;
@@ -64,7 +64,7 @@ panda::Recoil::operator=(Recoil const& _src)
 }
 
 void
-panda::Recoil::doSetStatus_(TTree& _tree, utils::BranchList const& _branches)
+suep::Recoil::doSetStatus_(TTree& _tree, utils::BranchList const& _branches)
 {
   utils::setStatus(_tree, name_, "met", _branches);
   utils::setStatus(_tree, name_, "monoMu", _branches);
@@ -75,8 +75,8 @@ panda::Recoil::doSetStatus_(TTree& _tree, utils::BranchList const& _branches)
   utils::setStatus(_tree, name_, "max", _branches);
 }
 
-panda::utils::BranchList
-panda::Recoil::doGetStatus_(TTree& _tree) const
+suep::utils::BranchList
+suep::Recoil::doGetStatus_(TTree& _tree) const
 {
   utils::BranchList blist;
 
@@ -92,7 +92,7 @@ panda::Recoil::doGetStatus_(TTree& _tree) const
 }
 
 void
-panda::Recoil::doSetAddress_(TTree& _tree, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _setStatus/* = kTRUE*/)
+suep::Recoil::doSetAddress_(TTree& _tree, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _setStatus/* = kTRUE*/)
 {
   utils::setAddress(_tree, name_, "met", &met, _branches, _setStatus);
   utils::setAddress(_tree, name_, "monoMu", &monoMu, _branches, _setStatus);
@@ -104,7 +104,7 @@ panda::Recoil::doSetAddress_(TTree& _tree, utils::BranchList const& _branches/* 
 }
 
 void
-panda::Recoil::doBook_(TTree& _tree, utils::BranchList const& _branches/* = {"*"}*/)
+suep::Recoil::doBook_(TTree& _tree, utils::BranchList const& _branches/* = {"*"}*/)
 {
   utils::book(_tree, name_, "met", "", 'O', &met, _branches);
   utils::book(_tree, name_, "monoMu", "", 'O', &monoMu, _branches);
@@ -116,7 +116,7 @@ panda::Recoil::doBook_(TTree& _tree, utils::BranchList const& _branches/* = {"*"
 }
 
 void
-panda::Recoil::doInit_()
+suep::Recoil::doInit_()
 {
   met = false;
   monoMu = false;
@@ -130,8 +130,8 @@ panda::Recoil::doInit_()
   /* END CUSTOM */
 }
 
-panda::utils::BranchList
-panda::Recoil::doGetBranchNames_(Bool_t _fullName) const
+suep::utils::BranchList
+suep::Recoil::doGetBranchNames_(Bool_t _fullName) const
 {
   if (_fullName)
     return getListOfBranches().fullNames(name_);
@@ -140,7 +140,7 @@ panda::Recoil::doGetBranchNames_(Bool_t _fullName) const
 }
 
 void
-panda::Recoil::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
+suep::Recoil::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
 {
   /* BEGIN CUSTOM Recoil.cc.print */
   dump(_out);
@@ -148,7 +148,7 @@ panda::Recoil::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) 
 }
 
 void
-panda::Recoil::dump(std::ostream& _out/* = std::cout*/) const
+suep::Recoil::dump(std::ostream& _out/* = std::cout*/) const
 {
   _out << "met = " << met << std::endl;
   _out << "monoMu = " << monoMu << std::endl;

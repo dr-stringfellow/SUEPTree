@@ -12,7 +12,7 @@
 #include <iostream>
 
 void
-copyTree(TTree& _tree, panda::utils::BranchList const& _allBranches, panda::utils::BranchList const& _blist, TFile& _outputFile)
+copyTree(TTree& _tree, suep::utils::BranchList const& _allBranches, suep::utils::BranchList const& _blist, TFile& _outputFile)
 {
   _tree.SetBranchStatus("*", false);
 
@@ -60,7 +60,7 @@ main(int _argc, char const* _argv[])
   
   auto* eventTree(static_cast<TTree*>(source->Get("events")));
   if (!eventTree) {
-    std::cerr << "Source file " << *argv << " is not a panda file." << std::endl;
+    std::cerr << "Source file " << *argv << " is not a suep file." << std::endl;
     return 1;
   }
 
@@ -77,13 +77,13 @@ main(int _argc, char const* _argv[])
 
   auto* outputFile(TFile::Open(*argv, "recreate"));
 
-  panda::utils::BranchList blist = {"*"};
+  suep::utils::BranchList blist = {"*"};
 
   while (--narg != 0) {
     TString arg(*(++argv));
 
     if (arg == "-r" || arg == "--run") {
-      copyTree(*eventTree, panda::Event::getListOfBranches(), blist, *outputFile);
+      copyTree(*eventTree, suep::Event::getListOfBranches(), blist, *outputFile);
       delete eventTree;
       eventTree = 0;
 
@@ -97,12 +97,12 @@ main(int _argc, char const* _argv[])
   }
 
   if (eventTree) {
-    copyTree(*eventTree, panda::Event::getListOfBranches(), blist, *outputFile);
+    copyTree(*eventTree, suep::Event::getListOfBranches(), blist, *outputFile);
     blist = {"*"};
   }
   
   if (runTree)
-    copyTree(*runTree, panda::Run::getListOfBranches(), blist, *outputFile);
+    copyTree(*runTree, suep::Run::getListOfBranches(), blist, *outputFile);
 
   // find the latest keys and copy
 

@@ -8,7 +8,7 @@
 #include "../../Framework/interface/RefVector.h"
 #include "SuperCluster.h"
 
-namespace panda {
+namespace suep {
 
   class Electron : public Lepton {
   public:

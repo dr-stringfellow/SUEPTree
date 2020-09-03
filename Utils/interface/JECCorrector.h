@@ -8,7 +8,7 @@
 #include "CondFormats/JetMETObjects/interface/FactorizedJetCorrector.h"
 
 
-namespace panda {
+namespace suep {
   /**
      @brief A wrapper for CMSSW's FactorizedJetCorrector for SUEP JetCollections
   */
@@ -21,7 +21,7 @@ namespace panda {
     JECCorrector (const std::string& files_base, const std::string& jet_type);
 
     /// Must be called at the beginning of each event to update the corrected values
-    void update_event (const panda::Event& event, const panda::JetCollection& jets, const RecoMet& met);
+    void update_event (const suep::Event& event, const suep::JetCollection& jets, const RecoMet& met);
 
     const JetCollection& get_jets () const;
     const RecoMet& get_met () const;
@@ -34,7 +34,7 @@ namespace panda {
     /// Holds the corrected MET
     RecoMet m_corrected_met {};
 
-    /// A vector of the JetCorrectorParameters, initialized by panda::JECCorrector::load_params
+    /// A vector of the JetCorrectorParameters, initialized by suep::JECCorrector::load_params
     std::vector<JetCorrectorParameters> m_corrector_params;
     /// The FactorizedJetCorrector that is used underneath
     FactorizedJetCorrector m_corrector;

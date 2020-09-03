@@ -1,8 +1,8 @@
 #include "../interface/Proton.h"
 
 /*static*/
-panda::utils::BranchList
-panda::Proton::getListOfBranches()
+suep::utils::BranchList
+suep::Proton::getListOfBranches()
 {
   utils::BranchList blist;
   blist += {"x", "xUnc", "y", "yUnc", "rpId"};
@@ -10,7 +10,7 @@ panda::Proton::getListOfBranches()
 }
 
 void
-panda::Proton::datastore::allocate(UInt_t _nmax)
+suep::Proton::datastore::allocate(UInt_t _nmax)
 {
   Element::datastore::allocate(_nmax);
 
@@ -22,7 +22,7 @@ panda::Proton::datastore::allocate(UInt_t _nmax)
 }
 
 void
-panda::Proton::datastore::deallocate()
+suep::Proton::datastore::deallocate()
 {
   Element::datastore::deallocate();
 
@@ -39,7 +39,7 @@ panda::Proton::datastore::deallocate()
 }
 
 void
-panda::Proton::datastore::setStatus(TTree& _tree, TString const& _name, utils::BranchList const& _branches)
+suep::Proton::datastore::setStatus(TTree& _tree, TString const& _name, utils::BranchList const& _branches)
 {
   Element::datastore::setStatus(_tree, _name, _branches);
 
@@ -50,8 +50,8 @@ panda::Proton::datastore::setStatus(TTree& _tree, TString const& _name, utils::B
   utils::setStatus(_tree, _name, "rpId", _branches);
 }
 
-panda::utils::BranchList
-panda::Proton::datastore::getStatus(TTree& _tree, TString const& _name) const
+suep::utils::BranchList
+suep::Proton::datastore::getStatus(TTree& _tree, TString const& _name) const
 {
   utils::BranchList blist(Element::datastore::getStatus(_tree, _name));
 
@@ -65,7 +65,7 @@ panda::Proton::datastore::getStatus(TTree& _tree, TString const& _name) const
 }
 
 void
-panda::Proton::datastore::setAddress(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _setStatus/* = kTRUE*/)
+suep::Proton::datastore::setAddress(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _setStatus/* = kTRUE*/)
 {
   Element::datastore::setAddress(_tree, _name, _branches, _setStatus);
 
@@ -77,7 +77,7 @@ panda::Proton::datastore::setAddress(TTree& _tree, TString const& _name, utils::
 }
 
 void
-panda::Proton::datastore::book(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _dynamic/* = kTRUE*/)
+suep::Proton::datastore::book(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _dynamic/* = kTRUE*/)
 {
   Element::datastore::book(_tree, _name, _branches, _dynamic);
 
@@ -91,7 +91,7 @@ panda::Proton::datastore::book(TTree& _tree, TString const& _name, utils::Branch
 }
 
 void
-panda::Proton::datastore::releaseTree(TTree& _tree, TString const& _name)
+suep::Proton::datastore::releaseTree(TTree& _tree, TString const& _name)
 {
   Element::datastore::releaseTree(_tree, _name);
 
@@ -103,20 +103,20 @@ panda::Proton::datastore::releaseTree(TTree& _tree, TString const& _name)
 }
 
 void
-panda::Proton::datastore::resizeVectors_(UInt_t _size)
+suep::Proton::datastore::resizeVectors_(UInt_t _size)
 {
   Element::datastore::resizeVectors_(_size);
 
 }
 
 
-panda::utils::BranchList
-panda::Proton::datastore::getBranchNames(TString const& _name/* = ""*/) const
+suep::utils::BranchList
+suep::Proton::datastore::getBranchNames(TString const& _name/* = ""*/) const
 {
   return Proton::getListOfBranches().fullNames(_name);
 }
 
-panda::Proton::Proton(char const* _name/* = ""*/) :
+suep::Proton::Proton(char const* _name/* = ""*/) :
   Element(new ProtonArray(1, _name)),
   x(gStore.getData(this).x[0]),
   xUnc(gStore.getData(this).xUnc[0]),
@@ -126,7 +126,7 @@ panda::Proton::Proton(char const* _name/* = ""*/) :
 {
 }
 
-panda::Proton::Proton(Proton const& _src) :
+suep::Proton::Proton(Proton const& _src) :
   Element(new ProtonArray(1, _src.getName())),
   x(gStore.getData(this).x[0]),
   xUnc(gStore.getData(this).xUnc[0]),
@@ -137,7 +137,7 @@ panda::Proton::Proton(Proton const& _src) :
   operator=(_src);
 }
 
-panda::Proton::Proton(datastore& _data, UInt_t _idx) :
+suep::Proton::Proton(datastore& _data, UInt_t _idx) :
   Element(_data, _idx),
   x(_data.x[_idx]),
   xUnc(_data.xUnc[_idx]),
@@ -147,7 +147,7 @@ panda::Proton::Proton(datastore& _data, UInt_t _idx) :
 {
 }
 
-panda::Proton::Proton(ArrayBase* _array) :
+suep::Proton::Proton(ArrayBase* _array) :
   Element(_array),
   x(gStore.getData(this).x[0]),
   xUnc(gStore.getData(this).xUnc[0]),
@@ -157,20 +157,20 @@ panda::Proton::Proton(ArrayBase* _array) :
 {
 }
 
-panda::Proton::~Proton()
+suep::Proton::~Proton()
 {
   destructor();
 }
 
 void
-panda::Proton::destructor(Bool_t _recursive/* = kFALSE*/)
+suep::Proton::destructor(Bool_t _recursive/* = kFALSE*/)
 {
   /* BEGIN CUSTOM Proton.cc.destructor */
   /* END CUSTOM */
 }
 
-panda::Proton&
-panda::Proton::operator=(Proton const& _src)
+suep::Proton&
+suep::Proton::operator=(Proton const& _src)
 {
   x = _src.x;
   xUnc = _src.xUnc;
@@ -185,7 +185,7 @@ panda::Proton::operator=(Proton const& _src)
 }
 
 void
-panda::Proton::doBook_(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/)
+suep::Proton::doBook_(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/)
 {
   utils::book(_tree, _name, "x", "", 'F', &x, _branches);
   utils::book(_tree, _name, "xUnc", "", 'F', &xUnc, _branches);
@@ -195,7 +195,7 @@ panda::Proton::doBook_(TTree& _tree, TString const& _name, utils::BranchList con
 }
 
 void
-panda::Proton::doInit_()
+suep::Proton::doInit_()
 {
   x = 0.;
   xUnc = 0.;
@@ -208,7 +208,7 @@ panda::Proton::doInit_()
 }
 
 void
-panda::Proton::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
+suep::Proton::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
 {
   /* BEGIN CUSTOM Proton.cc.print */
   dump(_out);
@@ -216,7 +216,7 @@ panda::Proton::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) 
 }
 
 void
-panda::Proton::dump(std::ostream& _out/* = std::cout*/) const
+suep::Proton::dump(std::ostream& _out/* = std::cout*/) const
 {
   _out << "x = " << x << std::endl;
   _out << "xUnc = " << xUnc << std::endl;

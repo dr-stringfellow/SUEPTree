@@ -2,7 +2,7 @@
 #define SUEPTree_Objects_PtEtaPhiMMixin_h
 #include "../../Framework/interface/Element.h"
 
-namespace panda {
+namespace suep {
 
   class PtEtaPhiMMixin {
   public:

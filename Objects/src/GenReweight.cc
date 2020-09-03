@@ -2,20 +2,20 @@
 
 
 /*static*/
-panda::utils::BranchList
-panda::GenReweight::getListOfBranches()
+suep::utils::BranchList
+suep::GenReweight::getListOfBranches()
 {
   utils::BranchList blist;
   blist += {"r1f2DW", "r1f5DW", "r2f1DW", "r2f2DW", "r5f1DW", "r5f5DW", "pdfAltDW", "genParam"};
   return blist;
 }
 
-panda::GenReweight::GenReweight(char const* _name/* = ""*/) :
+suep::GenReweight::GenReweight(char const* _name/* = ""*/) :
   Singlet(_name)
 {
 }
 
-panda::GenReweight::GenReweight(GenReweight const& _src) :
+suep::GenReweight::GenReweight(GenReweight const& _src) :
   Singlet(_src),
   r1f2DW(_src.r1f2DW),
   r1f5DW(_src.r1f5DW),
@@ -34,12 +34,12 @@ panda::GenReweight::GenReweight(GenReweight const& _src) :
   std::memcpy(genParam, _src.genParam, sizeof(Float_t) * NMAX);
 }
 
-panda::GenReweight::~GenReweight()
+suep::GenReweight::~GenReweight()
 {
 }
 
-panda::GenReweight&
-panda::GenReweight::operator=(GenReweight const& _src)
+suep::GenReweight&
+suep::GenReweight::operator=(GenReweight const& _src)
 {
   r1f2DW = _src.r1f2DW;
   r1f5DW = _src.r1f5DW;
@@ -57,7 +57,7 @@ panda::GenReweight::operator=(GenReweight const& _src)
 }
 
 void
-panda::GenReweight::doSetStatus_(TTree& _tree, utils::BranchList const& _branches)
+suep::GenReweight::doSetStatus_(TTree& _tree, utils::BranchList const& _branches)
 {
   utils::setStatus(_tree, name_, "r1f2DW", _branches);
   utils::setStatus(_tree, name_, "r1f5DW", _branches);
@@ -69,8 +69,8 @@ panda::GenReweight::doSetStatus_(TTree& _tree, utils::BranchList const& _branche
   utils::setStatus(_tree, name_, "genParam", _branches);
 }
 
-panda::utils::BranchList
-panda::GenReweight::doGetStatus_(TTree& _tree) const
+suep::utils::BranchList
+suep::GenReweight::doGetStatus_(TTree& _tree) const
 {
   utils::BranchList blist;
 
@@ -87,7 +87,7 @@ panda::GenReweight::doGetStatus_(TTree& _tree) const
 }
 
 void
-panda::GenReweight::doSetAddress_(TTree& _tree, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _setStatus/* = kTRUE*/)
+suep::GenReweight::doSetAddress_(TTree& _tree, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _setStatus/* = kTRUE*/)
 {
   utils::setAddress(_tree, name_, "r1f2DW", &r1f2DW, _branches, _setStatus);
   utils::setAddress(_tree, name_, "r1f5DW", &r1f5DW, _branches, _setStatus);
@@ -100,7 +100,7 @@ panda::GenReweight::doSetAddress_(TTree& _tree, utils::BranchList const& _branch
 }
 
 void
-panda::GenReweight::doBook_(TTree& _tree, utils::BranchList const& _branches/* = {"*"}*/)
+suep::GenReweight::doBook_(TTree& _tree, utils::BranchList const& _branches/* = {"*"}*/)
 {
   utils::book(_tree, name_, "r1f2DW", "", 'F', &r1f2DW, _branches);
   utils::book(_tree, name_, "r1f5DW", "", 'F', &r1f5DW, _branches);
@@ -113,7 +113,7 @@ panda::GenReweight::doBook_(TTree& _tree, utils::BranchList const& _branches/* =
 }
 
 void
-panda::GenReweight::doInit_()
+suep::GenReweight::doInit_()
 {
   r1f2DW = 0.;
   r1f5DW = 0.;
@@ -128,8 +128,8 @@ panda::GenReweight::doInit_()
   /* END CUSTOM */
 }
 
-panda::utils::BranchList
-panda::GenReweight::doGetBranchNames_(Bool_t _fullName) const
+suep::utils::BranchList
+suep::GenReweight::doGetBranchNames_(Bool_t _fullName) const
 {
   if (_fullName)
     return getListOfBranches().fullNames(name_);
@@ -138,7 +138,7 @@ panda::GenReweight::doGetBranchNames_(Bool_t _fullName) const
 }
 
 void
-panda::GenReweight::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
+suep::GenReweight::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
 {
   /* BEGIN CUSTOM GenReweight.cc.print */
   dump(_out);
@@ -146,7 +146,7 @@ panda::GenReweight::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 
 }
 
 void
-panda::GenReweight::dump(std::ostream& _out/* = std::cout*/) const
+suep::GenReweight::dump(std::ostream& _out/* = std::cout*/) const
 {
   _out << "r1f2DW = " << r1f2DW << std::endl;
   _out << "r1f5DW = " << r1f5DW << std::endl;

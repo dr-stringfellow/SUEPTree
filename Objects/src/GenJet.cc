@@ -1,8 +1,8 @@
 #include "../interface/GenJet.h"
 
 /*static*/
-panda::utils::BranchList
-panda::GenJet::getListOfBranches()
+suep::utils::BranchList
+suep::GenJet::getListOfBranches()
 {
   utils::BranchList blist;
   blist += ParticleM::getListOfBranches();
@@ -11,7 +11,7 @@ panda::GenJet::getListOfBranches()
 }
 
 void
-panda::GenJet::datastore::allocate(UInt_t _nmax)
+suep::GenJet::datastore::allocate(UInt_t _nmax)
 {
   ParticleM::datastore::allocate(_nmax);
 
@@ -24,7 +24,7 @@ panda::GenJet::datastore::allocate(UInt_t _nmax)
 }
 
 void
-panda::GenJet::datastore::deallocate()
+suep::GenJet::datastore::deallocate()
 {
   ParticleM::datastore::deallocate();
 
@@ -43,7 +43,7 @@ panda::GenJet::datastore::deallocate()
 }
 
 void
-panda::GenJet::datastore::setStatus(TTree& _tree, TString const& _name, utils::BranchList const& _branches)
+suep::GenJet::datastore::setStatus(TTree& _tree, TString const& _name, utils::BranchList const& _branches)
 {
   ParticleM::datastore::setStatus(_tree, _name, _branches);
 
@@ -55,8 +55,8 @@ panda::GenJet::datastore::setStatus(TTree& _tree, TString const& _name, utils::B
   utils::setStatus(_tree, _name, "matchedCHadrons_", _branches);
 }
 
-panda::utils::BranchList
-panda::GenJet::datastore::getStatus(TTree& _tree, TString const& _name) const
+suep::utils::BranchList
+suep::GenJet::datastore::getStatus(TTree& _tree, TString const& _name) const
 {
   utils::BranchList blist(ParticleM::datastore::getStatus(_tree, _name));
 
@@ -71,7 +71,7 @@ panda::GenJet::datastore::getStatus(TTree& _tree, TString const& _name) const
 }
 
 void
-panda::GenJet::datastore::setAddress(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _setStatus/* = kTRUE*/)
+suep::GenJet::datastore::setAddress(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _setStatus/* = kTRUE*/)
 {
   ParticleM::datastore::setAddress(_tree, _name, _branches, _setStatus);
 
@@ -84,7 +84,7 @@ panda::GenJet::datastore::setAddress(TTree& _tree, TString const& _name, utils::
 }
 
 void
-panda::GenJet::datastore::book(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _dynamic/* = kTRUE*/)
+suep::GenJet::datastore::book(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _dynamic/* = kTRUE*/)
 {
   ParticleM::datastore::book(_tree, _name, _branches, _dynamic);
 
@@ -99,7 +99,7 @@ panda::GenJet::datastore::book(TTree& _tree, TString const& _name, utils::Branch
 }
 
 void
-panda::GenJet::datastore::releaseTree(TTree& _tree, TString const& _name)
+suep::GenJet::datastore::releaseTree(TTree& _tree, TString const& _name)
 {
   ParticleM::datastore::releaseTree(_tree, _name);
 
@@ -112,7 +112,7 @@ panda::GenJet::datastore::releaseTree(TTree& _tree, TString const& _name)
 }
 
 void
-panda::GenJet::datastore::resizeVectors_(UInt_t _size)
+suep::GenJet::datastore::resizeVectors_(UInt_t _size)
 {
   ParticleM::datastore::resizeVectors_(_size);
 
@@ -121,13 +121,13 @@ panda::GenJet::datastore::resizeVectors_(UInt_t _size)
 }
 
 
-panda::utils::BranchList
-panda::GenJet::datastore::getBranchNames(TString const& _name/* = ""*/) const
+suep::utils::BranchList
+suep::GenJet::datastore::getBranchNames(TString const& _name/* = ""*/) const
 {
   return GenJet::getListOfBranches().fullNames(_name);
 }
 
-panda::GenJet::GenJet(char const* _name/* = ""*/) :
+suep::GenJet::GenJet(char const* _name/* = ""*/) :
   ParticleM(new GenJetArray(1, _name)),
   pdgid(gStore.getData(this).pdgid[0]),
   partonFlavor(gStore.getData(this).partonFlavor[0]),
@@ -138,7 +138,7 @@ panda::GenJet::GenJet(char const* _name/* = ""*/) :
 {
 }
 
-panda::GenJet::GenJet(GenJet const& _src) :
+suep::GenJet::GenJet(GenJet const& _src) :
   ParticleM(new GenJetArray(1, _src.getName())),
   pdgid(gStore.getData(this).pdgid[0]),
   partonFlavor(gStore.getData(this).partonFlavor[0]),
@@ -150,7 +150,7 @@ panda::GenJet::GenJet(GenJet const& _src) :
   operator=(_src);
 }
 
-panda::GenJet::GenJet(datastore& _data, UInt_t _idx) :
+suep::GenJet::GenJet(datastore& _data, UInt_t _idx) :
   ParticleM(_data, _idx),
   pdgid(_data.pdgid[_idx]),
   partonFlavor(_data.partonFlavor[_idx]),
@@ -161,7 +161,7 @@ panda::GenJet::GenJet(datastore& _data, UInt_t _idx) :
 {
 }
 
-panda::GenJet::GenJet(ArrayBase* _array) :
+suep::GenJet::GenJet(ArrayBase* _array) :
   ParticleM(_array),
   pdgid(gStore.getData(this).pdgid[0]),
   partonFlavor(gStore.getData(this).partonFlavor[0]),
@@ -172,13 +172,13 @@ panda::GenJet::GenJet(ArrayBase* _array) :
 {
 }
 
-panda::GenJet::~GenJet()
+suep::GenJet::~GenJet()
 {
   destructor();
 }
 
 void
-panda::GenJet::destructor(Bool_t _recursive/* = kFALSE*/)
+suep::GenJet::destructor(Bool_t _recursive/* = kFALSE*/)
 {
   /* BEGIN CUSTOM GenJet.cc.destructor */
   /* END CUSTOM */
@@ -187,8 +187,8 @@ panda::GenJet::destructor(Bool_t _recursive/* = kFALSE*/)
     ParticleM::destructor(kTRUE);
 }
 
-panda::GenJet&
-panda::GenJet::operator=(GenJet const& _src)
+suep::GenJet&
+suep::GenJet::operator=(GenJet const& _src)
 {
   ParticleM::operator=(_src);
 
@@ -206,7 +206,7 @@ panda::GenJet::operator=(GenJet const& _src)
 }
 
 void
-panda::GenJet::doBook_(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/)
+suep::GenJet::doBook_(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/)
 {
   ParticleM::doBook_(_tree, _name, _branches);
 
@@ -219,7 +219,7 @@ panda::GenJet::doBook_(TTree& _tree, TString const& _name, utils::BranchList con
 }
 
 void
-panda::GenJet::doInit_()
+suep::GenJet::doInit_()
 {
   ParticleM::doInit_();
 
@@ -235,7 +235,7 @@ panda::GenJet::doInit_()
 }
 
 void
-panda::GenJet::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
+suep::GenJet::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
 {
   /* BEGIN CUSTOM GenJet.cc.print */
   dump(_out);
@@ -243,7 +243,7 @@ panda::GenJet::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) 
 }
 
 void
-panda::GenJet::dump(std::ostream& _out/* = std::cout*/) const
+suep::GenJet::dump(std::ostream& _out/* = std::cout*/) const
 {
   ParticleM::dump(_out);
 

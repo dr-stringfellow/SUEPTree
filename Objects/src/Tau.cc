@@ -1,8 +1,8 @@
 #include "../interface/Tau.h"
 
 /*static*/
-panda::utils::BranchList
-panda::Tau::getListOfBranches()
+suep::utils::BranchList
+suep::Tau::getListOfBranches()
 {
   utils::BranchList blist;
   blist += ParticleM::getListOfBranches();
@@ -11,7 +11,7 @@ panda::Tau::getListOfBranches()
 }
 
 void
-panda::Tau::datastore::allocate(UInt_t _nmax)
+suep::Tau::datastore::allocate(UInt_t _nmax)
 {
   ParticleM::datastore::allocate(_nmax);
 
@@ -27,7 +27,7 @@ panda::Tau::datastore::allocate(UInt_t _nmax)
 }
 
 void
-panda::Tau::datastore::deallocate()
+suep::Tau::datastore::deallocate()
 {
   ParticleM::datastore::deallocate();
 
@@ -52,7 +52,7 @@ panda::Tau::datastore::deallocate()
 }
 
 void
-panda::Tau::datastore::setStatus(TTree& _tree, TString const& _name, utils::BranchList const& _branches)
+suep::Tau::datastore::setStatus(TTree& _tree, TString const& _name, utils::BranchList const& _branches)
 {
   ParticleM::datastore::setStatus(_tree, _name, _branches);
 
@@ -67,8 +67,8 @@ panda::Tau::datastore::setStatus(TTree& _tree, TString const& _name, utils::Bran
   utils::setStatus(_tree, _name, "matchedGen_", _branches);
 }
 
-panda::utils::BranchList
-panda::Tau::datastore::getStatus(TTree& _tree, TString const& _name) const
+suep::utils::BranchList
+suep::Tau::datastore::getStatus(TTree& _tree, TString const& _name) const
 {
   utils::BranchList blist(ParticleM::datastore::getStatus(_tree, _name));
 
@@ -86,7 +86,7 @@ panda::Tau::datastore::getStatus(TTree& _tree, TString const& _name) const
 }
 
 void
-panda::Tau::datastore::setAddress(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _setStatus/* = kTRUE*/)
+suep::Tau::datastore::setAddress(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _setStatus/* = kTRUE*/)
 {
   ParticleM::datastore::setAddress(_tree, _name, _branches, _setStatus);
 
@@ -102,7 +102,7 @@ panda::Tau::datastore::setAddress(TTree& _tree, TString const& _name, utils::Bra
 }
 
 void
-panda::Tau::datastore::book(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _dynamic/* = kTRUE*/)
+suep::Tau::datastore::book(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _dynamic/* = kTRUE*/)
 {
   ParticleM::datastore::book(_tree, _name, _branches, _dynamic);
 
@@ -120,7 +120,7 @@ panda::Tau::datastore::book(TTree& _tree, TString const& _name, utils::BranchLis
 }
 
 void
-panda::Tau::datastore::releaseTree(TTree& _tree, TString const& _name)
+suep::Tau::datastore::releaseTree(TTree& _tree, TString const& _name)
 {
   ParticleM::datastore::releaseTree(_tree, _name);
 
@@ -136,20 +136,20 @@ panda::Tau::datastore::releaseTree(TTree& _tree, TString const& _name)
 }
 
 void
-panda::Tau::datastore::resizeVectors_(UInt_t _size)
+suep::Tau::datastore::resizeVectors_(UInt_t _size)
 {
   ParticleM::datastore::resizeVectors_(_size);
 
 }
 
 
-panda::utils::BranchList
-panda::Tau::datastore::getBranchNames(TString const& _name/* = ""*/) const
+suep::utils::BranchList
+suep::Tau::datastore::getBranchNames(TString const& _name/* = ""*/) const
 {
   return Tau::getListOfBranches().fullNames(_name);
 }
 
-panda::Tau::Tau(char const* _name/* = ""*/) :
+suep::Tau::Tau(char const* _name/* = ""*/) :
   ParticleM(new TauArray(1, _name)),
   charge(gStore.getData(this).charge[0]),
   decayMode(gStore.getData(this).decayMode[0]),
@@ -163,7 +163,7 @@ panda::Tau::Tau(char const* _name/* = ""*/) :
 {
 }
 
-panda::Tau::Tau(Tau const& _src) :
+suep::Tau::Tau(Tau const& _src) :
   ParticleM(new TauArray(1, _src.getName())),
   charge(gStore.getData(this).charge[0]),
   decayMode(gStore.getData(this).decayMode[0]),
@@ -178,7 +178,7 @@ panda::Tau::Tau(Tau const& _src) :
   operator=(_src);
 }
 
-panda::Tau::Tau(datastore& _data, UInt_t _idx) :
+suep::Tau::Tau(datastore& _data, UInt_t _idx) :
   ParticleM(_data, _idx),
   charge(_data.charge[_idx]),
   decayMode(_data.decayMode[_idx]),
@@ -192,7 +192,7 @@ panda::Tau::Tau(datastore& _data, UInt_t _idx) :
 {
 }
 
-panda::Tau::Tau(ArrayBase* _array) :
+suep::Tau::Tau(ArrayBase* _array) :
   ParticleM(_array),
   charge(gStore.getData(this).charge[0]),
   decayMode(gStore.getData(this).decayMode[0]),
@@ -206,13 +206,13 @@ panda::Tau::Tau(ArrayBase* _array) :
 {
 }
 
-panda::Tau::~Tau()
+suep::Tau::~Tau()
 {
   destructor();
 }
 
 void
-panda::Tau::destructor(Bool_t _recursive/* = kFALSE*/)
+suep::Tau::destructor(Bool_t _recursive/* = kFALSE*/)
 {
   /* BEGIN CUSTOM Tau.cc.destructor */
   /* END CUSTOM */
@@ -221,8 +221,8 @@ panda::Tau::destructor(Bool_t _recursive/* = kFALSE*/)
     ParticleM::destructor(kTRUE);
 }
 
-panda::Tau&
-panda::Tau::operator=(Tau const& _src)
+suep::Tau&
+suep::Tau::operator=(Tau const& _src)
 {
   ParticleM::operator=(_src);
 
@@ -243,7 +243,7 @@ panda::Tau::operator=(Tau const& _src)
 }
 
 void
-panda::Tau::doBook_(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/)
+suep::Tau::doBook_(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/)
 {
   ParticleM::doBook_(_tree, _name, _branches);
 
@@ -259,7 +259,7 @@ panda::Tau::doBook_(TTree& _tree, TString const& _name, utils::BranchList const&
 }
 
 void
-panda::Tau::doInit_()
+suep::Tau::doInit_()
 {
   ParticleM::doInit_();
 
@@ -278,7 +278,7 @@ panda::Tau::doInit_()
 }
 
 void
-panda::Tau::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
+suep::Tau::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
 {
   /* BEGIN CUSTOM Tau.cc.print */
   dump(_out);
@@ -286,7 +286,7 @@ panda::Tau::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) con
 }
 
 void
-panda::Tau::dump(std::ostream& _out/* = std::cout*/) const
+suep::Tau::dump(std::ostream& _out/* = std::cout*/) const
 {
   ParticleM::dump(_out);
 

@@ -1,8 +1,8 @@
 #include "../interface/SuperCluster.h"
 
 /*static*/
-panda::utils::BranchList
-panda::SuperCluster::getListOfBranches()
+suep::utils::BranchList
+suep::SuperCluster::getListOfBranches()
 {
   utils::BranchList blist;
   blist += {"rawPt", "eta", "phi"};
@@ -10,7 +10,7 @@ panda::SuperCluster::getListOfBranches()
 }
 
 void
-panda::SuperCluster::datastore::allocate(UInt_t _nmax)
+suep::SuperCluster::datastore::allocate(UInt_t _nmax)
 {
   Element::datastore::allocate(_nmax);
 
@@ -20,7 +20,7 @@ panda::SuperCluster::datastore::allocate(UInt_t _nmax)
 }
 
 void
-panda::SuperCluster::datastore::deallocate()
+suep::SuperCluster::datastore::deallocate()
 {
   Element::datastore::deallocate();
 
@@ -33,7 +33,7 @@ panda::SuperCluster::datastore::deallocate()
 }
 
 void
-panda::SuperCluster::datastore::setStatus(TTree& _tree, TString const& _name, utils::BranchList const& _branches)
+suep::SuperCluster::datastore::setStatus(TTree& _tree, TString const& _name, utils::BranchList const& _branches)
 {
   Element::datastore::setStatus(_tree, _name, _branches);
 
@@ -42,8 +42,8 @@ panda::SuperCluster::datastore::setStatus(TTree& _tree, TString const& _name, ut
   utils::setStatus(_tree, _name, "phi", _branches);
 }
 
-panda::utils::BranchList
-panda::SuperCluster::datastore::getStatus(TTree& _tree, TString const& _name) const
+suep::utils::BranchList
+suep::SuperCluster::datastore::getStatus(TTree& _tree, TString const& _name) const
 {
   utils::BranchList blist(Element::datastore::getStatus(_tree, _name));
 
@@ -55,7 +55,7 @@ panda::SuperCluster::datastore::getStatus(TTree& _tree, TString const& _name) co
 }
 
 void
-panda::SuperCluster::datastore::setAddress(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _setStatus/* = kTRUE*/)
+suep::SuperCluster::datastore::setAddress(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _setStatus/* = kTRUE*/)
 {
   Element::datastore::setAddress(_tree, _name, _branches, _setStatus);
 
@@ -65,7 +65,7 @@ panda::SuperCluster::datastore::setAddress(TTree& _tree, TString const& _name, u
 }
 
 void
-panda::SuperCluster::datastore::book(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _dynamic/* = kTRUE*/)
+suep::SuperCluster::datastore::book(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _dynamic/* = kTRUE*/)
 {
   Element::datastore::book(_tree, _name, _branches, _dynamic);
 
@@ -77,7 +77,7 @@ panda::SuperCluster::datastore::book(TTree& _tree, TString const& _name, utils::
 }
 
 void
-panda::SuperCluster::datastore::releaseTree(TTree& _tree, TString const& _name)
+suep::SuperCluster::datastore::releaseTree(TTree& _tree, TString const& _name)
 {
   Element::datastore::releaseTree(_tree, _name);
 
@@ -87,20 +87,20 @@ panda::SuperCluster::datastore::releaseTree(TTree& _tree, TString const& _name)
 }
 
 void
-panda::SuperCluster::datastore::resizeVectors_(UInt_t _size)
+suep::SuperCluster::datastore::resizeVectors_(UInt_t _size)
 {
   Element::datastore::resizeVectors_(_size);
 
 }
 
 
-panda::utils::BranchList
-panda::SuperCluster::datastore::getBranchNames(TString const& _name/* = ""*/) const
+suep::utils::BranchList
+suep::SuperCluster::datastore::getBranchNames(TString const& _name/* = ""*/) const
 {
   return SuperCluster::getListOfBranches().fullNames(_name);
 }
 
-panda::SuperCluster::SuperCluster(char const* _name/* = ""*/) :
+suep::SuperCluster::SuperCluster(char const* _name/* = ""*/) :
   Element(new SuperClusterArray(1, _name)),
   rawPt(gStore.getData(this).rawPt[0]),
   eta(gStore.getData(this).eta[0]),
@@ -108,7 +108,7 @@ panda::SuperCluster::SuperCluster(char const* _name/* = ""*/) :
 {
 }
 
-panda::SuperCluster::SuperCluster(SuperCluster const& _src) :
+suep::SuperCluster::SuperCluster(SuperCluster const& _src) :
   Element(new SuperClusterArray(1, _src.getName())),
   rawPt(gStore.getData(this).rawPt[0]),
   eta(gStore.getData(this).eta[0]),
@@ -117,7 +117,7 @@ panda::SuperCluster::SuperCluster(SuperCluster const& _src) :
   operator=(_src);
 }
 
-panda::SuperCluster::SuperCluster(datastore& _data, UInt_t _idx) :
+suep::SuperCluster::SuperCluster(datastore& _data, UInt_t _idx) :
   Element(_data, _idx),
   rawPt(_data.rawPt[_idx]),
   eta(_data.eta[_idx]),
@@ -125,7 +125,7 @@ panda::SuperCluster::SuperCluster(datastore& _data, UInt_t _idx) :
 {
 }
 
-panda::SuperCluster::SuperCluster(ArrayBase* _array) :
+suep::SuperCluster::SuperCluster(ArrayBase* _array) :
   Element(_array),
   rawPt(gStore.getData(this).rawPt[0]),
   eta(gStore.getData(this).eta[0]),
@@ -133,20 +133,20 @@ panda::SuperCluster::SuperCluster(ArrayBase* _array) :
 {
 }
 
-panda::SuperCluster::~SuperCluster()
+suep::SuperCluster::~SuperCluster()
 {
   destructor();
 }
 
 void
-panda::SuperCluster::destructor(Bool_t _recursive/* = kFALSE*/)
+suep::SuperCluster::destructor(Bool_t _recursive/* = kFALSE*/)
 {
   /* BEGIN CUSTOM SuperCluster.cc.destructor */
   /* END CUSTOM */
 }
 
-panda::SuperCluster&
-panda::SuperCluster::operator=(SuperCluster const& _src)
+suep::SuperCluster&
+suep::SuperCluster::operator=(SuperCluster const& _src)
 {
   rawPt = _src.rawPt;
   eta = _src.eta;
@@ -159,7 +159,7 @@ panda::SuperCluster::operator=(SuperCluster const& _src)
 }
 
 void
-panda::SuperCluster::doBook_(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/)
+suep::SuperCluster::doBook_(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/)
 {
   utils::book(_tree, _name, "rawPt", "", 'F', &rawPt, _branches);
   utils::book(_tree, _name, "eta", "", 'F', &eta, _branches);
@@ -167,7 +167,7 @@ panda::SuperCluster::doBook_(TTree& _tree, TString const& _name, utils::BranchLi
 }
 
 void
-panda::SuperCluster::doInit_()
+suep::SuperCluster::doInit_()
 {
   rawPt = 0.;
   eta = 0.;
@@ -178,7 +178,7 @@ panda::SuperCluster::doInit_()
 }
 
 void
-panda::SuperCluster::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
+suep::SuperCluster::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
 {
   /* BEGIN CUSTOM SuperCluster.cc.print */
   dump(_out);
@@ -186,7 +186,7 @@ panda::SuperCluster::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* =
 }
 
 void
-panda::SuperCluster::dump(std::ostream& _out/* = std::cout*/) const
+suep::SuperCluster::dump(std::ostream& _out/* = std::cout*/) const
 {
   _out << "rawPt = " << rawPt << std::endl;
   _out << "eta = " << eta << std::endl;

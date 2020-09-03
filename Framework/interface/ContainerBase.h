@@ -10,7 +10,7 @@
 #include <vector>
 #include <functional>
 
-namespace panda {
+namespace suep {
   //! Base class for all containers.
   /*!
    * SUEP containers can be Array (fixed size) or Collection (dynamic size). Both inherit from ContainerBase.

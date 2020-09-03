@@ -1,8 +1,8 @@
 #include "../interface/PFCand.h"
 
 /*static*/
-panda::utils::BranchList
-panda::PFCand::getListOfBranches()
+suep::utils::BranchList
+suep::PFCand::getListOfBranches()
 {
   utils::BranchList blist;
   blist += PFCandBase::getListOfBranches();
@@ -12,7 +12,7 @@ panda::PFCand::getListOfBranches()
 }
 
 void
-panda::PFCand::datastore::allocate(UInt_t _nmax)
+suep::PFCand::datastore::allocate(UInt_t _nmax)
 {
   PFCandBase::datastore::allocate(_nmax);
 
@@ -25,7 +25,7 @@ panda::PFCand::datastore::allocate(UInt_t _nmax)
 }
 
 void
-panda::PFCand::datastore::deallocate()
+suep::PFCand::datastore::deallocate()
 {
   PFCandBase::datastore::deallocate();
 
@@ -44,7 +44,7 @@ panda::PFCand::datastore::deallocate()
 }
 
 void
-panda::PFCand::datastore::setStatus(TTree& _tree, TString const& _name, utils::BranchList const& _branches)
+suep::PFCand::datastore::setStatus(TTree& _tree, TString const& _name, utils::BranchList const& _branches)
 {
   PFCandBase::datastore::setStatus(_tree, _name, _branches);
 
@@ -56,8 +56,8 @@ panda::PFCand::datastore::setStatus(TTree& _tree, TString const& _name, utils::B
   utils::setStatus(_tree, _name, "packedPuppiWNoLepDiff", _branches);
 }
 
-panda::utils::BranchList
-panda::PFCand::datastore::getStatus(TTree& _tree, TString const& _name) const
+suep::utils::BranchList
+suep::PFCand::datastore::getStatus(TTree& _tree, TString const& _name) const
 {
   utils::BranchList blist(PFCandBase::datastore::getStatus(_tree, _name));
 
@@ -72,7 +72,7 @@ panda::PFCand::datastore::getStatus(TTree& _tree, TString const& _name) const
 }
 
 void
-panda::PFCand::datastore::setAddress(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _setStatus/* = kTRUE*/)
+suep::PFCand::datastore::setAddress(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _setStatus/* = kTRUE*/)
 {
   PFCandBase::datastore::setAddress(_tree, _name, _branches, _setStatus);
 
@@ -85,7 +85,7 @@ panda::PFCand::datastore::setAddress(TTree& _tree, TString const& _name, utils::
 }
 
 void
-panda::PFCand::datastore::book(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _dynamic/* = kTRUE*/)
+suep::PFCand::datastore::book(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _dynamic/* = kTRUE*/)
 {
   PFCandBase::datastore::book(_tree, _name, _branches, _dynamic);
 
@@ -100,7 +100,7 @@ panda::PFCand::datastore::book(TTree& _tree, TString const& _name, utils::Branch
 }
 
 void
-panda::PFCand::datastore::releaseTree(TTree& _tree, TString const& _name)
+suep::PFCand::datastore::releaseTree(TTree& _tree, TString const& _name)
 {
   PFCandBase::datastore::releaseTree(_tree, _name);
 
@@ -113,20 +113,20 @@ panda::PFCand::datastore::releaseTree(TTree& _tree, TString const& _name)
 }
 
 void
-panda::PFCand::datastore::resizeVectors_(UInt_t _size)
+suep::PFCand::datastore::resizeVectors_(UInt_t _size)
 {
   PFCandBase::datastore::resizeVectors_(_size);
 
 }
 
 
-panda::utils::BranchList
-panda::PFCand::datastore::getBranchNames(TString const& _name/* = ""*/) const
+suep::utils::BranchList
+suep::PFCand::datastore::getBranchNames(TString const& _name/* = ""*/) const
 {
   return PFCand::getListOfBranches().fullNames(_name);
 }
 
-panda::PFCand::PFCand(char const* _name/* = ""*/) :
+suep::PFCand::PFCand(char const* _name/* = ""*/) :
   PFCandBase(new PFCandArray(1, _name)),
   PackedMomentumMixin(gStore.getData(this), 0),
   packedPuppiW(gStore.getData(this).packedPuppiW[0]),
@@ -134,7 +134,7 @@ panda::PFCand::PFCand(char const* _name/* = ""*/) :
 {
 }
 
-panda::PFCand::PFCand(PFCand const& _src) :
+suep::PFCand::PFCand(PFCand const& _src) :
   PFCandBase(new PFCandArray(1, _src.getName())),
   PackedMomentumMixin(gStore.getData(this), 0),
   packedPuppiW(gStore.getData(this).packedPuppiW[0]),
@@ -143,7 +143,7 @@ panda::PFCand::PFCand(PFCand const& _src) :
   operator=(_src);
 }
 
-panda::PFCand::PFCand(datastore& _data, UInt_t _idx) :
+suep::PFCand::PFCand(datastore& _data, UInt_t _idx) :
   PFCandBase(_data, _idx),
   PackedMomentumMixin(_data, _idx),
   packedPuppiW(_data.packedPuppiW[_idx]),
@@ -151,7 +151,7 @@ panda::PFCand::PFCand(datastore& _data, UInt_t _idx) :
 {
 }
 
-panda::PFCand::PFCand(ArrayBase* _array) :
+suep::PFCand::PFCand(ArrayBase* _array) :
   PFCandBase(_array),
   PackedMomentumMixin(gStore.getData(this), 0),
   packedPuppiW(gStore.getData(this).packedPuppiW[0]),
@@ -159,13 +159,13 @@ panda::PFCand::PFCand(ArrayBase* _array) :
 {
 }
 
-panda::PFCand::~PFCand()
+suep::PFCand::~PFCand()
 {
   destructor();
 }
 
 void
-panda::PFCand::destructor(Bool_t _recursive/* = kFALSE*/)
+suep::PFCand::destructor(Bool_t _recursive/* = kFALSE*/)
 {
   /* BEGIN CUSTOM PFCand.cc.destructor */
   /* END CUSTOM */
@@ -174,8 +174,8 @@ panda::PFCand::destructor(Bool_t _recursive/* = kFALSE*/)
     PFCandBase::destructor(kTRUE);
 }
 
-panda::PFCand&
-panda::PFCand::operator=(PFCand const& _src)
+suep::PFCand&
+suep::PFCand::operator=(PFCand const& _src)
 {
   PFCandBase::operator=(_src);
 
@@ -193,7 +193,7 @@ panda::PFCand::operator=(PFCand const& _src)
 }
 
 void
-panda::PFCand::doBook_(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/)
+suep::PFCand::doBook_(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/)
 {
   PFCandBase::doBook_(_tree, _name, _branches);
 
@@ -206,7 +206,7 @@ panda::PFCand::doBook_(TTree& _tree, TString const& _name, utils::BranchList con
 }
 
 void
-panda::PFCand::doInit_()
+suep::PFCand::doInit_()
 {
   PFCandBase::doInit_();
 
@@ -222,7 +222,7 @@ panda::PFCand::doInit_()
 }
 
 void
-panda::PFCand::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
+suep::PFCand::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
 {
   /* BEGIN CUSTOM PFCand.cc.print */
   dump(_out);
@@ -230,7 +230,7 @@ panda::PFCand::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) 
 }
 
 void
-panda::PFCand::dump(std::ostream& _out/* = std::cout*/) const
+suep::PFCand::dump(std::ostream& _out/* = std::cout*/) const
 {
   PFCandBase::dump(_out);
 
@@ -247,14 +247,14 @@ panda::PFCand::dump(std::ostream& _out/* = std::cout*/) const
 #include "../interface/PackingHelper.h"
 
 void
-panda::PFCand::packWeights_()
+suep::PFCand::packWeights_()
 {
   packedPuppiW = PackingHelper::singleton().pack8LogBound((puppiW_ - 0.5) * 2., -2., 0., 64);
   packedPuppiWNoLepDiff = PackingHelper::singleton().pack8LogBound((puppiWNoLep_ - 0.5) * 2., -2., 0., 64) - packedPuppiW;
 }
 
 void
-panda::PFCand::unpackWeights_() const
+suep::PFCand::unpackWeights_() const
 {
   puppiW_ = PackingHelper::singleton().unpack8LogBound(packedPuppiW, -2., 0., 64) * 0.5 + 0.5;
   puppiWNoLep_ = PackingHelper::singleton().unpack8LogBound(packedPuppiWNoLepDiff + packedPuppiW, -2., 0., 64) * 0.5 + 0.5;
@@ -262,8 +262,8 @@ panda::PFCand::unpackWeights_() const
 
 #include "../interface/UnpackedPFCand.h"
 
-panda::PFCand&
-panda::PFCand::operator=(UnpackedPFCand const& _rhs)
+suep::PFCand&
+suep::PFCand::operator=(UnpackedPFCand const& _rhs)
 {
   PFCandBase::operator=(static_cast<PFCandBase const&>(_rhs));
   setPtEtaPhiM(_rhs.pt(), _rhs.eta(), _rhs.phi(), _rhs.m());

@@ -6,7 +6,7 @@
 
 #include <map>
 
-namespace panda {
+namespace suep {
 
   class ContainerBase;
   class ArrayBase;

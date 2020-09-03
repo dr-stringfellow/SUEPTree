@@ -1,9 +1,9 @@
 #include "../interface/HLTObjectStore.h"
 
 /*static*/
-panda::HLTObjectStore::HLTObjectVector const panda::HLTObjectStore::emptyVector_{};
+suep::HLTObjectStore::HLTObjectVector const suep::HLTObjectStore::emptyVector_{};
 
-panda::HLTObjectStore::HLTObjectStore(HLTObjectStore const& _src) :
+suep::HLTObjectStore::HLTObjectStore(HLTObjectStore const& _src) :
   HLTObjectCollection(_src)
 {
   nameToSlot_ = _src.nameToSlot_;
@@ -16,8 +16,8 @@ panda::HLTObjectStore::HLTObjectStore(HLTObjectStore const& _src) :
   }
 }
 
-panda::HLTObjectStore&
-panda::HLTObjectStore::operator=(HLTObjectStore const& _rhs)
+suep::HLTObjectStore&
+suep::HLTObjectStore::operator=(HLTObjectStore const& _rhs)
 {
   HLTObjectCollection::operator=(_rhs);
 
@@ -35,7 +35,7 @@ panda::HLTObjectStore::operator=(HLTObjectStore const& _rhs)
 }
 
 void
-panda::HLTObjectStore::setFilterObjectKeys(std::vector<TString> const& _filters)
+suep::HLTObjectStore::setFilterObjectKeys(std::vector<TString> const& _filters)
 {
   nameToSlot_.clear();
 
@@ -72,7 +72,7 @@ panda::HLTObjectStore::setFilterObjectKeys(std::vector<TString> const& _filters)
 }
 
 void
-panda::HLTObjectStore::makeMap()
+suep::HLTObjectStore::makeMap()
 {
   for (auto& objv : objectVectors_)
     objv.clear();
@@ -89,8 +89,8 @@ panda::HLTObjectStore::makeMap()
   }
 }
 
-panda::HLTObjectStore::HLTObjectVector const&
-panda::HLTObjectStore::filterObjects(char const* _filter) const
+suep::HLTObjectStore::HLTObjectVector const&
+suep::HLTObjectStore::filterObjects(char const* _filter) const
 {
   if (nameToSlot_.empty()) {
     std::cerr << "  HLTObjectStore has no filter objects. Store is filled by a call to makeMap(),"

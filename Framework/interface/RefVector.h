@@ -7,7 +7,7 @@
 #include <stdexcept>
 #include <vector>
 
-namespace panda {
+namespace suep {
 
   //! A vector of references to elements in a container.
   /*!
@@ -288,7 +288,7 @@ namespace panda {
 }
 
 template<class E>
-std::ostream& operator<<(std::ostream& _out, panda::RefVector<E> const& _ref)
+std::ostream& operator<<(std::ostream& _out, suep::RefVector<E> const& _ref)
 {
   _out << "RefVector<" << E::typeName() << ">";
   if (_ref.isValid())

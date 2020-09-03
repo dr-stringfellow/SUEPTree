@@ -1,6 +1,6 @@
 #include "../interface/EventTPMG.h"
 
-panda::EventTPMG::EventTPMG() :
+suep::EventTPMG::EventTPMG() :
   EventTP()
 {
   std::vector<Object*> myObjects{{&tags, &probes}};
@@ -11,7 +11,7 @@ panda::EventTPMG::EventTPMG() :
   /* END CUSTOM */
 }
 
-panda::EventTPMG::EventTPMG(EventTPMG const& _src) :
+suep::EventTPMG::EventTPMG(EventTPMG const& _src) :
   EventTP(_src),
   tags(_src.tags),
   probes(_src.probes)
@@ -24,14 +24,14 @@ panda::EventTPMG::EventTPMG(EventTPMG const& _src) :
   /* END CUSTOM */
 }
 
-panda::EventTPMG::~EventTPMG()
+suep::EventTPMG::~EventTPMG()
 {
   /* BEGIN CUSTOM EventTPMG.cc.dtor */
   /* END CUSTOM */
 }
 
-panda::EventTPMG&
-panda::EventTPMG::operator=(EventTPMG const& _src)
+suep::EventTPMG&
+suep::EventTPMG::operator=(EventTPMG const& _src)
 {
   EventTP::operator=(_src);
 
@@ -45,7 +45,7 @@ panda::EventTPMG::operator=(EventTPMG const& _src)
 }
 
 void
-panda::EventTPMG::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
+suep::EventTPMG::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
 {
   /* BEGIN CUSTOM EventTPMG.cc.print */
   dump(_out);
@@ -53,7 +53,7 @@ panda::EventTPMG::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*
 }
 
 void
-panda::EventTPMG::dump(std::ostream& _out/* = std::cout*/) const
+suep::EventTPMG::dump(std::ostream& _out/* = std::cout*/) const
 {
   EventTP::dump(_out);
 
@@ -62,8 +62,8 @@ panda::EventTPMG::dump(std::ostream& _out/* = std::cout*/) const
 
 }
 /*static*/
-panda::utils::BranchList
-panda::EventTPMG::getListOfBranches(Bool_t _direct/* = kFALSE*/)
+suep::utils::BranchList
+suep::EventTPMG::getListOfBranches(Bool_t _direct/* = kFALSE*/)
 {
   utils::BranchList blist;
   blist += EventTP::getListOfBranches(_direct);
@@ -80,14 +80,14 @@ panda::EventTPMG::getListOfBranches(Bool_t _direct/* = kFALSE*/)
 
 /*protected*/
 void
-panda::EventTPMG::doSetStatus_(TTree& _tree, utils::BranchList const& _branches)
+suep::EventTPMG::doSetStatus_(TTree& _tree, utils::BranchList const& _branches)
 {
   EventTP::doSetStatus_(_tree, _branches);
 }
 
 /*protected*/
-panda::utils::BranchList
-panda::EventTPMG::doGetStatus_(TTree& _tree) const
+suep::utils::BranchList
+suep::EventTPMG::doGetStatus_(TTree& _tree) const
 {
   utils::BranchList blist;
   blist += EventTP::doGetStatus_(_tree);
@@ -96,15 +96,15 @@ panda::EventTPMG::doGetStatus_(TTree& _tree) const
 }
 
 /*protected*/
-panda::utils::BranchList
-panda::EventTPMG::doGetBranchNames_() const
+suep::utils::BranchList
+suep::EventTPMG::doGetBranchNames_() const
 {
   return getListOfBranches(true);
 }
 
 /*protected*/
 void
-panda::EventTPMG::doSetAddress_(TTree& _tree, utils::BranchList const& _branches, Bool_t _setStatus)
+suep::EventTPMG::doSetAddress_(TTree& _tree, utils::BranchList const& _branches, Bool_t _setStatus)
 {
   EventTP::doSetAddress_(_tree, _branches, _setStatus);
 
@@ -112,7 +112,7 @@ panda::EventTPMG::doSetAddress_(TTree& _tree, utils::BranchList const& _branches
 
 /*protected*/
 void
-panda::EventTPMG::doBook_(TTree& _tree, utils::BranchList const& _branches)
+suep::EventTPMG::doBook_(TTree& _tree, utils::BranchList const& _branches)
 {
   EventTP::doBook_(_tree, _branches);
 
@@ -120,7 +120,7 @@ panda::EventTPMG::doBook_(TTree& _tree, utils::BranchList const& _branches)
 
 /*protected*/
 void
-panda::EventTPMG::doGetEntry_(TTree& _tree)
+suep::EventTPMG::doGetEntry_(TTree& _tree)
 {
   EventTP::doGetEntry_(_tree);
 
@@ -129,7 +129,7 @@ panda::EventTPMG::doGetEntry_(TTree& _tree)
 }
 
 void
-panda::EventTPMG::doInit_()
+suep::EventTPMG::doInit_()
 {
   EventTP::doInit_();
 
@@ -138,7 +138,7 @@ panda::EventTPMG::doInit_()
 }
 
 void
-panda::EventTPMG::doUnlink_(TTree& _tree)
+suep::EventTPMG::doUnlink_(TTree& _tree)
 {
   EventTP::doUnlink_(_tree);
 

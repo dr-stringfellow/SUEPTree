@@ -12,7 +12,7 @@ header = """#ifndef IWILLSEEYOULATER
 #include <cassert>
 #include "SUEPTree/Objects/interface/Event.h"
 
-namespace testpanda {
+namespace testsuep {
 
   template <int P>
   struct plotter {
@@ -24,7 +24,7 @@ template = """
   template <>
   struct plotter <%i> {
     constexpr static const char* name = "%s/%s";
-    std::vector<float> operator () (panda::Event& event) {
+    std::vector<float> operator () (suep::Event& event) {
       %s
       return output;
     }
@@ -93,7 +93,7 @@ def write_header(trees, file_name):
         # We only want to write stuff in 'events' TTree with this tool
         if tree.name in ['Event', 'EventBase']:
 
-            # Plot first branches of single variables in panda::Event (like npv, eventNum, etc.)
+            # Plot first branches of single variables in suep::Event (like npv, eventNum, etc.)
             for plot in plot_set(tree):
                 if plot in parsed_objs:
                     continue

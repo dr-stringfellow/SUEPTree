@@ -3,7 +3,7 @@
 
 #include "Rtypes.h"
 
-namespace panda {
+namespace suep {
 
   class PackingHelper {
   public:

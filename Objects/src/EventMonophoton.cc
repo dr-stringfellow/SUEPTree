@@ -1,6 +1,6 @@
 #include "../interface/EventMonophoton.h"
 
-panda::EventMonophoton::EventMonophoton() :
+suep::EventMonophoton::EventMonophoton() :
   EventBase()
 {
   std::vector<Object*> myObjects{{&genReweight, &pfCandidates, &vertices, &superClusters, &electrons, &muons, &taus, &photons, &jets, &genJets, &genParticles, &t1Met, &rawMet, &caloMet, &metFilters}};
@@ -18,7 +18,7 @@ panda::EventMonophoton::EventMonophoton() :
   /* END CUSTOM */
 }
 
-panda::EventMonophoton::EventMonophoton(EventMonophoton const& _src) :
+suep::EventMonophoton::EventMonophoton(EventMonophoton const& _src) :
   EventBase(_src),
   genReweight(_src.genReweight),
   pfCandidates(_src.pfCandidates),
@@ -54,14 +54,14 @@ panda::EventMonophoton::EventMonophoton(EventMonophoton const& _src) :
   /* END CUSTOM */
 }
 
-panda::EventMonophoton::~EventMonophoton()
+suep::EventMonophoton::~EventMonophoton()
 {
   /* BEGIN CUSTOM EventMonophoton.cc.dtor */
   /* END CUSTOM */
 }
 
-panda::EventMonophoton&
-panda::EventMonophoton::operator=(EventMonophoton const& _src)
+suep::EventMonophoton&
+suep::EventMonophoton::operator=(EventMonophoton const& _src)
 {
   EventBase::operator=(_src);
 
@@ -98,7 +98,7 @@ panda::EventMonophoton::operator=(EventMonophoton const& _src)
 }
 
 void
-panda::EventMonophoton::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
+suep::EventMonophoton::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
 {
   /* BEGIN CUSTOM EventMonophoton.cc.print */
   if (_level >= 3) {
@@ -119,7 +119,7 @@ panda::EventMonophoton::print(std::ostream& _out/* = std::cout*/, UInt_t _level/
 }
 
 void
-panda::EventMonophoton::dump(std::ostream& _out/* = std::cout*/) const
+suep::EventMonophoton::dump(std::ostream& _out/* = std::cout*/) const
 {
   EventBase::dump(_out);
 
@@ -144,8 +144,8 @@ panda::EventMonophoton::dump(std::ostream& _out/* = std::cout*/) const
 
 }
 /*static*/
-panda::utils::BranchList
-panda::EventMonophoton::getListOfBranches(Bool_t _direct/* = kFALSE*/)
+suep::utils::BranchList
+suep::EventMonophoton::getListOfBranches(Bool_t _direct/* = kFALSE*/)
 {
   utils::BranchList blist;
   blist += EventBase::getListOfBranches(_direct);
@@ -175,7 +175,7 @@ panda::EventMonophoton::getListOfBranches(Bool_t _direct/* = kFALSE*/)
 
 /*protected*/
 void
-panda::EventMonophoton::doSetStatus_(TTree& _tree, utils::BranchList const& _branches)
+suep::EventMonophoton::doSetStatus_(TTree& _tree, utils::BranchList const& _branches)
 {
   EventBase::doSetStatus_(_tree, _branches);
   utils::setStatus(_tree, "", "rho", _branches);
@@ -183,8 +183,8 @@ panda::EventMonophoton::doSetStatus_(TTree& _tree, utils::BranchList const& _bra
 }
 
 /*protected*/
-panda::utils::BranchList
-panda::EventMonophoton::doGetStatus_(TTree& _tree) const
+suep::utils::BranchList
+suep::EventMonophoton::doGetStatus_(TTree& _tree) const
 {
   utils::BranchList blist;
   blist += EventBase::doGetStatus_(_tree);
@@ -195,15 +195,15 @@ panda::EventMonophoton::doGetStatus_(TTree& _tree) const
 }
 
 /*protected*/
-panda::utils::BranchList
-panda::EventMonophoton::doGetBranchNames_() const
+suep::utils::BranchList
+suep::EventMonophoton::doGetBranchNames_() const
 {
   return getListOfBranches(true);
 }
 
 /*protected*/
 void
-panda::EventMonophoton::doSetAddress_(TTree& _tree, utils::BranchList const& _branches, Bool_t _setStatus)
+suep::EventMonophoton::doSetAddress_(TTree& _tree, utils::BranchList const& _branches, Bool_t _setStatus)
 {
   EventBase::doSetAddress_(_tree, _branches, _setStatus);
 
@@ -213,7 +213,7 @@ panda::EventMonophoton::doSetAddress_(TTree& _tree, utils::BranchList const& _br
 
 /*protected*/
 void
-panda::EventMonophoton::doBook_(TTree& _tree, utils::BranchList const& _branches)
+suep::EventMonophoton::doBook_(TTree& _tree, utils::BranchList const& _branches)
 {
   EventBase::doBook_(_tree, _branches);
 
@@ -223,7 +223,7 @@ panda::EventMonophoton::doBook_(TTree& _tree, utils::BranchList const& _branches
 
 /*protected*/
 void
-panda::EventMonophoton::doGetEntry_(TTree& _tree)
+suep::EventMonophoton::doGetEntry_(TTree& _tree)
 {
   EventBase::doGetEntry_(_tree);
 
@@ -247,7 +247,7 @@ panda::EventMonophoton::doGetEntry_(TTree& _tree)
 }
 
 void
-panda::EventMonophoton::doInit_()
+suep::EventMonophoton::doInit_()
 {
   EventBase::doInit_();
 
@@ -258,7 +258,7 @@ panda::EventMonophoton::doInit_()
 }
 
 void
-panda::EventMonophoton::doUnlink_(TTree& _tree)
+suep::EventMonophoton::doUnlink_(TTree& _tree)
 {
   EventBase::doUnlink_(_tree);
 
@@ -271,8 +271,8 @@ panda::EventMonophoton::doUnlink_(TTree& _tree)
 /* BEGIN CUSTOM EventMonophoton.cc.global */
 #include <map>
 
-panda::EventMonophoton&
-panda::EventMonophoton::copy(Event const& _src)
+suep::EventMonophoton&
+suep::EventMonophoton::copy(Event const& _src)
 {
   runNumber = _src.runNumber;
   lumiNumber = _src.lumiNumber;
@@ -318,7 +318,7 @@ panda::EventMonophoton::copy(Event const& _src)
 }
 
 void
-panda::EventMonophoton::copyGenParticles(GenParticleCollection const& _src)
+suep::EventMonophoton::copyGenParticles(GenParticleCollection const& _src)
 {
   genParticles.clear();
 

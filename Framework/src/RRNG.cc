@@ -8,7 +8,7 @@
 #include <iterator>
 
 using namespace std;
-using namespace panda;
+using namespace suep;
 
 int RRNG::_default_idx;
 

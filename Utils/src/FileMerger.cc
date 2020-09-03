@@ -13,7 +13,7 @@
 #include <iostream>
 
 void
-panda::FileMerger::addInput(char const* _path)
+suep::FileMerger::addInput(char const* _path)
 {
   // Implementation from TChain::Add
 
@@ -57,14 +57,14 @@ panda::FileMerger::addInput(char const* _path)
 }
 
 void
-panda::FileMerger::selectBranches(utils::BranchList const& _blist, Bool_t _onRead/* = kFALSE*/, TreeType _ttype/* = kEvent*/)
+suep::FileMerger::selectBranches(utils::BranchList const& _blist, Bool_t _onRead/* = kFALSE*/, TreeType _ttype/* = kEvent*/)
 {
   branchList_[_ttype] = _blist;
   applyBranchListOnRead_[_ttype] = _onRead;
 }
 
 unsigned
-panda::FileMerger::merge(char const* _outPath, long _nEvents/* = -1*/)
+suep::FileMerger::merge(char const* _outPath, long _nEvents/* = -1*/)
 {
   auto* outputFile(TFile::Open(_outPath, "recreate"));
   if (!outputFile || outputFile->IsZombie())
@@ -80,7 +80,7 @@ panda::FileMerger::merge(char const* _outPath, long _nEvents/* = -1*/)
   std::vector<std::vector<TString>> hltPathsList{};
 
   // Assuming the runs and hlt tree contents are unchanged
-  panda::Run run;
+  suep::Run run;
   run.hlt.create();
 
   // loop over files to

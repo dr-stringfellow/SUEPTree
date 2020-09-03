@@ -7,7 +7,7 @@
 #include "../../Framework/interface/Ref.h"
 #include "../../Framework/interface/RefVector.h"
 
-namespace panda {
+namespace suep {
 
   class Vertex : public Element {
   public:

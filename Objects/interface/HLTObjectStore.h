@@ -7,7 +7,7 @@
 
 #include <map>
 
-namespace panda {
+namespace suep {
   
   class HLTObjectStore : public HLTObjectCollection {
   public:

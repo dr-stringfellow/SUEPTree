@@ -9,11 +9,11 @@
 
 class TTree;
 
-namespace panda {
+namespace suep {
 
   //! Object base class.
   /*!
-   * Object is the base of all panda types. Its mere function is to define the interfaces of derived classes.
+   * Object is the base of all suep types. Its mere function is to define the interfaces of derived classes.
    * Four different types of classes inherit from Object. Element is the base class of objects that
    * are elements of containers (Array = fixed size and Collection = dynamic size). Singlet is the base class
    * of all objects that are not in containers. The containers themselves also inherit from Object. The fourth

@@ -1,8 +1,8 @@
 #include "../interface/Vertex.h"
 
 /*static*/
-panda::utils::BranchList
-panda::Vertex::getListOfBranches()
+suep::utils::BranchList
+suep::Vertex::getListOfBranches()
 {
   utils::BranchList blist;
   blist += {"x", "y", "z"};
@@ -10,7 +10,7 @@ panda::Vertex::getListOfBranches()
 }
 
 void
-panda::Vertex::datastore::allocate(UInt_t _nmax)
+suep::Vertex::datastore::allocate(UInt_t _nmax)
 {
   Element::datastore::allocate(_nmax);
 
@@ -20,7 +20,7 @@ panda::Vertex::datastore::allocate(UInt_t _nmax)
 }
 
 void
-panda::Vertex::datastore::deallocate()
+suep::Vertex::datastore::deallocate()
 {
   Element::datastore::deallocate();
 
@@ -33,7 +33,7 @@ panda::Vertex::datastore::deallocate()
 }
 
 void
-panda::Vertex::datastore::setStatus(TTree& _tree, TString const& _name, utils::BranchList const& _branches)
+suep::Vertex::datastore::setStatus(TTree& _tree, TString const& _name, utils::BranchList const& _branches)
 {
   Element::datastore::setStatus(_tree, _name, _branches);
 
@@ -42,8 +42,8 @@ panda::Vertex::datastore::setStatus(TTree& _tree, TString const& _name, utils::B
   utils::setStatus(_tree, _name, "z", _branches);
 }
 
-panda::utils::BranchList
-panda::Vertex::datastore::getStatus(TTree& _tree, TString const& _name) const
+suep::utils::BranchList
+suep::Vertex::datastore::getStatus(TTree& _tree, TString const& _name) const
 {
   utils::BranchList blist(Element::datastore::getStatus(_tree, _name));
 
@@ -55,7 +55,7 @@ panda::Vertex::datastore::getStatus(TTree& _tree, TString const& _name) const
 }
 
 void
-panda::Vertex::datastore::setAddress(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _setStatus/* = kTRUE*/)
+suep::Vertex::datastore::setAddress(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _setStatus/* = kTRUE*/)
 {
   Element::datastore::setAddress(_tree, _name, _branches, _setStatus);
 
@@ -65,7 +65,7 @@ panda::Vertex::datastore::setAddress(TTree& _tree, TString const& _name, utils::
 }
 
 void
-panda::Vertex::datastore::book(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _dynamic/* = kTRUE*/)
+suep::Vertex::datastore::book(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _dynamic/* = kTRUE*/)
 {
   Element::datastore::book(_tree, _name, _branches, _dynamic);
 
@@ -77,7 +77,7 @@ panda::Vertex::datastore::book(TTree& _tree, TString const& _name, utils::Branch
 }
 
 void
-panda::Vertex::datastore::releaseTree(TTree& _tree, TString const& _name)
+suep::Vertex::datastore::releaseTree(TTree& _tree, TString const& _name)
 {
   Element::datastore::releaseTree(_tree, _name);
 
@@ -87,20 +87,20 @@ panda::Vertex::datastore::releaseTree(TTree& _tree, TString const& _name)
 }
 
 void
-panda::Vertex::datastore::resizeVectors_(UInt_t _size)
+suep::Vertex::datastore::resizeVectors_(UInt_t _size)
 {
   Element::datastore::resizeVectors_(_size);
 
 }
 
 
-panda::utils::BranchList
-panda::Vertex::datastore::getBranchNames(TString const& _name/* = ""*/) const
+suep::utils::BranchList
+suep::Vertex::datastore::getBranchNames(TString const& _name/* = ""*/) const
 {
   return Vertex::getListOfBranches().fullNames(_name);
 }
 
-panda::Vertex::Vertex(char const* _name/* = ""*/) :
+suep::Vertex::Vertex(char const* _name/* = ""*/) :
   Element(new VertexArray(1, _name)),
   x(gStore.getData(this).x[0]),
   y(gStore.getData(this).y[0]),
@@ -108,7 +108,7 @@ panda::Vertex::Vertex(char const* _name/* = ""*/) :
 {
 }
 
-panda::Vertex::Vertex(Vertex const& _src) :
+suep::Vertex::Vertex(Vertex const& _src) :
   Element(new VertexArray(1, _src.getName())),
   x(gStore.getData(this).x[0]),
   y(gStore.getData(this).y[0]),
@@ -117,7 +117,7 @@ panda::Vertex::Vertex(Vertex const& _src) :
   operator=(_src);
 }
 
-panda::Vertex::Vertex(datastore& _data, UInt_t _idx) :
+suep::Vertex::Vertex(datastore& _data, UInt_t _idx) :
   Element(_data, _idx),
   x(_data.x[_idx]),
   y(_data.y[_idx]),
@@ -125,7 +125,7 @@ panda::Vertex::Vertex(datastore& _data, UInt_t _idx) :
 {
 }
 
-panda::Vertex::Vertex(ArrayBase* _array) :
+suep::Vertex::Vertex(ArrayBase* _array) :
   Element(_array),
   x(gStore.getData(this).x[0]),
   y(gStore.getData(this).y[0]),
@@ -133,20 +133,20 @@ panda::Vertex::Vertex(ArrayBase* _array) :
 {
 }
 
-panda::Vertex::~Vertex()
+suep::Vertex::~Vertex()
 {
   destructor();
 }
 
 void
-panda::Vertex::destructor(Bool_t _recursive/* = kFALSE*/)
+suep::Vertex::destructor(Bool_t _recursive/* = kFALSE*/)
 {
   /* BEGIN CUSTOM Vertex.cc.destructor */
   /* END CUSTOM */
 }
 
-panda::Vertex&
-panda::Vertex::operator=(Vertex const& _src)
+suep::Vertex&
+suep::Vertex::operator=(Vertex const& _src)
 {
   x = _src.x;
   y = _src.y;
@@ -159,7 +159,7 @@ panda::Vertex::operator=(Vertex const& _src)
 }
 
 void
-panda::Vertex::doBook_(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/)
+suep::Vertex::doBook_(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/)
 {
   utils::book(_tree, _name, "x", "", 'F', &x, _branches);
   utils::book(_tree, _name, "y", "", 'F', &y, _branches);
@@ -167,7 +167,7 @@ panda::Vertex::doBook_(TTree& _tree, TString const& _name, utils::BranchList con
 }
 
 void
-panda::Vertex::doInit_()
+suep::Vertex::doInit_()
 {
   x = 0.;
   y = 0.;
@@ -178,7 +178,7 @@ panda::Vertex::doInit_()
 }
 
 void
-panda::Vertex::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
+suep::Vertex::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
 {
   /* BEGIN CUSTOM Vertex.cc.print */
   dump(_out);
@@ -186,7 +186,7 @@ panda::Vertex::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) 
 }
 
 void
-panda::Vertex::dump(std::ostream& _out/* = std::cout*/) const
+suep::Vertex::dump(std::ostream& _out/* = std::cout*/) const
 {
   _out << "x = " << x << std::endl;
   _out << "y = " << y << std::endl;

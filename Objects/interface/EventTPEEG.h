@@ -4,7 +4,7 @@
 #include "Constants.h"
 #include "Electron.h"
 
-namespace panda {
+namespace suep {
 
   class EventTPEEG : public EventTPEG {
   public:

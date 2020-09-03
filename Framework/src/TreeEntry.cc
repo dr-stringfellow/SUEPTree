@@ -2,7 +2,7 @@
 #include "../interface/CollectionBase.h"
 
 void
-panda::TreeEntry::setStatus(TTree& _tree, utils::BranchList const& _branches)
+suep::TreeEntry::setStatus(TTree& _tree, utils::BranchList const& _branches)
 {
   for (auto* obj : objects_)
     obj->setStatus(_tree, _branches.subList(obj->getName()));
@@ -10,8 +10,8 @@ panda::TreeEntry::setStatus(TTree& _tree, utils::BranchList const& _branches)
   doSetStatus_(_tree, _branches);
 }
 
-panda::utils::BranchList
-panda::TreeEntry::getStatus(TTree& _tree) const
+suep::utils::BranchList
+suep::TreeEntry::getStatus(TTree& _tree) const
 {
   utils::BranchList blist;
 
@@ -23,8 +23,8 @@ panda::TreeEntry::getStatus(TTree& _tree) const
   return blist;
 }
 
-panda::utils::BranchList
-panda::TreeEntry::getBranchNames(Bool_t/* = kTRUE*/, Bool_t _direct/* = kFALSE*/) const
+suep::utils::BranchList
+suep::TreeEntry::getBranchNames(Bool_t/* = kTRUE*/, Bool_t _direct/* = kFALSE*/) const
 {
   utils::BranchList blist;
 
@@ -39,7 +39,7 @@ panda::TreeEntry::getBranchNames(Bool_t/* = kTRUE*/, Bool_t _direct/* = kFALSE*/
 }
 
 UInt_t
-panda::TreeEntry::setAddress(TTree& _tree, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _setStatus/* = kTRUE*/)
+suep::TreeEntry::setAddress(TTree& _tree, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _setStatus/* = kTRUE*/)
 {
   for (auto* obj : objects_)
     obj->setAddress(_tree, _branches.subList(obj->getName()), _setStatus);
@@ -50,7 +50,7 @@ panda::TreeEntry::setAddress(TTree& _tree, utils::BranchList const& _branches/* 
 }
 
 void
-panda::TreeEntry::book(TTree& _tree, utils::BranchList const& _branches/* = {"*"}*/)
+suep::TreeEntry::book(TTree& _tree, utils::BranchList const& _branches/* = {"*"}*/)
 {
   for (auto* obj : objects_)
     obj->book(_tree, _branches.subList(obj->getName()));
@@ -59,7 +59,7 @@ panda::TreeEntry::book(TTree& _tree, utils::BranchList const& _branches/* = {"*"
 }
 
 void
-panda::TreeEntry::init()
+suep::TreeEntry::init()
 {
   for (auto* obj : objects_)
     obj->init();
@@ -68,7 +68,7 @@ panda::TreeEntry::init()
 }
 
 Int_t
-panda::TreeEntry::getEntry(UInt_t _treeId, Long64_t _entry, Bool_t _localEntry/* = kFALSE*/)
+suep::TreeEntry::getEntry(UInt_t _treeId, Long64_t _entry, Bool_t _localEntry/* = kFALSE*/)
 {
   init();
 
@@ -95,7 +95,7 @@ panda::TreeEntry::getEntry(UInt_t _treeId, Long64_t _entry, Bool_t _localEntry/*
 }
 
 Int_t
-panda::TreeEntry::fill(TTree& _tree)
+suep::TreeEntry::fill(TTree& _tree)
 {
   for (auto* col : collections_)
     col->prepareFill(_tree);
@@ -104,7 +104,7 @@ panda::TreeEntry::fill(TTree& _tree)
 }
 
 void
-panda::TreeEntry::unlink(TTree& _tree)
+suep::TreeEntry::unlink(TTree& _tree)
 {
   ReaderObject::unlink(_tree);
 

@@ -1,6 +1,6 @@
 #include "../interface/XPhoton.h"
 
-TString panda::XPhoton::IDTuneName[] = {
+TString suep::XPhoton::IDTuneName[] = {
   "kSpring15",
   "kSpring16",
   "kFall17",
@@ -9,8 +9,8 @@ TString panda::XPhoton::IDTuneName[] = {
 };
 
 /*static*/
-panda::utils::BranchList
-panda::XPhoton::getListOfBranches()
+suep::utils::BranchList
+suep::XPhoton::getListOfBranches()
 {
   utils::BranchList blist;
   blist += Photon::getListOfBranches();
@@ -19,7 +19,7 @@ panda::XPhoton::getListOfBranches()
 }
 
 void
-panda::XPhoton::datastore::allocate(UInt_t _nmax)
+suep::XPhoton::datastore::allocate(UInt_t _nmax)
 {
   Photon::datastore::allocate(_nmax);
 
@@ -38,7 +38,7 @@ panda::XPhoton::datastore::allocate(UInt_t _nmax)
 }
 
 void
-panda::XPhoton::datastore::deallocate()
+suep::XPhoton::datastore::deallocate()
 {
   Photon::datastore::deallocate();
 
@@ -69,7 +69,7 @@ panda::XPhoton::datastore::deallocate()
 }
 
 void
-panda::XPhoton::datastore::setStatus(TTree& _tree, TString const& _name, utils::BranchList const& _branches)
+suep::XPhoton::datastore::setStatus(TTree& _tree, TString const& _name, utils::BranchList const& _branches)
 {
   Photon::datastore::setStatus(_tree, _name, _branches);
 
@@ -87,8 +87,8 @@ panda::XPhoton::datastore::setStatus(TTree& _tree, TString const& _name, utils::
   utils::setStatus(_tree, _name, "matchedGenId", _branches);
 }
 
-panda::utils::BranchList
-panda::XPhoton::datastore::getStatus(TTree& _tree, TString const& _name) const
+suep::utils::BranchList
+suep::XPhoton::datastore::getStatus(TTree& _tree, TString const& _name) const
 {
   utils::BranchList blist(Photon::datastore::getStatus(_tree, _name));
 
@@ -109,7 +109,7 @@ panda::XPhoton::datastore::getStatus(TTree& _tree, TString const& _name) const
 }
 
 void
-panda::XPhoton::datastore::setAddress(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _setStatus/* = kTRUE*/)
+suep::XPhoton::datastore::setAddress(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _setStatus/* = kTRUE*/)
 {
   Photon::datastore::setAddress(_tree, _name, _branches, _setStatus);
 
@@ -128,7 +128,7 @@ panda::XPhoton::datastore::setAddress(TTree& _tree, TString const& _name, utils:
 }
 
 void
-panda::XPhoton::datastore::book(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _dynamic/* = kTRUE*/)
+suep::XPhoton::datastore::book(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _dynamic/* = kTRUE*/)
 {
   Photon::datastore::book(_tree, _name, _branches, _dynamic);
 
@@ -149,7 +149,7 @@ panda::XPhoton::datastore::book(TTree& _tree, TString const& _name, utils::Branc
 }
 
 void
-panda::XPhoton::datastore::releaseTree(TTree& _tree, TString const& _name)
+suep::XPhoton::datastore::releaseTree(TTree& _tree, TString const& _name)
 {
   Photon::datastore::releaseTree(_tree, _name);
 
@@ -168,20 +168,20 @@ panda::XPhoton::datastore::releaseTree(TTree& _tree, TString const& _name)
 }
 
 void
-panda::XPhoton::datastore::resizeVectors_(UInt_t _size)
+suep::XPhoton::datastore::resizeVectors_(UInt_t _size)
 {
   Photon::datastore::resizeVectors_(_size);
 
 }
 
 
-panda::utils::BranchList
-panda::XPhoton::datastore::getBranchNames(TString const& _name/* = ""*/) const
+suep::utils::BranchList
+suep::XPhoton::datastore::getBranchNames(TString const& _name/* = ""*/) const
 {
   return XPhoton::getListOfBranches().fullNames(_name);
 }
 
-panda::XPhoton::XPhoton(char const* _name/* = ""*/) :
+suep::XPhoton::XPhoton(char const* _name/* = ""*/) :
   Photon(new XPhotonArray(1, _name)),
   scEta(gStore.getData(this).scEta[0]),
   scRawPt(gStore.getData(this).scRawPt[0]),
@@ -198,7 +198,7 @@ panda::XPhoton::XPhoton(char const* _name/* = ""*/) :
 {
 }
 
-panda::XPhoton::XPhoton(XPhoton const& _src) :
+suep::XPhoton::XPhoton(XPhoton const& _src) :
   Photon(new XPhotonArray(1, _src.getName())),
   scEta(gStore.getData(this).scEta[0]),
   scRawPt(gStore.getData(this).scRawPt[0]),
@@ -216,7 +216,7 @@ panda::XPhoton::XPhoton(XPhoton const& _src) :
   operator=(_src);
 }
 
-panda::XPhoton::XPhoton(datastore& _data, UInt_t _idx) :
+suep::XPhoton::XPhoton(datastore& _data, UInt_t _idx) :
   Photon(_data, _idx),
   scEta(_data.scEta[_idx]),
   scRawPt(_data.scRawPt[_idx]),
@@ -233,7 +233,7 @@ panda::XPhoton::XPhoton(datastore& _data, UInt_t _idx) :
 {
 }
 
-panda::XPhoton::XPhoton(ArrayBase* _array) :
+suep::XPhoton::XPhoton(ArrayBase* _array) :
   Photon(_array),
   scEta(gStore.getData(this).scEta[0]),
   scRawPt(gStore.getData(this).scRawPt[0]),
@@ -250,13 +250,13 @@ panda::XPhoton::XPhoton(ArrayBase* _array) :
 {
 }
 
-panda::XPhoton::~XPhoton()
+suep::XPhoton::~XPhoton()
 {
   destructor();
 }
 
 void
-panda::XPhoton::destructor(Bool_t _recursive/* = kFALSE*/)
+suep::XPhoton::destructor(Bool_t _recursive/* = kFALSE*/)
 {
   /* BEGIN CUSTOM XPhoton.cc.destructor */
   /* END CUSTOM */
@@ -265,8 +265,8 @@ panda::XPhoton::destructor(Bool_t _recursive/* = kFALSE*/)
     Photon::destructor(kTRUE);
 }
 
-panda::XPhoton&
-panda::XPhoton::operator=(XPhoton const& _src)
+suep::XPhoton&
+suep::XPhoton::operator=(XPhoton const& _src)
 {
   Photon::operator=(_src);
 
@@ -290,7 +290,7 @@ panda::XPhoton::operator=(XPhoton const& _src)
 }
 
 void
-panda::XPhoton::doBook_(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/)
+suep::XPhoton::doBook_(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/)
 {
   Photon::doBook_(_tree, _name, _branches);
 
@@ -309,7 +309,7 @@ panda::XPhoton::doBook_(TTree& _tree, TString const& _name, utils::BranchList co
 }
 
 void
-panda::XPhoton::doInit_()
+suep::XPhoton::doInit_()
 {
   Photon::doInit_();
 
@@ -331,7 +331,7 @@ panda::XPhoton::doInit_()
 }
 
 void
-panda::XPhoton::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
+suep::XPhoton::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
 {
   /* BEGIN CUSTOM XPhoton.cc.print */
   if (_level >= 3) {
@@ -354,7 +354,7 @@ panda::XPhoton::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/)
 }
 
 void
-panda::XPhoton::dump(std::ostream& _out/* = std::cout*/) const
+suep::XPhoton::dump(std::ostream& _out/* = std::cout*/) const
 {
   Photon::dump(_out);
 
@@ -375,7 +375,7 @@ panda::XPhoton::dump(std::ostream& _out/* = std::cout*/) const
 
 /* BEGIN CUSTOM XPhoton.cc.global */
 /*static*/
-panda::XPhoton::IDDefinitions const panda::XPhoton::chIsoCuts{{
+suep::XPhoton::IDDefinitions const suep::XPhoton::chIsoCuts{{
   {{{{3.32, 1.37, 0.76, 5.0}}, {{1.97, 1.10, 0.56, 5.0}}}},
   {{{{1.295, 0.441, 0.202, 5.0}}, {{1.011, 0.442, 0.034, 5.0}}}},
   {{{{1.694, 1.141, 0.65, 5.0}}, {{2.089, 1.051, 0.517, 5.0}}}},
@@ -383,7 +383,7 @@ panda::XPhoton::IDDefinitions const panda::XPhoton::chIsoCuts{{
   {{{{1.295, 1.163, 0.202, 5.0}}, {{1.011, 0.442, 0.034, 5.0}}}}
 }};
 /*static*/
-panda::XPhoton::IDDefinitions const panda::XPhoton::nhIsoCuts{{
+suep::XPhoton::IDDefinitions const suep::XPhoton::nhIsoCuts{{
   {{{{1.92, 1.06, 0.97, 100000.}}, {{11.86, 2.69, 2.09, 100000.}}}},
   {{{{10.910, 2.725, 0.264, 100000.}}, {{5.931, 1.715, 0.586, 100000.}}}},
   {{{{24.032, 1.189, 0.317, 100000.}}, {{19.722, 2.718, 2.716, 2.00}}}},
@@ -391,7 +391,7 @@ panda::XPhoton::IDDefinitions const panda::XPhoton::nhIsoCuts{{
   {{{{10.910, 7.005, 0.264, 100000.}}, {{5.931, 1.715, 0.586, 100000.}}}}
 }};
 /*static*/
-panda::XPhoton::IDDefinitions const panda::XPhoton::phIsoCuts{{
+suep::XPhoton::IDDefinitions const suep::XPhoton::phIsoCuts{{
   {{{{0.81, 0.28, 0.08, 2.75}}, {{0.83, 0.39, 0.16, 2.00}}}},
   {{{{3.630, 2.571, 2.362, 2.75}}, {{6.641, 3.863, 2.617, 2.00}}}},
   {{{{2.876, 2.08, 2.044, 2.75}}, {{4.162, 3.867, 3.032, 2.00}}}},
@@ -399,7 +399,7 @@ panda::XPhoton::IDDefinitions const panda::XPhoton::phIsoCuts{{
   {{{{3.630, 3.271, 2.362, 2.75}}, {{6.641, 3.863, 2.617, 2.00}}}}
 }};
 /*static*/
-panda::XPhoton::IDDefinitions const panda::XPhoton::sieieCuts{{
+suep::XPhoton::IDDefinitions const suep::XPhoton::sieieCuts{{
   {{{{0.0102, 0.0102, 0.0100, 0.0105}}, {{0.0274, 0.0268, 0.0268, 0.028}}}},
   {{{{0.01031, 0.01022, 0.00994, 0.0105}}, {{0.03013, 0.03001, 0.03000, 0.028}}}},
   {{{{0.0106, 0.01015, 0.00996, 0.0105}}, {{0.0272, 0.0272, 0.0271, 0.028}}}},
@@ -407,7 +407,7 @@ panda::XPhoton::IDDefinitions const panda::XPhoton::sieieCuts{{
   {{{{0.01031, 0.01002, 0.00994, 0.0105}}, {{0.03013, 0.03001, 0.03000, 0.028}}}}
 }};
 /*static*/
-panda::XPhoton::IDDefinitions const panda::XPhoton::hOverECuts{{
+suep::XPhoton::IDDefinitions const suep::XPhoton::hOverECuts{{
   {{{{0.05, 0.05, 0.05, 0.05}}, {{0.05, 0.05, 0.05, 0.05}}}},
   {{{{0.0597, 0.0396, 0.0269, 0.05}}, {{0.0481, 0.0219, 0.0213, 0.05}}}},
   {{{{0.04596, 0.02197, 0.02148, 0.05}}, {{0.0590, 0.0326, 0.0321, 0.05}}}},

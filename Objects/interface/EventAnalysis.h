@@ -4,7 +4,7 @@
 #include "Constants.h"
 #include "UnpackedGenParticle.h"
 
-namespace panda {
+namespace suep {
 
   class EventAnalysis : public Event {
   public:

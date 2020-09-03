@@ -1,31 +1,31 @@
 #include "../interface/HLTBits.h"
 
 /*static*/
-panda::utils::BranchList
-panda::HLTBits::getListOfBranches()
+suep::utils::BranchList
+suep::HLTBits::getListOfBranches()
 {
   utils::BranchList blist;
   blist += {"words"};
   return blist;
 }
 
-panda::HLTBits::HLTBits(char const* _name/* = ""*/) :
+suep::HLTBits::HLTBits(char const* _name/* = ""*/) :
   Singlet(_name)
 {
 }
 
-panda::HLTBits::HLTBits(HLTBits const& _src) :
+suep::HLTBits::HLTBits(HLTBits const& _src) :
   Singlet(_src)
 {
   std::memcpy(words, _src.words, sizeof(UInt_t) * 32);
 }
 
-panda::HLTBits::~HLTBits()
+suep::HLTBits::~HLTBits()
 {
 }
 
-panda::HLTBits&
-panda::HLTBits::operator=(HLTBits const& _src)
+suep::HLTBits&
+suep::HLTBits::operator=(HLTBits const& _src)
 {
   std::memcpy(words, _src.words, sizeof(UInt_t) * 32);
 
@@ -36,13 +36,13 @@ panda::HLTBits::operator=(HLTBits const& _src)
 }
 
 void
-panda::HLTBits::doSetStatus_(TTree& _tree, utils::BranchList const& _branches)
+suep::HLTBits::doSetStatus_(TTree& _tree, utils::BranchList const& _branches)
 {
   utils::setStatus(_tree, name_, "words", _branches);
 }
 
-panda::utils::BranchList
-panda::HLTBits::doGetStatus_(TTree& _tree) const
+suep::utils::BranchList
+suep::HLTBits::doGetStatus_(TTree& _tree) const
 {
   utils::BranchList blist;
 
@@ -52,19 +52,19 @@ panda::HLTBits::doGetStatus_(TTree& _tree) const
 }
 
 void
-panda::HLTBits::doSetAddress_(TTree& _tree, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _setStatus/* = kTRUE*/)
+suep::HLTBits::doSetAddress_(TTree& _tree, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _setStatus/* = kTRUE*/)
 {
   utils::setAddress(_tree, name_, "words", words, _branches, _setStatus);
 }
 
 void
-panda::HLTBits::doBook_(TTree& _tree, utils::BranchList const& _branches/* = {"*"}*/)
+suep::HLTBits::doBook_(TTree& _tree, utils::BranchList const& _branches/* = {"*"}*/)
 {
   utils::book(_tree, name_, "words", TString::Format("[32]"), 'i', words, _branches);
 }
 
 void
-panda::HLTBits::doInit_()
+suep::HLTBits::doInit_()
 {
   for (auto& p0 : words) p0 = 0;
 
@@ -72,8 +72,8 @@ panda::HLTBits::doInit_()
   /* END CUSTOM */
 }
 
-panda::utils::BranchList
-panda::HLTBits::doGetBranchNames_(Bool_t _fullName) const
+suep::utils::BranchList
+suep::HLTBits::doGetBranchNames_(Bool_t _fullName) const
 {
   if (_fullName)
     return getListOfBranches().fullNames(name_);
@@ -82,7 +82,7 @@ panda::HLTBits::doGetBranchNames_(Bool_t _fullName) const
 }
 
 void
-panda::HLTBits::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
+suep::HLTBits::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
 {
   /* BEGIN CUSTOM HLTBits.cc.print */
   dump(_out);
@@ -90,7 +90,7 @@ panda::HLTBits::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/)
 }
 
 void
-panda::HLTBits::dump(std::ostream& _out/* = std::cout*/) const
+suep::HLTBits::dump(std::ostream& _out/* = std::cout*/) const
 {
   _out << "words = " << words << std::endl;
 }

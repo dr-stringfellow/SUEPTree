@@ -1,6 +1,6 @@
 #include "../interface/EventBase.h"
 
-panda::EventBase::EventBase() :
+suep::EventBase::EventBase() :
   TreeEntry()
 {
   std::vector<Object*> myObjects{{&triggers, &partons, &genVertex}};
@@ -14,7 +14,7 @@ panda::EventBase::EventBase() :
   /* END CUSTOM */
 }
 
-panda::EventBase::EventBase(EventBase const& _src) :
+suep::EventBase::EventBase(EventBase const& _src) :
   TreeEntry(_src),
   triggers(_src.triggers),
   partons(_src.partons),
@@ -40,14 +40,14 @@ panda::EventBase::EventBase(EventBase const& _src) :
   /* END CUSTOM */
 }
 
-panda::EventBase::~EventBase()
+suep::EventBase::~EventBase()
 {
   /* BEGIN CUSTOM EventBase.cc.dtor */
   /* END CUSTOM */
 }
 
-panda::EventBase&
-panda::EventBase::operator=(EventBase const& _src)
+suep::EventBase&
+suep::EventBase::operator=(EventBase const& _src)
 {
   TreeEntry::operator=(_src);
 
@@ -76,7 +76,7 @@ panda::EventBase::operator=(EventBase const& _src)
 }
 
 void
-panda::EventBase::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
+suep::EventBase::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
 {
   /* BEGIN CUSTOM EventBase.cc.print */
   if (_level >= 3) {
@@ -96,7 +96,7 @@ panda::EventBase::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*
 }
 
 void
-panda::EventBase::dump(std::ostream& _out/* = std::cout*/) const
+suep::EventBase::dump(std::ostream& _out/* = std::cout*/) const
 {
   _out << "runNumber = " << runNumber << std::endl;
   _out << "lumiNumber = " << lumiNumber << std::endl;
@@ -112,8 +112,8 @@ panda::EventBase::dump(std::ostream& _out/* = std::cout*/) const
 
 }
 /*static*/
-panda::utils::BranchList
-panda::EventBase::getListOfBranches(Bool_t _direct/* = kFALSE*/)
+suep::utils::BranchList
+suep::EventBase::getListOfBranches(Bool_t _direct/* = kFALSE*/)
 {
   utils::BranchList blist;
   blist += {"runNumber", "lumiNumber", "eventNumber", "isData", "weight", "npv", "npvTrue"};
@@ -131,7 +131,7 @@ panda::EventBase::getListOfBranches(Bool_t _direct/* = kFALSE*/)
 
 /*protected*/
 void
-panda::EventBase::doSetStatus_(TTree& _tree, utils::BranchList const& _branches)
+suep::EventBase::doSetStatus_(TTree& _tree, utils::BranchList const& _branches)
 {
   utils::setStatus(_tree, "", "runNumber", _branches);
   utils::setStatus(_tree, "", "lumiNumber", _branches);
@@ -143,8 +143,8 @@ panda::EventBase::doSetStatus_(TTree& _tree, utils::BranchList const& _branches)
 }
 
 /*protected*/
-panda::utils::BranchList
-panda::EventBase::doGetStatus_(TTree& _tree) const
+suep::utils::BranchList
+suep::EventBase::doGetStatus_(TTree& _tree) const
 {
   utils::BranchList blist;
 
@@ -159,15 +159,15 @@ panda::EventBase::doGetStatus_(TTree& _tree) const
 }
 
 /*protected*/
-panda::utils::BranchList
-panda::EventBase::doGetBranchNames_() const
+suep::utils::BranchList
+suep::EventBase::doGetBranchNames_() const
 {
   return getListOfBranches(true);
 }
 
 /*protected*/
 void
-panda::EventBase::doSetAddress_(TTree& _tree, utils::BranchList const& _branches, Bool_t _setStatus)
+suep::EventBase::doSetAddress_(TTree& _tree, utils::BranchList const& _branches, Bool_t _setStatus)
 {
   utils::setAddress(_tree, "", "runNumber", &runNumber, _branches, _setStatus);
   utils::setAddress(_tree, "", "lumiNumber", &lumiNumber, _branches, _setStatus);
@@ -180,7 +180,7 @@ panda::EventBase::doSetAddress_(TTree& _tree, utils::BranchList const& _branches
 
 /*protected*/
 void
-panda::EventBase::doBook_(TTree& _tree, utils::BranchList const& _branches)
+suep::EventBase::doBook_(TTree& _tree, utils::BranchList const& _branches)
 {
   utils::book(_tree, "", "runNumber", "", 'i', &runNumber, _branches);
   utils::book(_tree, "", "lumiNumber", "", 'i', &lumiNumber, _branches);
@@ -193,7 +193,7 @@ panda::EventBase::doBook_(TTree& _tree, utils::BranchList const& _branches)
 
 /*protected*/
 void
-panda::EventBase::doGetEntry_(TTree& _tree)
+suep::EventBase::doGetEntry_(TTree& _tree)
 {
   /* BEGIN CUSTOM EventBase.cc.doGetEntry_ */
   if (readRunTree_ && _tree.GetCurrentFile() && runNumber != 0) {
@@ -259,7 +259,7 @@ panda::EventBase::doGetEntry_(TTree& _tree)
 }
 
 void
-panda::EventBase::doInit_()
+suep::EventBase::doInit_()
 {
   runNumber = 0;
   lumiNumber = 0;
@@ -273,7 +273,7 @@ panda::EventBase::doInit_()
 }
 
 void
-panda::EventBase::doUnlink_(TTree& _tree)
+suep::EventBase::doUnlink_(TTree& _tree)
 {
   /* BEGIN CUSTOM EventBase.cc.doUnlink_ */
   runTrees_.erase(&_tree);
@@ -285,7 +285,7 @@ panda::EventBase::doUnlink_(TTree& _tree)
 /* BEGIN CUSTOM EventBase.cc.global */
 
 Bool_t
-panda::EventBase::triggerFired(UInt_t _token) const
+suep::EventBase::triggerFired(UInt_t _token) const
 {
   UInt_t idx(run.getTriggerIndex(_token));
   if (idx < run.triggerSize())
@@ -295,7 +295,7 @@ panda::EventBase::triggerFired(UInt_t _token) const
 }
 
 void
-panda::EventBase::setTriggerFilters_()
+suep::EventBase::setTriggerFilters_()
 {
   if (triggerObjects.size() == 0 || !run.hlt.filters)
     return;

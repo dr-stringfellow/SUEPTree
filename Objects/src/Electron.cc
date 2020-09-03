@@ -1,8 +1,8 @@
 #include "../interface/Electron.h"
 
 /*static*/
-panda::utils::BranchList
-panda::Electron::getListOfBranches()
+suep::utils::BranchList
+suep::Electron::getListOfBranches()
 {
   utils::BranchList blist;
   blist += Lepton::getListOfBranches();
@@ -11,7 +11,7 @@ panda::Electron::getListOfBranches()
 }
 
 void
-panda::Electron::datastore::allocate(UInt_t _nmax)
+suep::Electron::datastore::allocate(UInt_t _nmax)
 {
   Lepton::datastore::allocate(_nmax);
 
@@ -48,7 +48,7 @@ panda::Electron::datastore::allocate(UInt_t _nmax)
 }
 
 void
-panda::Electron::datastore::deallocate()
+suep::Electron::datastore::deallocate()
 {
   Lepton::datastore::deallocate();
 
@@ -115,7 +115,7 @@ panda::Electron::datastore::deallocate()
 }
 
 void
-panda::Electron::datastore::setStatus(TTree& _tree, TString const& _name, utils::BranchList const& _branches)
+suep::Electron::datastore::setStatus(TTree& _tree, TString const& _name, utils::BranchList const& _branches)
 {
   Lepton::datastore::setStatus(_tree, _name, _branches);
 
@@ -151,8 +151,8 @@ panda::Electron::datastore::setStatus(TTree& _tree, TString const& _name, utils:
   utils::setStatus(_tree, _name, "superCluster_", _branches);
 }
 
-panda::utils::BranchList
-panda::Electron::datastore::getStatus(TTree& _tree, TString const& _name) const
+suep::utils::BranchList
+suep::Electron::datastore::getStatus(TTree& _tree, TString const& _name) const
 {
   utils::BranchList blist(Lepton::datastore::getStatus(_tree, _name));
 
@@ -191,7 +191,7 @@ panda::Electron::datastore::getStatus(TTree& _tree, TString const& _name) const
 }
 
 void
-panda::Electron::datastore::setAddress(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _setStatus/* = kTRUE*/)
+suep::Electron::datastore::setAddress(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _setStatus/* = kTRUE*/)
 {
   Lepton::datastore::setAddress(_tree, _name, _branches, _setStatus);
 
@@ -228,7 +228,7 @@ panda::Electron::datastore::setAddress(TTree& _tree, TString const& _name, utils
 }
 
 void
-panda::Electron::datastore::book(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _dynamic/* = kTRUE*/)
+suep::Electron::datastore::book(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _dynamic/* = kTRUE*/)
 {
   Lepton::datastore::book(_tree, _name, _branches, _dynamic);
 
@@ -267,7 +267,7 @@ panda::Electron::datastore::book(TTree& _tree, TString const& _name, utils::Bran
 }
 
 void
-panda::Electron::datastore::releaseTree(TTree& _tree, TString const& _name)
+suep::Electron::datastore::releaseTree(TTree& _tree, TString const& _name)
 {
   Lepton::datastore::releaseTree(_tree, _name);
 
@@ -304,20 +304,20 @@ panda::Electron::datastore::releaseTree(TTree& _tree, TString const& _name)
 }
 
 void
-panda::Electron::datastore::resizeVectors_(UInt_t _size)
+suep::Electron::datastore::resizeVectors_(UInt_t _size)
 {
   Lepton::datastore::resizeVectors_(_size);
 
 }
 
 
-panda::utils::BranchList
-panda::Electron::datastore::getBranchNames(TString const& _name/* = ""*/) const
+suep::utils::BranchList
+suep::Electron::datastore::getBranchNames(TString const& _name/* = ""*/) const
 {
   return Electron::getListOfBranches().fullNames(_name);
 }
 
-panda::Electron::Electron(char const* _name/* = ""*/) :
+suep::Electron::Electron(char const* _name/* = ""*/) :
   Lepton(new ElectronArray(1, _name)),
   chIsoPh(gStore.getData(this).chIsoPh[0]),
   nhIsoPh(gStore.getData(this).nhIsoPh[0]),
@@ -352,7 +352,7 @@ panda::Electron::Electron(char const* _name/* = ""*/) :
 {
 }
 
-panda::Electron::Electron(Electron const& _src) :
+suep::Electron::Electron(Electron const& _src) :
   Lepton(new ElectronArray(1, _src.getName())),
   chIsoPh(gStore.getData(this).chIsoPh[0]),
   nhIsoPh(gStore.getData(this).nhIsoPh[0]),
@@ -388,7 +388,7 @@ panda::Electron::Electron(Electron const& _src) :
   operator=(_src);
 }
 
-panda::Electron::Electron(datastore& _data, UInt_t _idx) :
+suep::Electron::Electron(datastore& _data, UInt_t _idx) :
   Lepton(_data, _idx),
   chIsoPh(_data.chIsoPh[_idx]),
   nhIsoPh(_data.nhIsoPh[_idx]),
@@ -423,7 +423,7 @@ panda::Electron::Electron(datastore& _data, UInt_t _idx) :
 {
 }
 
-panda::Electron::Electron(ArrayBase* _array) :
+suep::Electron::Electron(ArrayBase* _array) :
   Lepton(_array),
   chIsoPh(gStore.getData(this).chIsoPh[0]),
   nhIsoPh(gStore.getData(this).nhIsoPh[0]),
@@ -458,13 +458,13 @@ panda::Electron::Electron(ArrayBase* _array) :
 {
 }
 
-panda::Electron::~Electron()
+suep::Electron::~Electron()
 {
   destructor();
 }
 
 void
-panda::Electron::destructor(Bool_t _recursive/* = kFALSE*/)
+suep::Electron::destructor(Bool_t _recursive/* = kFALSE*/)
 {
   /* BEGIN CUSTOM Electron.cc.destructor */
   /* END CUSTOM */
@@ -473,8 +473,8 @@ panda::Electron::destructor(Bool_t _recursive/* = kFALSE*/)
     Lepton::destructor(kTRUE);
 }
 
-panda::Electron&
-panda::Electron::operator=(Electron const& _src)
+suep::Electron&
+suep::Electron::operator=(Electron const& _src)
 {
   Lepton::operator=(_src);
 
@@ -516,7 +516,7 @@ panda::Electron::operator=(Electron const& _src)
 }
 
 void
-panda::Electron::doBook_(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/)
+suep::Electron::doBook_(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/)
 {
   Lepton::doBook_(_tree, _name, _branches);
 
@@ -553,7 +553,7 @@ panda::Electron::doBook_(TTree& _tree, TString const& _name, utils::BranchList c
 }
 
 void
-panda::Electron::doInit_()
+suep::Electron::doInit_()
 {
   Lepton::doInit_();
 
@@ -593,7 +593,7 @@ panda::Electron::doInit_()
 }
 
 void
-panda::Electron::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
+suep::Electron::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
 {
   /* BEGIN CUSTOM Electron.cc.print */
   if (_level >= 3) {
@@ -619,7 +619,7 @@ panda::Electron::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/
 }
 
 void
-panda::Electron::dump(std::ostream& _out/* = std::cout*/) const
+suep::Electron::dump(std::ostream& _out/* = std::cout*/) const
 {
   Lepton::dump(_out);
 

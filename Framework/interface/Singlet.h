@@ -7,7 +7,7 @@
 
 #include <vector>
 
-namespace panda {
+namespace suep {
 
   //! Base class for singlet objects.
   /*!

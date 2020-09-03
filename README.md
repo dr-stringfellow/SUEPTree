@@ -17,7 +17,7 @@ Read
 
 TTree* eventsTree(static_cast<TTree*>(file->Get("events")));
 
-panda::Event event;
+suep::Event event;
 event.setAddress(*eventsTree);
 
 long iEntry(0);
@@ -34,7 +34,7 @@ Write
 TTree* eventsTree(new TTree("events", "Events"));
 TTree* runsTree(new TTree("runs", "Runs"));
 
-panda::Event event;
+suep::Event event;
 event.book(*eventsTree);
 event.run.book(*runsTree);
 
@@ -53,7 +53,7 @@ for (unsigned iEntry(0); iEntry != maxEntries; ++iEntry) {
 Objects and files structure
 ===========================
 
-Physics objects all have pt(), eta(), phi(), and m() functions. Other available variables and functions are listed in the format definition file panda.def (syntax documented below). Objects have inheritance relations, so e.g. an Electron object has all the variables of Lepton, ParticleP, and Particle objects.
+Physics objects all have pt(), eta(), phi(), and m() functions. Other available variables and functions are listed in the format definition file suep.def (syntax documented below). Objects have inheritance relations, so e.g. an Electron object has all the variables of Lepton, ParticleP, and Particle objects.
 
 The actual C++ code defining the objects are all in the Objects subdirectory. This entire subdirectory is generated automatically from the format definition file.
 
@@ -68,7 +68,7 @@ generate.py [definition files]
 ```
 If no definition files are specified, all files in the defs/ directory will be read. The definition files must have names ending with ".def", and two files cannot share the same name even if they exist in different directories. The script will write C++ source code into Objects/ and obj/ directories.
 
-Tree definition file is made of various sections and blocks. A comment line starts with a '%' character. All typedefs, enums, constants, and classes will be defined under a namespace specified in `lib/panda/common.py`.
+Tree definition file is made of various sections and blocks. A comment line starts with a '%' character. All typedefs, enums, constants, and classes will be defined under a namespace specified in `lib/suep/common.py`.
 
 1. Requirements
 

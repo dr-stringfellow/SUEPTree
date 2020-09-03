@@ -3,7 +3,7 @@
 
 #include "ContainerBase.h"
 
-namespace panda {
+namespace suep {
 
   //! Base class for fixed-size containers.
   /*!

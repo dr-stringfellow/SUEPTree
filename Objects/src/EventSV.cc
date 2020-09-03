@@ -1,6 +1,6 @@
 #include "../interface/EventSV.h"
 
-panda::EventSV::EventSV() :
+suep::EventSV::EventSV() :
   EventBase()
 {
   std::vector<Object*> myObjects{{&secondaryVertices, &tracks, &muons, &genParticles}};
@@ -13,7 +13,7 @@ panda::EventSV::EventSV() :
   /* END CUSTOM */
 }
 
-panda::EventSV::EventSV(EventSV const& _src) :
+suep::EventSV::EventSV(EventSV const& _src) :
   EventBase(_src),
   secondaryVertices(_src.secondaryVertices),
   tracks(_src.tracks),
@@ -30,14 +30,14 @@ panda::EventSV::EventSV(EventSV const& _src) :
   /* END CUSTOM */
 }
 
-panda::EventSV::~EventSV()
+suep::EventSV::~EventSV()
 {
   /* BEGIN CUSTOM EventSV.cc.dtor */
   /* END CUSTOM */
 }
 
-panda::EventSV&
-panda::EventSV::operator=(EventSV const& _src)
+suep::EventSV&
+suep::EventSV::operator=(EventSV const& _src)
 {
   EventBase::operator=(_src);
 
@@ -55,7 +55,7 @@ panda::EventSV::operator=(EventSV const& _src)
 }
 
 void
-panda::EventSV::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
+suep::EventSV::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
 {
   /* BEGIN CUSTOM EventSV.cc.print */
   dump(_out);
@@ -63,7 +63,7 @@ panda::EventSV::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/)
 }
 
 void
-panda::EventSV::dump(std::ostream& _out/* = std::cout*/) const
+suep::EventSV::dump(std::ostream& _out/* = std::cout*/) const
 {
   EventBase::dump(_out);
 
@@ -74,8 +74,8 @@ panda::EventSV::dump(std::ostream& _out/* = std::cout*/) const
 
 }
 /*static*/
-panda::utils::BranchList
-panda::EventSV::getListOfBranches(Bool_t _direct/* = kFALSE*/)
+suep::utils::BranchList
+suep::EventSV::getListOfBranches(Bool_t _direct/* = kFALSE*/)
 {
   utils::BranchList blist;
   blist += EventBase::getListOfBranches(_direct);
@@ -94,14 +94,14 @@ panda::EventSV::getListOfBranches(Bool_t _direct/* = kFALSE*/)
 
 /*protected*/
 void
-panda::EventSV::doSetStatus_(TTree& _tree, utils::BranchList const& _branches)
+suep::EventSV::doSetStatus_(TTree& _tree, utils::BranchList const& _branches)
 {
   EventBase::doSetStatus_(_tree, _branches);
 }
 
 /*protected*/
-panda::utils::BranchList
-panda::EventSV::doGetStatus_(TTree& _tree) const
+suep::utils::BranchList
+suep::EventSV::doGetStatus_(TTree& _tree) const
 {
   utils::BranchList blist;
   blist += EventBase::doGetStatus_(_tree);
@@ -110,15 +110,15 @@ panda::EventSV::doGetStatus_(TTree& _tree) const
 }
 
 /*protected*/
-panda::utils::BranchList
-panda::EventSV::doGetBranchNames_() const
+suep::utils::BranchList
+suep::EventSV::doGetBranchNames_() const
 {
   return getListOfBranches(true);
 }
 
 /*protected*/
 void
-panda::EventSV::doSetAddress_(TTree& _tree, utils::BranchList const& _branches, Bool_t _setStatus)
+suep::EventSV::doSetAddress_(TTree& _tree, utils::BranchList const& _branches, Bool_t _setStatus)
 {
   EventBase::doSetAddress_(_tree, _branches, _setStatus);
 
@@ -126,7 +126,7 @@ panda::EventSV::doSetAddress_(TTree& _tree, utils::BranchList const& _branches, 
 
 /*protected*/
 void
-panda::EventSV::doBook_(TTree& _tree, utils::BranchList const& _branches)
+suep::EventSV::doBook_(TTree& _tree, utils::BranchList const& _branches)
 {
   EventBase::doBook_(_tree, _branches);
 
@@ -134,7 +134,7 @@ panda::EventSV::doBook_(TTree& _tree, utils::BranchList const& _branches)
 
 /*protected*/
 void
-panda::EventSV::doGetEntry_(TTree& _tree)
+suep::EventSV::doGetEntry_(TTree& _tree)
 {
   EventBase::doGetEntry_(_tree);
 
@@ -143,7 +143,7 @@ panda::EventSV::doGetEntry_(TTree& _tree)
 }
 
 void
-panda::EventSV::doInit_()
+suep::EventSV::doInit_()
 {
   EventBase::doInit_();
 
@@ -152,7 +152,7 @@ panda::EventSV::doInit_()
 }
 
 void
-panda::EventSV::doUnlink_(TTree& _tree)
+suep::EventSV::doUnlink_(TTree& _tree)
 {
   EventBase::doUnlink_(_tree);
 

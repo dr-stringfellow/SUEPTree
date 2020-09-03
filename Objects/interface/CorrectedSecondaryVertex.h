@@ -8,7 +8,7 @@
 #include "../../Framework/interface/RefVector.h"
 #include "Vertex.h"
 
-namespace panda {
+namespace suep {
 
   class CorrectedSecondaryVertex : public SecondaryVertex {
   public:

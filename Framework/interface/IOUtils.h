@@ -7,7 +7,7 @@
 #include <vector>
 #include <iostream>
 
-namespace panda {
+namespace suep {
   class ReaderObject;
 
   namespace utils {
@@ -205,7 +205,7 @@ namespace panda {
 }
 
 //! Print BranchList
-std::ostream& operator<<(std::ostream&, panda::utils::BranchName const&);
-std::ostream& operator<<(std::ostream&, panda::utils::BranchList const&);
+std::ostream& operator<<(std::ostream&, suep::utils::BranchName const&);
+std::ostream& operator<<(std::ostream&, suep::utils::BranchList const&);
 
 #endif

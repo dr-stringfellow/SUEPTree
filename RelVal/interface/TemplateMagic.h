@@ -11,7 +11,7 @@
 // For all of these, the function action should be different for each branch
 //     (represented as the int passed first to each function)
 
-namespace testpanda {
+namespace testsuep {
   // FillFunc also should be passed to plot_looper with an event tree
   // This calls the () operator for the plotters in EnumerateBranches.h
   typedef std::function<void(int, std::vector<float>)> FillFunc;
@@ -25,7 +25,7 @@ namespace testpanda {
   template <int P>
   struct plot_looper {
 
-    void operator () (panda::Event& event, FillFunc& filler) {
+    void operator () (suep::Event& event, FillFunc& filler) {
       filler(P, plotter<P>()(event));
       plot_looper<P + 1>()(event, filler);
     };
@@ -53,7 +53,7 @@ namespace testpanda {
 
   template <>
     struct plot_looper<NUM_PLOTS> {
-    void operator ()(panda::Event&, FillFunc&) { };
+    void operator ()(suep::Event&, FillFunc&) { };
     void operator ()(ActionFunc&) { };
     void operator ()(NamedActionFunc&) { };
   };

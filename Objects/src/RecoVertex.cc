@@ -1,8 +1,8 @@
 #include "../interface/RecoVertex.h"
 
 /*static*/
-panda::utils::BranchList
-panda::RecoVertex::getListOfBranches()
+suep::utils::BranchList
+suep::RecoVertex::getListOfBranches()
 {
   utils::BranchList blist;
   blist += Vertex::getListOfBranches();
@@ -11,7 +11,7 @@ panda::RecoVertex::getListOfBranches()
 }
 
 void
-panda::RecoVertex::datastore::allocate(UInt_t _nmax)
+suep::RecoVertex::datastore::allocate(UInt_t _nmax)
 {
   Vertex::datastore::allocate(_nmax);
 
@@ -23,7 +23,7 @@ panda::RecoVertex::datastore::allocate(UInt_t _nmax)
 }
 
 void
-panda::RecoVertex::datastore::deallocate()
+suep::RecoVertex::datastore::deallocate()
 {
   Vertex::datastore::deallocate();
 
@@ -40,7 +40,7 @@ panda::RecoVertex::datastore::deallocate()
 }
 
 void
-panda::RecoVertex::datastore::setStatus(TTree& _tree, TString const& _name, utils::BranchList const& _branches)
+suep::RecoVertex::datastore::setStatus(TTree& _tree, TString const& _name, utils::BranchList const& _branches)
 {
   Vertex::datastore::setStatus(_tree, _name, _branches);
 
@@ -51,8 +51,8 @@ panda::RecoVertex::datastore::setStatus(TTree& _tree, TString const& _name, util
   utils::setStatus(_tree, _name, "pfRangeMax", _branches);
 }
 
-panda::utils::BranchList
-panda::RecoVertex::datastore::getStatus(TTree& _tree, TString const& _name) const
+suep::utils::BranchList
+suep::RecoVertex::datastore::getStatus(TTree& _tree, TString const& _name) const
 {
   utils::BranchList blist(Vertex::datastore::getStatus(_tree, _name));
 
@@ -66,7 +66,7 @@ panda::RecoVertex::datastore::getStatus(TTree& _tree, TString const& _name) cons
 }
 
 void
-panda::RecoVertex::datastore::setAddress(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _setStatus/* = kTRUE*/)
+suep::RecoVertex::datastore::setAddress(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _setStatus/* = kTRUE*/)
 {
   Vertex::datastore::setAddress(_tree, _name, _branches, _setStatus);
 
@@ -78,7 +78,7 @@ panda::RecoVertex::datastore::setAddress(TTree& _tree, TString const& _name, uti
 }
 
 void
-panda::RecoVertex::datastore::book(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _dynamic/* = kTRUE*/)
+suep::RecoVertex::datastore::book(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _dynamic/* = kTRUE*/)
 {
   Vertex::datastore::book(_tree, _name, _branches, _dynamic);
 
@@ -92,7 +92,7 @@ panda::RecoVertex::datastore::book(TTree& _tree, TString const& _name, utils::Br
 }
 
 void
-panda::RecoVertex::datastore::releaseTree(TTree& _tree, TString const& _name)
+suep::RecoVertex::datastore::releaseTree(TTree& _tree, TString const& _name)
 {
   Vertex::datastore::releaseTree(_tree, _name);
 
@@ -104,20 +104,20 @@ panda::RecoVertex::datastore::releaseTree(TTree& _tree, TString const& _name)
 }
 
 void
-panda::RecoVertex::datastore::resizeVectors_(UInt_t _size)
+suep::RecoVertex::datastore::resizeVectors_(UInt_t _size)
 {
   Vertex::datastore::resizeVectors_(_size);
 
 }
 
 
-panda::utils::BranchList
-panda::RecoVertex::datastore::getBranchNames(TString const& _name/* = ""*/) const
+suep::utils::BranchList
+suep::RecoVertex::datastore::getBranchNames(TString const& _name/* = ""*/) const
 {
   return RecoVertex::getListOfBranches().fullNames(_name);
 }
 
-panda::RecoVertex::RecoVertex(char const* _name/* = ""*/) :
+suep::RecoVertex::RecoVertex(char const* _name/* = ""*/) :
   Vertex(new RecoVertexArray(1, _name)),
   score(gStore.getData(this).score[0]),
   ntrk(gStore.getData(this).ntrk[0]),
@@ -127,7 +127,7 @@ panda::RecoVertex::RecoVertex(char const* _name/* = ""*/) :
 {
 }
 
-panda::RecoVertex::RecoVertex(RecoVertex const& _src) :
+suep::RecoVertex::RecoVertex(RecoVertex const& _src) :
   Vertex(new RecoVertexArray(1, _src.getName())),
   score(gStore.getData(this).score[0]),
   ntrk(gStore.getData(this).ntrk[0]),
@@ -138,7 +138,7 @@ panda::RecoVertex::RecoVertex(RecoVertex const& _src) :
   operator=(_src);
 }
 
-panda::RecoVertex::RecoVertex(datastore& _data, UInt_t _idx) :
+suep::RecoVertex::RecoVertex(datastore& _data, UInt_t _idx) :
   Vertex(_data, _idx),
   score(_data.score[_idx]),
   ntrk(_data.ntrk[_idx]),
@@ -148,7 +148,7 @@ panda::RecoVertex::RecoVertex(datastore& _data, UInt_t _idx) :
 {
 }
 
-panda::RecoVertex::RecoVertex(ArrayBase* _array) :
+suep::RecoVertex::RecoVertex(ArrayBase* _array) :
   Vertex(_array),
   score(gStore.getData(this).score[0]),
   ntrk(gStore.getData(this).ntrk[0]),
@@ -158,13 +158,13 @@ panda::RecoVertex::RecoVertex(ArrayBase* _array) :
 {
 }
 
-panda::RecoVertex::~RecoVertex()
+suep::RecoVertex::~RecoVertex()
 {
   destructor();
 }
 
 void
-panda::RecoVertex::destructor(Bool_t _recursive/* = kFALSE*/)
+suep::RecoVertex::destructor(Bool_t _recursive/* = kFALSE*/)
 {
   /* BEGIN CUSTOM RecoVertex.cc.destructor */
   /* END CUSTOM */
@@ -173,8 +173,8 @@ panda::RecoVertex::destructor(Bool_t _recursive/* = kFALSE*/)
     Vertex::destructor(kTRUE);
 }
 
-panda::RecoVertex&
-panda::RecoVertex::operator=(RecoVertex const& _src)
+suep::RecoVertex&
+suep::RecoVertex::operator=(RecoVertex const& _src)
 {
   Vertex::operator=(_src);
 
@@ -191,7 +191,7 @@ panda::RecoVertex::operator=(RecoVertex const& _src)
 }
 
 void
-panda::RecoVertex::doBook_(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/)
+suep::RecoVertex::doBook_(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/)
 {
   Vertex::doBook_(_tree, _name, _branches);
 
@@ -203,7 +203,7 @@ panda::RecoVertex::doBook_(TTree& _tree, TString const& _name, utils::BranchList
 }
 
 void
-panda::RecoVertex::doInit_()
+suep::RecoVertex::doInit_()
 {
   Vertex::doInit_();
 
@@ -218,7 +218,7 @@ panda::RecoVertex::doInit_()
 }
 
 void
-panda::RecoVertex::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
+suep::RecoVertex::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
 {
   /* BEGIN CUSTOM RecoVertex.cc.print */
   dump(_out);
@@ -226,7 +226,7 @@ panda::RecoVertex::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1
 }
 
 void
-panda::RecoVertex::dump(std::ostream& _out/* = std::cout*/) const
+suep::RecoVertex::dump(std::ostream& _out/* = std::cout*/) const
 {
   Vertex::dump(_out);
 

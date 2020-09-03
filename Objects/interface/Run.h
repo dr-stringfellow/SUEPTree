@@ -4,7 +4,7 @@
 #include "Constants.h"
 #include "TList.h"
 
-namespace panda {
+namespace suep {
 
   class Run : public TreeEntry {
   public:

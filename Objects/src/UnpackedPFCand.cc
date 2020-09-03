@@ -1,8 +1,8 @@
 #include "../interface/UnpackedPFCand.h"
 
 /*static*/
-panda::utils::BranchList
-panda::UnpackedPFCand::getListOfBranches()
+suep::utils::BranchList
+suep::UnpackedPFCand::getListOfBranches()
 {
   utils::BranchList blist;
   blist += PFCandBase::getListOfBranches();
@@ -12,7 +12,7 @@ panda::UnpackedPFCand::getListOfBranches()
 }
 
 void
-panda::UnpackedPFCand::datastore::allocate(UInt_t _nmax)
+suep::UnpackedPFCand::datastore::allocate(UInt_t _nmax)
 {
   PFCandBase::datastore::allocate(_nmax);
 
@@ -25,7 +25,7 @@ panda::UnpackedPFCand::datastore::allocate(UInt_t _nmax)
 }
 
 void
-panda::UnpackedPFCand::datastore::deallocate()
+suep::UnpackedPFCand::datastore::deallocate()
 {
   PFCandBase::datastore::deallocate();
 
@@ -44,7 +44,7 @@ panda::UnpackedPFCand::datastore::deallocate()
 }
 
 void
-panda::UnpackedPFCand::datastore::setStatus(TTree& _tree, TString const& _name, utils::BranchList const& _branches)
+suep::UnpackedPFCand::datastore::setStatus(TTree& _tree, TString const& _name, utils::BranchList const& _branches)
 {
   PFCandBase::datastore::setStatus(_tree, _name, _branches);
 
@@ -56,8 +56,8 @@ panda::UnpackedPFCand::datastore::setStatus(TTree& _tree, TString const& _name, 
   utils::setStatus(_tree, _name, "puppiWNoLep_", _branches);
 }
 
-panda::utils::BranchList
-panda::UnpackedPFCand::datastore::getStatus(TTree& _tree, TString const& _name) const
+suep::utils::BranchList
+suep::UnpackedPFCand::datastore::getStatus(TTree& _tree, TString const& _name) const
 {
   utils::BranchList blist(PFCandBase::datastore::getStatus(_tree, _name));
 
@@ -72,7 +72,7 @@ panda::UnpackedPFCand::datastore::getStatus(TTree& _tree, TString const& _name) 
 }
 
 void
-panda::UnpackedPFCand::datastore::setAddress(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _setStatus/* = kTRUE*/)
+suep::UnpackedPFCand::datastore::setAddress(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _setStatus/* = kTRUE*/)
 {
   PFCandBase::datastore::setAddress(_tree, _name, _branches, _setStatus);
 
@@ -85,7 +85,7 @@ panda::UnpackedPFCand::datastore::setAddress(TTree& _tree, TString const& _name,
 }
 
 void
-panda::UnpackedPFCand::datastore::book(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _dynamic/* = kTRUE*/)
+suep::UnpackedPFCand::datastore::book(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _dynamic/* = kTRUE*/)
 {
   PFCandBase::datastore::book(_tree, _name, _branches, _dynamic);
 
@@ -100,7 +100,7 @@ panda::UnpackedPFCand::datastore::book(TTree& _tree, TString const& _name, utils
 }
 
 void
-panda::UnpackedPFCand::datastore::releaseTree(TTree& _tree, TString const& _name)
+suep::UnpackedPFCand::datastore::releaseTree(TTree& _tree, TString const& _name)
 {
   PFCandBase::datastore::releaseTree(_tree, _name);
 
@@ -113,20 +113,20 @@ panda::UnpackedPFCand::datastore::releaseTree(TTree& _tree, TString const& _name
 }
 
 void
-panda::UnpackedPFCand::datastore::resizeVectors_(UInt_t _size)
+suep::UnpackedPFCand::datastore::resizeVectors_(UInt_t _size)
 {
   PFCandBase::datastore::resizeVectors_(_size);
 
 }
 
 
-panda::utils::BranchList
-panda::UnpackedPFCand::datastore::getBranchNames(TString const& _name/* = ""*/) const
+suep::utils::BranchList
+suep::UnpackedPFCand::datastore::getBranchNames(TString const& _name/* = ""*/) const
 {
   return UnpackedPFCand::getListOfBranches().fullNames(_name);
 }
 
-panda::UnpackedPFCand::UnpackedPFCand(char const* _name/* = ""*/) :
+suep::UnpackedPFCand::UnpackedPFCand(char const* _name/* = ""*/) :
   PFCandBase(new UnpackedPFCandArray(1, _name)),
   PtEtaPhiMMixin(gStore.getData(this), 0),
   puppiW_(gStore.getData(this).puppiW_[0]),
@@ -134,7 +134,7 @@ panda::UnpackedPFCand::UnpackedPFCand(char const* _name/* = ""*/) :
 {
 }
 
-panda::UnpackedPFCand::UnpackedPFCand(UnpackedPFCand const& _src) :
+suep::UnpackedPFCand::UnpackedPFCand(UnpackedPFCand const& _src) :
   PFCandBase(new UnpackedPFCandArray(1, _src.getName())),
   PtEtaPhiMMixin(gStore.getData(this), 0),
   puppiW_(gStore.getData(this).puppiW_[0]),
@@ -143,7 +143,7 @@ panda::UnpackedPFCand::UnpackedPFCand(UnpackedPFCand const& _src) :
   operator=(_src);
 }
 
-panda::UnpackedPFCand::UnpackedPFCand(datastore& _data, UInt_t _idx) :
+suep::UnpackedPFCand::UnpackedPFCand(datastore& _data, UInt_t _idx) :
   PFCandBase(_data, _idx),
   PtEtaPhiMMixin(_data, _idx),
   puppiW_(_data.puppiW_[_idx]),
@@ -151,7 +151,7 @@ panda::UnpackedPFCand::UnpackedPFCand(datastore& _data, UInt_t _idx) :
 {
 }
 
-panda::UnpackedPFCand::UnpackedPFCand(ArrayBase* _array) :
+suep::UnpackedPFCand::UnpackedPFCand(ArrayBase* _array) :
   PFCandBase(_array),
   PtEtaPhiMMixin(gStore.getData(this), 0),
   puppiW_(gStore.getData(this).puppiW_[0]),
@@ -159,13 +159,13 @@ panda::UnpackedPFCand::UnpackedPFCand(ArrayBase* _array) :
 {
 }
 
-panda::UnpackedPFCand::~UnpackedPFCand()
+suep::UnpackedPFCand::~UnpackedPFCand()
 {
   destructor();
 }
 
 void
-panda::UnpackedPFCand::destructor(Bool_t _recursive/* = kFALSE*/)
+suep::UnpackedPFCand::destructor(Bool_t _recursive/* = kFALSE*/)
 {
   /* BEGIN CUSTOM UnpackedPFCand.cc.destructor */
   /* END CUSTOM */
@@ -174,8 +174,8 @@ panda::UnpackedPFCand::destructor(Bool_t _recursive/* = kFALSE*/)
     PFCandBase::destructor(kTRUE);
 }
 
-panda::UnpackedPFCand&
-panda::UnpackedPFCand::operator=(UnpackedPFCand const& _src)
+suep::UnpackedPFCand&
+suep::UnpackedPFCand::operator=(UnpackedPFCand const& _src)
 {
   PFCandBase::operator=(_src);
 
@@ -193,7 +193,7 @@ panda::UnpackedPFCand::operator=(UnpackedPFCand const& _src)
 }
 
 void
-panda::UnpackedPFCand::doBook_(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/)
+suep::UnpackedPFCand::doBook_(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/)
 {
   PFCandBase::doBook_(_tree, _name, _branches);
 
@@ -206,7 +206,7 @@ panda::UnpackedPFCand::doBook_(TTree& _tree, TString const& _name, utils::Branch
 }
 
 void
-panda::UnpackedPFCand::doInit_()
+suep::UnpackedPFCand::doInit_()
 {
   PFCandBase::doInit_();
 
@@ -222,7 +222,7 @@ panda::UnpackedPFCand::doInit_()
 }
 
 void
-panda::UnpackedPFCand::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
+suep::UnpackedPFCand::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
 {
   /* BEGIN CUSTOM UnpackedPFCand.cc.print */
   dump(_out);
@@ -230,7 +230,7 @@ panda::UnpackedPFCand::print(std::ostream& _out/* = std::cout*/, UInt_t _level/*
 }
 
 void
-panda::UnpackedPFCand::dump(std::ostream& _out/* = std::cout*/) const
+suep::UnpackedPFCand::dump(std::ostream& _out/* = std::cout*/) const
 {
   PFCandBase::dump(_out);
 
@@ -243,7 +243,7 @@ panda::UnpackedPFCand::dump(std::ostream& _out/* = std::cout*/) const
 }
 
 void
-panda::UnpackedPFCand::setPtEtaPhiM(double pt, double eta, double phi, double m)
+suep::UnpackedPFCand::setPtEtaPhiM(double pt, double eta, double phi, double m)
 {
   pt_ = pt;
   eta_ = eta;
@@ -252,7 +252,7 @@ panda::UnpackedPFCand::setPtEtaPhiM(double pt, double eta, double phi, double m)
 }
 
 void
-panda::UnpackedPFCand::setXYZE(double px, double py, double pz, double e)
+suep::UnpackedPFCand::setXYZE(double px, double py, double pz, double e)
 {
   pt_ = std::sqrt(px * px + py * py);
   double p(std::sqrt(px * px + py * py + pz * pz));
@@ -265,8 +265,8 @@ panda::UnpackedPFCand::setXYZE(double px, double py, double pz, double e)
 /* BEGIN CUSTOM UnpackedPFCand.cc.global */
 #include "../interface/PFCand.h"
 
-panda::UnpackedPFCand&
-panda::UnpackedPFCand::operator=(PFCand const& _rhs)
+suep::UnpackedPFCand&
+suep::UnpackedPFCand::operator=(PFCand const& _rhs)
 {
   PFCandBase::operator=(static_cast<PFCandBase const&>(_rhs));
   setPtEtaPhiM(_rhs.pt(), _rhs.eta(), _rhs.phi(), _rhs.m());

@@ -1,8 +1,8 @@
 #include "../interface/PackedTrack.h"
 
 /*static*/
-panda::utils::BranchList
-panda::PackedTrack::getListOfBranches()
+suep::utils::BranchList
+suep::PackedTrack::getListOfBranches()
 {
   utils::BranchList blist;
   blist += {"packedPtError", "packedDxy", "packedDz", "packedDPhi", "highPurity"};
@@ -10,7 +10,7 @@ panda::PackedTrack::getListOfBranches()
 }
 
 void
-panda::PackedTrack::datastore::allocate(UInt_t _nmax)
+suep::PackedTrack::datastore::allocate(UInt_t _nmax)
 {
   Element::datastore::allocate(_nmax);
 
@@ -22,7 +22,7 @@ panda::PackedTrack::datastore::allocate(UInt_t _nmax)
 }
 
 void
-panda::PackedTrack::datastore::deallocate()
+suep::PackedTrack::datastore::deallocate()
 {
   Element::datastore::deallocate();
 
@@ -39,7 +39,7 @@ panda::PackedTrack::datastore::deallocate()
 }
 
 void
-panda::PackedTrack::datastore::setStatus(TTree& _tree, TString const& _name, utils::BranchList const& _branches)
+suep::PackedTrack::datastore::setStatus(TTree& _tree, TString const& _name, utils::BranchList const& _branches)
 {
   Element::datastore::setStatus(_tree, _name, _branches);
 
@@ -50,8 +50,8 @@ panda::PackedTrack::datastore::setStatus(TTree& _tree, TString const& _name, uti
   utils::setStatus(_tree, _name, "highPurity", _branches);
 }
 
-panda::utils::BranchList
-panda::PackedTrack::datastore::getStatus(TTree& _tree, TString const& _name) const
+suep::utils::BranchList
+suep::PackedTrack::datastore::getStatus(TTree& _tree, TString const& _name) const
 {
   utils::BranchList blist(Element::datastore::getStatus(_tree, _name));
 
@@ -65,7 +65,7 @@ panda::PackedTrack::datastore::getStatus(TTree& _tree, TString const& _name) con
 }
 
 void
-panda::PackedTrack::datastore::setAddress(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _setStatus/* = kTRUE*/)
+suep::PackedTrack::datastore::setAddress(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _setStatus/* = kTRUE*/)
 {
   Element::datastore::setAddress(_tree, _name, _branches, _setStatus);
 
@@ -77,7 +77,7 @@ panda::PackedTrack::datastore::setAddress(TTree& _tree, TString const& _name, ut
 }
 
 void
-panda::PackedTrack::datastore::book(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _dynamic/* = kTRUE*/)
+suep::PackedTrack::datastore::book(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _dynamic/* = kTRUE*/)
 {
   Element::datastore::book(_tree, _name, _branches, _dynamic);
 
@@ -91,7 +91,7 @@ panda::PackedTrack::datastore::book(TTree& _tree, TString const& _name, utils::B
 }
 
 void
-panda::PackedTrack::datastore::releaseTree(TTree& _tree, TString const& _name)
+suep::PackedTrack::datastore::releaseTree(TTree& _tree, TString const& _name)
 {
   Element::datastore::releaseTree(_tree, _name);
 
@@ -103,20 +103,20 @@ panda::PackedTrack::datastore::releaseTree(TTree& _tree, TString const& _name)
 }
 
 void
-panda::PackedTrack::datastore::resizeVectors_(UInt_t _size)
+suep::PackedTrack::datastore::resizeVectors_(UInt_t _size)
 {
   Element::datastore::resizeVectors_(_size);
 
 }
 
 
-panda::utils::BranchList
-panda::PackedTrack::datastore::getBranchNames(TString const& _name/* = ""*/) const
+suep::utils::BranchList
+suep::PackedTrack::datastore::getBranchNames(TString const& _name/* = ""*/) const
 {
   return PackedTrack::getListOfBranches().fullNames(_name);
 }
 
-panda::PackedTrack::PackedTrack(char const* _name/* = ""*/) :
+suep::PackedTrack::PackedTrack(char const* _name/* = ""*/) :
   Element(new PackedTrackArray(1, _name)),
   packedPtError(gStore.getData(this).packedPtError[0]),
   packedDxy(gStore.getData(this).packedDxy[0]),
@@ -126,7 +126,7 @@ panda::PackedTrack::PackedTrack(char const* _name/* = ""*/) :
 {
 }
 
-panda::PackedTrack::PackedTrack(PackedTrack const& _src) :
+suep::PackedTrack::PackedTrack(PackedTrack const& _src) :
   Element(new PackedTrackArray(1, _src.getName())),
   packedPtError(gStore.getData(this).packedPtError[0]),
   packedDxy(gStore.getData(this).packedDxy[0]),
@@ -137,7 +137,7 @@ panda::PackedTrack::PackedTrack(PackedTrack const& _src) :
   operator=(_src);
 }
 
-panda::PackedTrack::PackedTrack(datastore& _data, UInt_t _idx) :
+suep::PackedTrack::PackedTrack(datastore& _data, UInt_t _idx) :
   Element(_data, _idx),
   packedPtError(_data.packedPtError[_idx]),
   packedDxy(_data.packedDxy[_idx]),
@@ -147,7 +147,7 @@ panda::PackedTrack::PackedTrack(datastore& _data, UInt_t _idx) :
 {
 }
 
-panda::PackedTrack::PackedTrack(ArrayBase* _array) :
+suep::PackedTrack::PackedTrack(ArrayBase* _array) :
   Element(_array),
   packedPtError(gStore.getData(this).packedPtError[0]),
   packedDxy(gStore.getData(this).packedDxy[0]),
@@ -157,20 +157,20 @@ panda::PackedTrack::PackedTrack(ArrayBase* _array) :
 {
 }
 
-panda::PackedTrack::~PackedTrack()
+suep::PackedTrack::~PackedTrack()
 {
   destructor();
 }
 
 void
-panda::PackedTrack::destructor(Bool_t _recursive/* = kFALSE*/)
+suep::PackedTrack::destructor(Bool_t _recursive/* = kFALSE*/)
 {
   /* BEGIN CUSTOM PackedTrack.cc.destructor */
   /* END CUSTOM */
 }
 
-panda::PackedTrack&
-panda::PackedTrack::operator=(PackedTrack const& _src)
+suep::PackedTrack&
+suep::PackedTrack::operator=(PackedTrack const& _src)
 {
   packedPtError = _src.packedPtError;
   packedDxy = _src.packedDxy;
@@ -190,7 +190,7 @@ panda::PackedTrack::operator=(PackedTrack const& _src)
 }
 
 void
-panda::PackedTrack::doBook_(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/)
+suep::PackedTrack::doBook_(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/)
 {
   utils::book(_tree, _name, "packedPtError", "", 's', &packedPtError, _branches);
   utils::book(_tree, _name, "packedDxy", "", 'S', &packedDxy, _branches);
@@ -200,7 +200,7 @@ panda::PackedTrack::doBook_(TTree& _tree, TString const& _name, utils::BranchLis
 }
 
 void
-panda::PackedTrack::doInit_()
+suep::PackedTrack::doInit_()
 {
   packedPtError = 0;
   packedDxy = 0;
@@ -218,7 +218,7 @@ panda::PackedTrack::doInit_()
 }
 
 void
-panda::PackedTrack::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
+suep::PackedTrack::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
 {
   /* BEGIN CUSTOM PackedTrack.cc.print */
   dump(_out);
@@ -226,7 +226,7 @@ panda::PackedTrack::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 
 }
 
 void
-panda::PackedTrack::dump(std::ostream& _out/* = std::cout*/) const
+suep::PackedTrack::dump(std::ostream& _out/* = std::cout*/) const
 {
   _out << "packedPtError = " << packedPtError << std::endl;
   _out << "packedDxy = " << packedDxy << std::endl;
@@ -240,7 +240,7 @@ panda::PackedTrack::dump(std::ostream& _out/* = std::cout*/) const
 #include "../interface/PackingHelper.h"
 
 void
-panda::PackedTrack::pack_()
+suep::PackedTrack::pack_()
 {
   packPtError_();
   packedDxy = PackingHelper::singleton().packUnbound(dxy_ * 100.);
@@ -249,13 +249,13 @@ panda::PackedTrack::pack_()
 }
 
 void
-panda::PackedTrack::packPtError_()
+suep::PackedTrack::packPtError_()
 {
   packedPtError = PackingHelper::singleton().packUnbound(ptError_);
 }
 
 void
-panda::PackedTrack::unpack_() const
+suep::PackedTrack::unpack_() const
 {
   if (unpacked_)
     return;

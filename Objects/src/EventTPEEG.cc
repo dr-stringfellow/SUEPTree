@@ -1,6 +1,6 @@
 #include "../interface/EventTPEEG.h"
 
-panda::EventTPEEG::EventTPEEG() :
+suep::EventTPEEG::EventTPEEG() :
   EventTPEG()
 {
   std::vector<Object*> myObjects{{&looseTags}};
@@ -11,7 +11,7 @@ panda::EventTPEEG::EventTPEEG() :
   /* END CUSTOM */
 }
 
-panda::EventTPEEG::EventTPEEG(EventTPEEG const& _src) :
+suep::EventTPEEG::EventTPEEG(EventTPEEG const& _src) :
   EventTPEG(_src),
   looseTags(_src.looseTags)
 {
@@ -23,14 +23,14 @@ panda::EventTPEEG::EventTPEEG(EventTPEEG const& _src) :
   /* END CUSTOM */
 }
 
-panda::EventTPEEG::~EventTPEEG()
+suep::EventTPEEG::~EventTPEEG()
 {
   /* BEGIN CUSTOM EventTPEEG.cc.dtor */
   /* END CUSTOM */
 }
 
-panda::EventTPEEG&
-panda::EventTPEEG::operator=(EventTPEEG const& _src)
+suep::EventTPEEG&
+suep::EventTPEEG::operator=(EventTPEEG const& _src)
 {
   EventTPEG::operator=(_src);
 
@@ -43,7 +43,7 @@ panda::EventTPEEG::operator=(EventTPEEG const& _src)
 }
 
 void
-panda::EventTPEEG::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
+suep::EventTPEEG::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
 {
   /* BEGIN CUSTOM EventTPEEG.cc.print */
   dump(_out);
@@ -51,7 +51,7 @@ panda::EventTPEEG::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1
 }
 
 void
-panda::EventTPEEG::dump(std::ostream& _out/* = std::cout*/) const
+suep::EventTPEEG::dump(std::ostream& _out/* = std::cout*/) const
 {
   EventTPEG::dump(_out);
 
@@ -59,8 +59,8 @@ panda::EventTPEEG::dump(std::ostream& _out/* = std::cout*/) const
 
 }
 /*static*/
-panda::utils::BranchList
-panda::EventTPEEG::getListOfBranches(Bool_t _direct/* = kFALSE*/)
+suep::utils::BranchList
+suep::EventTPEEG::getListOfBranches(Bool_t _direct/* = kFALSE*/)
 {
   utils::BranchList blist;
   blist += EventTPEG::getListOfBranches(_direct);
@@ -76,14 +76,14 @@ panda::EventTPEEG::getListOfBranches(Bool_t _direct/* = kFALSE*/)
 
 /*protected*/
 void
-panda::EventTPEEG::doSetStatus_(TTree& _tree, utils::BranchList const& _branches)
+suep::EventTPEEG::doSetStatus_(TTree& _tree, utils::BranchList const& _branches)
 {
   EventTPEG::doSetStatus_(_tree, _branches);
 }
 
 /*protected*/
-panda::utils::BranchList
-panda::EventTPEEG::doGetStatus_(TTree& _tree) const
+suep::utils::BranchList
+suep::EventTPEEG::doGetStatus_(TTree& _tree) const
 {
   utils::BranchList blist;
   blist += EventTPEG::doGetStatus_(_tree);
@@ -92,15 +92,15 @@ panda::EventTPEEG::doGetStatus_(TTree& _tree) const
 }
 
 /*protected*/
-panda::utils::BranchList
-panda::EventTPEEG::doGetBranchNames_() const
+suep::utils::BranchList
+suep::EventTPEEG::doGetBranchNames_() const
 {
   return getListOfBranches(true);
 }
 
 /*protected*/
 void
-panda::EventTPEEG::doSetAddress_(TTree& _tree, utils::BranchList const& _branches, Bool_t _setStatus)
+suep::EventTPEEG::doSetAddress_(TTree& _tree, utils::BranchList const& _branches, Bool_t _setStatus)
 {
   EventTPEG::doSetAddress_(_tree, _branches, _setStatus);
 
@@ -108,7 +108,7 @@ panda::EventTPEEG::doSetAddress_(TTree& _tree, utils::BranchList const& _branche
 
 /*protected*/
 void
-panda::EventTPEEG::doBook_(TTree& _tree, utils::BranchList const& _branches)
+suep::EventTPEEG::doBook_(TTree& _tree, utils::BranchList const& _branches)
 {
   EventTPEG::doBook_(_tree, _branches);
 
@@ -116,7 +116,7 @@ panda::EventTPEEG::doBook_(TTree& _tree, utils::BranchList const& _branches)
 
 /*protected*/
 void
-panda::EventTPEEG::doGetEntry_(TTree& _tree)
+suep::EventTPEEG::doGetEntry_(TTree& _tree)
 {
   EventTPEG::doGetEntry_(_tree);
 
@@ -125,7 +125,7 @@ panda::EventTPEEG::doGetEntry_(TTree& _tree)
 }
 
 void
-panda::EventTPEEG::doInit_()
+suep::EventTPEEG::doInit_()
 {
   EventTPEG::doInit_();
 
@@ -134,7 +134,7 @@ panda::EventTPEEG::doInit_()
 }
 
 void
-panda::EventTPEEG::doUnlink_(TTree& _tree)
+suep::EventTPEEG::doUnlink_(TTree& _tree)
 {
   EventTPEG::doUnlink_(_tree);
 

@@ -4,7 +4,7 @@
 #include <stdexcept>
 
 void
-panda::ContainerBase::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
+suep::ContainerBase::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
 {
   if (name_.Length() != 0)
     _out << "{" << name_ << "}" << std::endl;
@@ -20,7 +20,7 @@ panda::ContainerBase::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* 
 }
 
 void
-panda::ContainerBase::dump(std::ostream& _out/* = std::cout*/) const
+suep::ContainerBase::dump(std::ostream& _out/* = std::cout*/) const
 {
   _out << "name_ = " << name_ << std::endl;
   _out << "unitSize_ = " << unitSize_ << std::endl;

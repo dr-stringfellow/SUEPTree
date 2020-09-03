@@ -9,7 +9,7 @@
 #define RRNG_DEBUG 0
 
 
-namespace panda {
+namespace suep {
   class RRNG {
   public:
     RRNG(int maxEntropy = 50, 

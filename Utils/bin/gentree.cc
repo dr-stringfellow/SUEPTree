@@ -11,7 +11,7 @@
 struct PNodeSUEP : public PNode {
   short motherSUEP{-1};
 
-  PNodeSUEP(panda::GenParticleBase const& _part) : PNode() {
+  PNodeSUEP(suep::GenParticleBase const& _part) : PNode() {
     pdgId = _part.pdgid;
     status = _part.finalState ? 1 : 2;
     statusBits = std::bitset<15>(_part.statusFlags);
@@ -62,7 +62,7 @@ main(int argc, char* argv[])
   }
   delete matches;
 
-  panda::EventAnalysis event;
+  suep::EventAnalysis event;
   event.setAddress(*tree, {"runNumber", "lumiNumber", "eventNumber", "genParticles", "genParticlesU"});
 
   long iEntry(0);
@@ -70,7 +70,7 @@ main(int argc, char* argv[])
     if (runNumber != 0 && (event.runNumber != runNumber || event.lumiNumber != lumiNumber || event.eventNumber != eventNumber))
       continue;
 
-    panda::GenParticleBaseCollection const* parts{nullptr};
+    suep::GenParticleBaseCollection const* parts{nullptr};
     if (event.genParticles.size() != 0)
       parts = &event.genParticles;
     else

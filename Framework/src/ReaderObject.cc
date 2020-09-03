@@ -6,7 +6,7 @@
 
 #include <stdexcept>
 
-panda::ReaderObject::~ReaderObject()
+suep::ReaderObject::~ReaderObject()
 {
   unsigned iT(0);
   while (iT != inputBranches_.size()) {
@@ -18,7 +18,7 @@ panda::ReaderObject::~ReaderObject()
 }
 
 Int_t
-panda::ReaderObject::getEntry(TTree& _tree, Long64_t _entry, Bool_t _localEntry/* = kFALSE*/)
+suep::ReaderObject::getEntry(TTree& _tree, Long64_t _entry, Bool_t _localEntry/* = kFALSE*/)
 {
   for (unsigned iT(0); iT != inputBranches_.size(); ++iT) {
     if (inputBranches_[iT].first == &_tree)
@@ -29,7 +29,7 @@ panda::ReaderObject::getEntry(TTree& _tree, Long64_t _entry, Bool_t _localEntry/
 }
 
 Int_t
-panda::ReaderObject::getEntry(UInt_t _treeId, Long64_t _entry, Bool_t _localEntry/* = kFALSE*/)
+suep::ReaderObject::getEntry(UInt_t _treeId, Long64_t _entry, Bool_t _localEntry/* = kFALSE*/)
 {
   init();
 
@@ -47,7 +47,7 @@ panda::ReaderObject::getEntry(UInt_t _treeId, Long64_t _entry, Bool_t _localEntr
 }
 
 UInt_t
-panda::ReaderObject::registerInput_(TTree& _tree)
+suep::ReaderObject::registerInput_(TTree& _tree)
 {
   // First see if the tree is already registered
   for (unsigned iT(0); iT != inputBranches_.size(); ++iT) {
@@ -94,7 +94,7 @@ panda::ReaderObject::registerInput_(TTree& _tree)
 }
 
 void
-panda::ReaderObject::unlink(TTree& _tree)
+suep::ReaderObject::unlink(TTree& _tree)
 {
   for (auto itr(inputBranches_.begin()); itr != inputBranches_.end(); ++itr) {
     if (itr->first == &_tree) {
@@ -105,7 +105,7 @@ panda::ReaderObject::unlink(TTree& _tree)
 }
 
 void
-panda::ReaderObject::updateBranchArray(TTree& _tree)
+suep::ReaderObject::updateBranchArray(TTree& _tree)
 {
   for (unsigned iT(0); iT != inputBranches_.size(); ++iT) {
     if (inputBranches_[iT].first == &_tree) {

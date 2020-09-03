@@ -9,7 +9,7 @@
 #include "Vertex.h"
 #include "GenParticleBase.h"
 
-namespace panda {
+namespace suep {
 
   class Tau : public ParticleM {
   public:

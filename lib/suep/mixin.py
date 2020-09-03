@@ -125,7 +125,7 @@ class Mixin(Definition, Object):
 
         src.newline()
         src.writeline('/*static*/')
-        src.writeline('panda::utils::BranchList')
+        src.writeline('suep::utils::BranchList')
         src.writeline('{NAMESPACE}::{name}::getListOfBranches()'.format(**subst))
         src.writeline('{')
         src.indent += 1

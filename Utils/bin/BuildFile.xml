@@ -3,5 +3,5 @@
   <bin file="padd.cc"></bin>
   <bin file="pxrdcp.cc"></bin>
   <bin file="gentree.cc"></bin>
-  <bin file="pandadumptriggers.cc"></bin>
+  <bin file="suepdumptriggers.cc"></bin>
 </environment>

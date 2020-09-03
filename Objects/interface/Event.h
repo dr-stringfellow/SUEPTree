@@ -23,7 +23,7 @@
 #include "MetFilters.h"
 #include "Recoil.h"
 
-namespace panda {
+namespace suep {
 
   class Event : public EventBase {
   public:

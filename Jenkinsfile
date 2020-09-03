@@ -51,10 +51,10 @@ pipeline {
             sh '''
                $DOSRC
                eval `scramv1 runtime -sh`
-               for f in /mnt/hadoop/scratch/jenkins/panda/$PANDA_PROD_USER/SUEPProd/$PANDA_PROD_BRANCH/*
+               for f in /mnt/hadoop/scratch/jenkins/suep/$PANDA_PROD_USER/SUEPProd/$PANDA_PROD_BRANCH/*
                do
                    BASE=$(echo $f | perl -ne '/\\/([\\w-]+)\\.root/ && print "$1"')
-                   testpanda $f ${JOB_NAME}/${BUILD_NUMBER}/$(tail -n1 $HOME/miniaod/$BASE.txt)
+                   testsuep $f ${JOB_NAME}/${BUILD_NUMBER}/$(tail -n1 $HOME/miniaod/$BASE.txt)
                done
                '''
         }

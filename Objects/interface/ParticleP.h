@@ -8,7 +8,7 @@
 #include "../../Framework/interface/Ref.h"
 #include "../../Framework/interface/RefVector.h"
 
-namespace panda {
+namespace suep {
 
   class ParticleP : public Particle, public PtEtaPhiMixin {
   public:

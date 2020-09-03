@@ -13,7 +13,7 @@
 #include "GenParticleBase.h"
 #include "SUEPTree/Framework/interface/RRNG.h"
 
-namespace panda {
+namespace suep {
 
   class EventBase : public TreeEntry {
   public:

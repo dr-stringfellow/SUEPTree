@@ -31,7 +31,7 @@ namespace {
   constexpr float MINMAX = 1e10;
 }
 
-using namespace testpanda;
+using namespace testsuep;
 
 bool exists(const char* path) {
   struct stat buffer;
@@ -164,7 +164,7 @@ int main(int argc, char** argv) {
     std::cout << std::endl
               << "Usage: " << argv[0] << " INPUT [OUTPUT]" << std::endl
               << std::endl
-              << "Takes a panda file and creates plots in your personal web directory." << std::endl
+              << "Takes a suep file and creates plots in your personal web directory." << std::endl
               << "A little webpage is included to make the output directory nice to look at." << std::endl
               << std::endl
               << "OUTPUT is the name of the final directory to put in your ~/public_html/relval" << std::endl
@@ -183,7 +183,7 @@ int main(int argc, char** argv) {
   TFile input {argv[1]};
   TTree* input_tree = static_cast<TTree*>(input.Get("events"));
 
-  panda::Event event;
+  suep::Event event;
   event.setAddress(*input_tree);
 
   unsigned long nentries = input_tree->GetEntries();

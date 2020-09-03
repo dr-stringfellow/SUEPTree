@@ -5,17 +5,17 @@
 // After compiling SUEPAnalysis using scram, you can call the following in CINT:
 //   #include "SUEPTree/Utils/src/ReadTreeFunctionManager.cc"
 // and then perform a TTree Draw or Scan e.g.
-//   events->Scan("panda::rtfm::up(genParticles.packedPt)")
-// This is the analog of panda::PackingHelper::unpackUnbound
-// For the analog of panda::PackingHelper::unpack8LogBound, use panda::rtfm::up8(...)
-// For phi, use panda::rtfm::upPhi(packedPhi,packedPt)
-// For eta, use panda::rtfm::upEta(packedEta)
+//   events->Scan("suep::rtfm::up(genParticles.packedPt)")
+// This is the analog of suep::PackingHelper::unpackUnbound
+// For the analog of suep::PackingHelper::unpack8LogBound, use suep::rtfm::up8(...)
+// For phi, use suep::rtfm::upPhi(packedPhi,packedPt)
+// For eta, use suep::rtfm::upEta(packedEta)
 
 #include "Rtypes.h"
 #include <cmath>
 #include <limits>
 
-namespace panda {
+namespace suep {
   class ReadTreeFunctionManager {
   public:
     ReadTreeFunctionManager();
@@ -29,7 +29,7 @@ namespace panda {
 }
 
 Double_t
-panda::ReadTreeFunctionManager::up(UShort_t p)
+suep::ReadTreeFunctionManager::up(UShort_t p)
 // use for pt
 {
   if(p==0) return 0;
@@ -78,8 +78,8 @@ panda::ReadTreeFunctionManager::up(UShort_t p)
 }
 
 Double_t
-panda::ReadTreeFunctionManager::up8(Char_t i, Double_t min, Double_t max, UChar_t baseminus1)
-// use for panda::PFCand::packedPuppiW
+suep::ReadTreeFunctionManager::up8(Char_t i, Double_t min, Double_t max, UChar_t baseminus1)
+// use for suep::PFCand::packedPuppiW
 {
   if (baseminus1 > 127)
     baseminus1 = 127;
@@ -97,7 +97,7 @@ panda::ReadTreeFunctionManager::up8(Char_t i, Double_t min, Double_t max, UChar_
     return val;
 }
 Double_t
-panda::ReadTreeFunctionManager::upPhi(UShort_t packedPhi, UShort_t packedPt) {
+suep::ReadTreeFunctionManager::upPhi(UShort_t packedPhi, UShort_t packedPt) {
   double pt_ = up(packedPt);
   double shift(pt_ < 1. ? 0.1 * pt_ : 0.1 / pt_);
   double sign((int(pt_ * 10.) % 2 == 0) ? 1 : -1);
@@ -105,7 +105,7 @@ panda::ReadTreeFunctionManager::upPhi(UShort_t packedPhi, UShort_t packedPt) {
   return phi_;
 }
 Double_t
-panda::ReadTreeFunctionManager::upEta(UShort_t packedEta) {
+suep::ReadTreeFunctionManager::upEta(UShort_t packedEta) {
   double eta_ = packedEta * 6.0f / std::numeric_limits<Short_t>::max();
   return eta_;
 }

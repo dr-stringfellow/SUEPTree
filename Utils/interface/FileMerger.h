@@ -8,7 +8,7 @@
 #include <vector>
 #include <functional>
 
-namespace panda {
+namespace suep {
 
   class EventBase;
 
@@ -26,7 +26,7 @@ namespace panda {
     virtual EventBase* getEvent() = 0;
   };
 
-  //! Merge multiple panda files with optional skimming, slimming, and editing.
+  //! Merge multiple suep files with optional skimming, slimming, and editing.
   class FileMerger {
   public:
     enum TreeType {
@@ -40,7 +40,7 @@ namespace panda {
 
     //! Add input paths.
     /*!
-     * \param path  Path to input panda files. Wildcard is allowed.
+     * \param path  Path to input suep files. Wildcard is allowed.
      */
     void addInput(char const* path);
 

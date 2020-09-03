@@ -6,7 +6,7 @@
 #include <vector>
 #include <utility>
 
-namespace panda {
+namespace suep {
 
   //! Base class for dynamic-size containers.
   /*!

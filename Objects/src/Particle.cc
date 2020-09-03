@@ -1,36 +1,36 @@
 #include "../interface/Particle.h"
 
 /*static*/
-panda::utils::BranchList
-panda::Particle::getListOfBranches()
+suep::utils::BranchList
+suep::Particle::getListOfBranches()
 {
   utils::BranchList blist;
   return blist;
 }
 
 void
-panda::Particle::datastore::allocate(UInt_t _nmax)
+suep::Particle::datastore::allocate(UInt_t _nmax)
 {
   Element::datastore::allocate(_nmax);
 
 }
 
 void
-panda::Particle::datastore::deallocate()
+suep::Particle::datastore::deallocate()
 {
   Element::datastore::deallocate();
 
 }
 
 void
-panda::Particle::datastore::setStatus(TTree& _tree, TString const& _name, utils::BranchList const& _branches)
+suep::Particle::datastore::setStatus(TTree& _tree, TString const& _name, utils::BranchList const& _branches)
 {
   Element::datastore::setStatus(_tree, _name, _branches);
 
 }
 
-panda::utils::BranchList
-panda::Particle::datastore::getStatus(TTree& _tree, TString const& _name) const
+suep::utils::BranchList
+suep::Particle::datastore::getStatus(TTree& _tree, TString const& _name) const
 {
   utils::BranchList blist(Element::datastore::getStatus(_tree, _name));
 
@@ -39,14 +39,14 @@ panda::Particle::datastore::getStatus(TTree& _tree, TString const& _name) const
 }
 
 void
-panda::Particle::datastore::setAddress(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _setStatus/* = kTRUE*/)
+suep::Particle::datastore::setAddress(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _setStatus/* = kTRUE*/)
 {
   Element::datastore::setAddress(_tree, _name, _branches, _setStatus);
 
 }
 
 void
-panda::Particle::datastore::book(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _dynamic/* = kTRUE*/)
+suep::Particle::datastore::book(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _dynamic/* = kTRUE*/)
 {
   Element::datastore::book(_tree, _name, _branches, _dynamic);
 
@@ -55,50 +55,50 @@ panda::Particle::datastore::book(TTree& _tree, TString const& _name, utils::Bran
 }
 
 void
-panda::Particle::datastore::releaseTree(TTree& _tree, TString const& _name)
+suep::Particle::datastore::releaseTree(TTree& _tree, TString const& _name)
 {
   Element::datastore::releaseTree(_tree, _name);
 
 }
 
 void
-panda::Particle::datastore::resizeVectors_(UInt_t _size)
+suep::Particle::datastore::resizeVectors_(UInt_t _size)
 {
   Element::datastore::resizeVectors_(_size);
 
 }
 
 
-panda::utils::BranchList
-panda::Particle::datastore::getBranchNames(TString const& _name/* = ""*/) const
+suep::utils::BranchList
+suep::Particle::datastore::getBranchNames(TString const& _name/* = ""*/) const
 {
   return Particle::getListOfBranches().fullNames(_name);
 }
 
-panda::Particle::Particle(datastore& _data, UInt_t _idx) :
+suep::Particle::Particle(datastore& _data, UInt_t _idx) :
   Element(_data, _idx)
 {
 }
 
-panda::Particle::Particle(ArrayBase* _array) :
+suep::Particle::Particle(ArrayBase* _array) :
   Element(_array)
 {
 }
 
-panda::Particle::~Particle()
+suep::Particle::~Particle()
 {
   destructor();
 }
 
 void
-panda::Particle::destructor(Bool_t _recursive/* = kFALSE*/)
+suep::Particle::destructor(Bool_t _recursive/* = kFALSE*/)
 {
   /* BEGIN CUSTOM Particle.cc.destructor */
   /* END CUSTOM */
 }
 
-panda::Particle&
-panda::Particle::operator=(Particle const& _src)
+suep::Particle&
+suep::Particle::operator=(Particle const& _src)
 {
 
   /* BEGIN CUSTOM Particle.cc.operator= */
@@ -108,12 +108,12 @@ panda::Particle::operator=(Particle const& _src)
 }
 
 void
-panda::Particle::doBook_(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/)
+suep::Particle::doBook_(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/)
 {
 }
 
 void
-panda::Particle::doInit_()
+suep::Particle::doInit_()
 {
 
   /* BEGIN CUSTOM Particle.cc.doInit_ */
@@ -121,7 +121,7 @@ panda::Particle::doInit_()
 }
 
 void
-panda::Particle::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
+suep::Particle::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
 {
   /* BEGIN CUSTOM Particle.cc.print */
   Particle::dump(_out);
@@ -129,7 +129,7 @@ panda::Particle::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/
 }
 
 void
-panda::Particle::dump(std::ostream& _out/* = std::cout*/) const
+suep::Particle::dump(std::ostream& _out/* = std::cout*/) const
 {
 }
 

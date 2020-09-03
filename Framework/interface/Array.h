@@ -8,7 +8,7 @@
 #include <memory>
 #include <type_traits>
 
-namespace panda {
+namespace suep {
 
   //! Template class for fixed-size container implementations. Inherits from base_type::array_type of the element class.
   /*!

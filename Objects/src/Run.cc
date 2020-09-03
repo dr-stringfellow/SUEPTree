@@ -1,13 +1,13 @@
 #include "../interface/Run.h"
 
-panda::Run::Run() :
+suep::Run::Run() :
   TreeEntry()
 {
   /* BEGIN CUSTOM Run.cc.ctor */
   /* END CUSTOM */
 }
 
-panda::Run::Run(Run const& _src) :
+suep::Run::Run(Run const& _src) :
   TreeEntry(_src),
   runNumber(_src.runNumber),
   hltMenu(_src.hltMenu),
@@ -31,15 +31,15 @@ panda::Run::Run(Run const& _src) :
   /* END CUSTOM */
 }
 
-panda::Run::~Run()
+suep::Run::~Run()
 {
   /* BEGIN CUSTOM Run.cc.dtor */
   resetCache();
   /* END CUSTOM */
 }
 
-panda::Run&
-panda::Run::operator=(Run const& _src)
+suep::Run&
+suep::Run::operator=(Run const& _src)
 {
   TreeEntry::operator=(_src);
 
@@ -69,7 +69,7 @@ panda::Run::operator=(Run const& _src)
 }
 
 void
-panda::Run::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
+suep::Run::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
 {
   /* BEGIN CUSTOM Run.cc.print */
   dump(_out);
@@ -77,7 +77,7 @@ panda::Run::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) con
 }
 
 void
-panda::Run::dump(std::ostream& _out/* = std::cout*/) const
+suep::Run::dump(std::ostream& _out/* = std::cout*/) const
 {
   _out << "runNumber = " << runNumber << std::endl;
   _out << "hltMenu = " << hltMenu << std::endl;
@@ -85,8 +85,8 @@ panda::Run::dump(std::ostream& _out/* = std::cout*/) const
 
 }
 /*static*/
-panda::utils::BranchList
-panda::Run::getListOfBranches(Bool_t _direct/* = kFALSE*/)
+suep::utils::BranchList
+suep::Run::getListOfBranches(Bool_t _direct/* = kFALSE*/)
 {
   utils::BranchList blist;
   blist += {"runNumber", "hltMenu"};
@@ -97,15 +97,15 @@ panda::Run::getListOfBranches(Bool_t _direct/* = kFALSE*/)
 
 /*protected*/
 void
-panda::Run::doSetStatus_(TTree& _tree, utils::BranchList const& _branches)
+suep::Run::doSetStatus_(TTree& _tree, utils::BranchList const& _branches)
 {
   utils::setStatus(_tree, "", "runNumber", _branches);
   utils::setStatus(_tree, "", "hltMenu", _branches);
 }
 
 /*protected*/
-panda::utils::BranchList
-panda::Run::doGetStatus_(TTree& _tree) const
+suep::utils::BranchList
+suep::Run::doGetStatus_(TTree& _tree) const
 {
   utils::BranchList blist;
 
@@ -115,15 +115,15 @@ panda::Run::doGetStatus_(TTree& _tree) const
 }
 
 /*protected*/
-panda::utils::BranchList
-panda::Run::doGetBranchNames_() const
+suep::utils::BranchList
+suep::Run::doGetBranchNames_() const
 {
   return getListOfBranches(true);
 }
 
 /*protected*/
 void
-panda::Run::doSetAddress_(TTree& _tree, utils::BranchList const& _branches, Bool_t _setStatus)
+suep::Run::doSetAddress_(TTree& _tree, utils::BranchList const& _branches, Bool_t _setStatus)
 {
   utils::setAddress(_tree, "", "runNumber", &runNumber, _branches, _setStatus);
   utils::setAddress(_tree, "", "hltMenu", &hltMenu, _branches, _setStatus);
@@ -131,7 +131,7 @@ panda::Run::doSetAddress_(TTree& _tree, utils::BranchList const& _branches, Bool
 
 /*protected*/
 void
-panda::Run::doBook_(TTree& _tree, utils::BranchList const& _branches)
+suep::Run::doBook_(TTree& _tree, utils::BranchList const& _branches)
 {
   utils::book(_tree, "", "runNumber", "", 'i', &runNumber, _branches);
   utils::book(_tree, "", "hltMenu", "", 'i', &hltMenu, _branches);
@@ -139,7 +139,7 @@ panda::Run::doBook_(TTree& _tree, utils::BranchList const& _branches)
 
 /*protected*/
 void
-panda::Run::doGetEntry_(TTree& _tree)
+suep::Run::doGetEntry_(TTree& _tree)
 {
   /* BEGIN CUSTOM Run.cc.doGetEntry_ */
   if (loadTrigger_)
@@ -148,7 +148,7 @@ panda::Run::doGetEntry_(TTree& _tree)
 }
 
 void
-panda::Run::doInit_()
+suep::Run::doInit_()
 {
   runNumber = 0;
   hltMenu = 0;
@@ -158,7 +158,7 @@ panda::Run::doInit_()
 }
 
 void
-panda::Run::doUnlink_(TTree& _tree)
+suep::Run::doUnlink_(TTree& _tree)
 {
   /* BEGIN CUSTOM Run.cc.doUnlink_ */
   if (inputTree_ == &_tree) {
@@ -175,7 +175,7 @@ panda::Run::doUnlink_(TTree& _tree)
 #include "TKey.h"
 
 void
-panda::Run::setLoadTrigger(Bool_t _l/* = kTRUE*/)
+suep::Run::setLoadTrigger(Bool_t _l/* = kTRUE*/)
 {
   loadTrigger_ = _l;
   if (!_l) {
@@ -185,7 +185,7 @@ panda::Run::setLoadTrigger(Bool_t _l/* = kTRUE*/)
 }
 
 UInt_t
-panda::Run::registerTrigger(char const* _path)
+suep::Run::registerTrigger(char const* _path)
 {
   loadTrigger_ = true;
 
@@ -207,7 +207,7 @@ panda::Run::registerTrigger(char const* _path)
 }
 
 char const*
-panda::Run::getRegisteredPath(UInt_t _token) const
+suep::Run::getRegisteredPath(UInt_t _token) const
 {
   if (_token < registeredTriggers_.size()) {
     auto& path(registeredTriggers_[_token]);
@@ -218,7 +218,7 @@ panda::Run::getRegisteredPath(UInt_t _token) const
 }
 
 UInt_t
-panda::Run::getTriggerIndex(UInt_t _token) const
+suep::Run::getTriggerIndex(UInt_t _token) const
 {
   try {
     return triggerIndices_.at(_token);
@@ -233,7 +233,7 @@ panda::Run::getTriggerIndex(UInt_t _token) const
 }
 
 char const*
-panda::Run::triggerMenu() const
+suep::Run::triggerMenu() const
 {
   if (!hlt.menu)
     throw std::runtime_error("Trigger menu is not read from the input.");
@@ -242,7 +242,7 @@ panda::Run::triggerMenu() const
 }
 
 std::vector<TString> const&
-panda::Run::triggerPaths() const
+suep::Run::triggerPaths() const
 {
   if (!hlt.paths)
     throw std::runtime_error("Trigger menu is not read from the input.");
@@ -251,7 +251,7 @@ panda::Run::triggerPaths() const
 }
 
 bool
-panda::Run::findEntry(TTree& _runTree, UInt_t _runNumber)
+suep::Run::findEntry(TTree& _runTree, UInt_t _runNumber)
 {
   // Known issue: if this function is called with a new tree but with the same run number as the previous call,
   // nothing happens and the tree is not updated. This is such a rare situation that (in my opinion) does not warrant
@@ -277,7 +277,7 @@ panda::Run::findEntry(TTree& _runTree, UInt_t _runNumber)
 }
 
 void
-panda::Run::resetCache()
+suep::Run::resetCache()
 {
   if (inputTree_)
     inputTree_ = 0;
@@ -289,7 +289,7 @@ panda::Run::resetCache()
     
 /*private*/
 void
-panda::Run::updateTriggerTable_(TTree& _tree)
+suep::Run::updateTriggerTable_(TTree& _tree)
 {
   if (&_tree != inputTree_) {
     inputTree_ = &_tree;

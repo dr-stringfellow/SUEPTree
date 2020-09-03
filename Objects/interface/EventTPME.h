@@ -5,7 +5,7 @@
 #include "Muon.h"
 #include "Electron.h"
 
-namespace panda {
+namespace suep {
 
   class EventTPME : public EventTP {
   public:

@@ -4,7 +4,7 @@
 #include "Object.h"
 #include "IOUtils.h"
 
-namespace panda {
+namespace suep {
 
   //! Base class for objects that can be linked to an input tree directly.
   class ReaderObject : public Object {

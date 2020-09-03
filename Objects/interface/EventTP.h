@@ -9,7 +9,7 @@
 #include "Jet.h"
 #include "RecoMet.h"
 
-namespace panda {
+namespace suep {
 
   class EventTP : public EventBase {
   public:

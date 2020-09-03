@@ -1,20 +1,20 @@
 #include "../interface/MetFilters.h"
 
 /*static*/
-panda::utils::BranchList
-panda::MetFilters::getListOfBranches()
+suep::utils::BranchList
+suep::MetFilters::getListOfBranches()
 {
   utils::BranchList blist;
   blist += {"globalHalo16", "hbhe", "hbheIso", "ecalDeadCell", "goodVertices", "badsc", "badMuons", "duplicateMuons", "badPFMuons", "badChargedHadrons", "ecalBadCalib"};
   return blist;
 }
 
-panda::MetFilters::MetFilters(char const* _name/* = ""*/) :
+suep::MetFilters::MetFilters(char const* _name/* = ""*/) :
   Singlet(_name)
 {
 }
 
-panda::MetFilters::MetFilters(MetFilters const& _src) :
+suep::MetFilters::MetFilters(MetFilters const& _src) :
   Singlet(_src),
   globalHalo16(_src.globalHalo16),
   hbhe(_src.hbhe),
@@ -41,12 +41,12 @@ panda::MetFilters::MetFilters(MetFilters const& _src) :
   ecalBadCalib = _src.ecalBadCalib;
 }
 
-panda::MetFilters::~MetFilters()
+suep::MetFilters::~MetFilters()
 {
 }
 
-panda::MetFilters&
-panda::MetFilters::operator=(MetFilters const& _src)
+suep::MetFilters&
+suep::MetFilters::operator=(MetFilters const& _src)
 {
   globalHalo16 = _src.globalHalo16;
   hbhe = _src.hbhe;
@@ -67,7 +67,7 @@ panda::MetFilters::operator=(MetFilters const& _src)
 }
 
 void
-panda::MetFilters::doSetStatus_(TTree& _tree, utils::BranchList const& _branches)
+suep::MetFilters::doSetStatus_(TTree& _tree, utils::BranchList const& _branches)
 {
   utils::setStatus(_tree, name_, "globalHalo16", _branches);
   utils::setStatus(_tree, name_, "hbhe", _branches);
@@ -82,8 +82,8 @@ panda::MetFilters::doSetStatus_(TTree& _tree, utils::BranchList const& _branches
   utils::setStatus(_tree, name_, "ecalBadCalib", _branches);
 }
 
-panda::utils::BranchList
-panda::MetFilters::doGetStatus_(TTree& _tree) const
+suep::utils::BranchList
+suep::MetFilters::doGetStatus_(TTree& _tree) const
 {
   utils::BranchList blist;
 
@@ -103,7 +103,7 @@ panda::MetFilters::doGetStatus_(TTree& _tree) const
 }
 
 void
-panda::MetFilters::doSetAddress_(TTree& _tree, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _setStatus/* = kTRUE*/)
+suep::MetFilters::doSetAddress_(TTree& _tree, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _setStatus/* = kTRUE*/)
 {
   utils::setAddress(_tree, name_, "globalHalo16", &globalHalo16, _branches, _setStatus);
   utils::setAddress(_tree, name_, "hbhe", &hbhe, _branches, _setStatus);
@@ -119,7 +119,7 @@ panda::MetFilters::doSetAddress_(TTree& _tree, utils::BranchList const& _branche
 }
 
 void
-panda::MetFilters::doBook_(TTree& _tree, utils::BranchList const& _branches/* = {"*"}*/)
+suep::MetFilters::doBook_(TTree& _tree, utils::BranchList const& _branches/* = {"*"}*/)
 {
   utils::book(_tree, name_, "globalHalo16", "", 'O', &globalHalo16, _branches);
   utils::book(_tree, name_, "hbhe", "", 'O', &hbhe, _branches);
@@ -135,7 +135,7 @@ panda::MetFilters::doBook_(TTree& _tree, utils::BranchList const& _branches/* = 
 }
 
 void
-panda::MetFilters::doInit_()
+suep::MetFilters::doInit_()
 {
   globalHalo16 = false;
   hbhe = false;
@@ -153,8 +153,8 @@ panda::MetFilters::doInit_()
   /* END CUSTOM */
 }
 
-panda::utils::BranchList
-panda::MetFilters::doGetBranchNames_(Bool_t _fullName) const
+suep::utils::BranchList
+suep::MetFilters::doGetBranchNames_(Bool_t _fullName) const
 {
   if (_fullName)
     return getListOfBranches().fullNames(name_);
@@ -163,7 +163,7 @@ panda::MetFilters::doGetBranchNames_(Bool_t _fullName) const
 }
 
 void
-panda::MetFilters::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
+suep::MetFilters::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
 {
   /* BEGIN CUSTOM MetFilters.cc.print */
   dump(_out);
@@ -171,7 +171,7 @@ panda::MetFilters::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1
 }
 
 void
-panda::MetFilters::dump(std::ostream& _out/* = std::cout*/) const
+suep::MetFilters::dump(std::ostream& _out/* = std::cout*/) const
 {
   _out << "globalHalo16 = " << globalHalo16 << std::endl;
   _out << "hbhe = " << hbhe << std::endl;

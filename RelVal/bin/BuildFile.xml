@@ -1,4 +1,4 @@
-<bin name="testpanda" file="testpanda.cpp">
+<bin name="testsuep" file="testsuep.cpp">
   <use name="root"/>
   <use name="SUEPTree/Objects"/>
 </bin>

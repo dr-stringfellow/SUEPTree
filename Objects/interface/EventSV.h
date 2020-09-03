@@ -7,7 +7,7 @@
 #include "Muon.h"
 #include "UnpackedGenParticle.h"
 
-namespace panda {
+namespace suep {
 
   class EventSV : public EventBase {
   public:

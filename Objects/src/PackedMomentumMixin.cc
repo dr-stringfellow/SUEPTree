@@ -1,15 +1,15 @@
 #include "../interface/PackedMomentumMixin.h"
 
 /*static*/
-panda::utils::BranchList
-panda::PackedMomentumMixin::getListOfBranches()
+suep::utils::BranchList
+suep::PackedMomentumMixin::getListOfBranches()
 {
   utils::BranchList blist;
   blist += {"packedPt", "packedEta", "packedPhi", "packedM"};
   return blist;
 }
 
-panda::PackedMomentumMixin::PackedMomentumMixin(datastore& _data, UInt_t _idx) :
+suep::PackedMomentumMixin::PackedMomentumMixin(datastore& _data, UInt_t _idx) :
   packedPt(_data.packedPt[_idx]),
   packedEta(_data.packedEta[_idx]),
   packedPhi(_data.packedPhi[_idx]),
@@ -21,7 +21,7 @@ panda::PackedMomentumMixin::PackedMomentumMixin(datastore& _data, UInt_t _idx) :
 #include "../interface/PackingHelper.h"
 
 void
-panda::PackedMomentumMixin::pack_()
+suep::PackedMomentumMixin::pack_()
 {
   packedPt = PackingHelper::singleton().packUnbound(pt_);
   packedEta = std::round(eta_ / 6.0f * std::numeric_limits<Short_t>::max());
@@ -30,7 +30,7 @@ panda::PackedMomentumMixin::pack_()
 }
 
 void
-panda::PackedMomentumMixin::unpack_() const
+suep::PackedMomentumMixin::unpack_() const
 {
   if (unpacked_)
     return;
@@ -48,7 +48,7 @@ panda::PackedMomentumMixin::unpack_() const
 }
 
 void
-panda::PackedMomentumMixin::setPtEtaPhiMPacked_(double pt, double eta, double phi, double m)
+suep::PackedMomentumMixin::setPtEtaPhiMPacked_(double pt, double eta, double phi, double m)
 {
   pt_ = pt;
   eta_ = eta;
@@ -59,7 +59,7 @@ panda::PackedMomentumMixin::setPtEtaPhiMPacked_(double pt, double eta, double ph
 }
 
 void
-panda::PackedMomentumMixin::setXYZEPacked_(double px, double py, double pz, double e)
+suep::PackedMomentumMixin::setXYZEPacked_(double px, double py, double pz, double e)
 {
   pt_ = std::sqrt(px * px + py * py);
   double p(std::sqrt(px * px + py * py + pz * pz));

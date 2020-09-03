@@ -5,7 +5,7 @@
 #include "Electron.h"
 #include "XPhoton.h"
 
-namespace panda {
+namespace suep {
 
   class EventTPEG : public EventTP {
   public:

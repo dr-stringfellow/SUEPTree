@@ -1,8 +1,8 @@
 #include "../interface/Muon.h"
 
 /*static*/
-panda::utils::BranchList
-panda::Muon::getListOfBranches()
+suep::utils::BranchList
+suep::Muon::getListOfBranches()
 {
   utils::BranchList blist;
   blist += Lepton::getListOfBranches();
@@ -11,7 +11,7 @@ panda::Muon::getListOfBranches()
 }
 
 void
-panda::Muon::datastore::allocate(UInt_t _nmax)
+suep::Muon::datastore::allocate(UInt_t _nmax)
 {
   Lepton::datastore::allocate(_nmax);
 
@@ -58,7 +58,7 @@ panda::Muon::datastore::allocate(UInt_t _nmax)
 }
 
 void
-panda::Muon::datastore::deallocate()
+suep::Muon::datastore::deallocate()
 {
   Lepton::datastore::deallocate();
 
@@ -145,7 +145,7 @@ panda::Muon::datastore::deallocate()
 }
 
 void
-panda::Muon::datastore::setStatus(TTree& _tree, TString const& _name, utils::BranchList const& _branches)
+suep::Muon::datastore::setStatus(TTree& _tree, TString const& _name, utils::BranchList const& _branches)
 {
   Lepton::datastore::setStatus(_tree, _name, _branches);
 
@@ -191,8 +191,8 @@ panda::Muon::datastore::setStatus(TTree& _tree, TString const& _name, utils::Bra
   utils::setStatus(_tree, _name, "rochCorrErr", _branches);
 }
 
-panda::utils::BranchList
-panda::Muon::datastore::getStatus(TTree& _tree, TString const& _name) const
+suep::utils::BranchList
+suep::Muon::datastore::getStatus(TTree& _tree, TString const& _name) const
 {
   utils::BranchList blist(Lepton::datastore::getStatus(_tree, _name));
 
@@ -241,7 +241,7 @@ panda::Muon::datastore::getStatus(TTree& _tree, TString const& _name) const
 }
 
 void
-panda::Muon::datastore::setAddress(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _setStatus/* = kTRUE*/)
+suep::Muon::datastore::setAddress(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _setStatus/* = kTRUE*/)
 {
   Lepton::datastore::setAddress(_tree, _name, _branches, _setStatus);
 
@@ -288,7 +288,7 @@ panda::Muon::datastore::setAddress(TTree& _tree, TString const& _name, utils::Br
 }
 
 void
-panda::Muon::datastore::book(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _dynamic/* = kTRUE*/)
+suep::Muon::datastore::book(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/, Bool_t _dynamic/* = kTRUE*/)
 {
   Lepton::datastore::book(_tree, _name, _branches, _dynamic);
 
@@ -337,7 +337,7 @@ panda::Muon::datastore::book(TTree& _tree, TString const& _name, utils::BranchLi
 }
 
 void
-panda::Muon::datastore::releaseTree(TTree& _tree, TString const& _name)
+suep::Muon::datastore::releaseTree(TTree& _tree, TString const& _name)
 {
   Lepton::datastore::releaseTree(_tree, _name);
 
@@ -384,20 +384,20 @@ panda::Muon::datastore::releaseTree(TTree& _tree, TString const& _name)
 }
 
 void
-panda::Muon::datastore::resizeVectors_(UInt_t _size)
+suep::Muon::datastore::resizeVectors_(UInt_t _size)
 {
   Lepton::datastore::resizeVectors_(_size);
 
 }
 
 
-panda::utils::BranchList
-panda::Muon::datastore::getBranchNames(TString const& _name/* = ""*/) const
+suep::utils::BranchList
+suep::Muon::datastore::getBranchNames(TString const& _name/* = ""*/) const
 {
   return Muon::getListOfBranches().fullNames(_name);
 }
 
-panda::Muon::Muon(char const* _name/* = ""*/) :
+suep::Muon::Muon(char const* _name/* = ""*/) :
   Lepton(new MuonArray(1, _name)),
   mediumPrompt(gStore.getData(this).mediumPrompt[0]),
   globalHighPt(gStore.getData(this).globalHighPt[0]),
@@ -442,7 +442,7 @@ panda::Muon::Muon(char const* _name/* = ""*/) :
 {
 }
 
-panda::Muon::Muon(Muon const& _src) :
+suep::Muon::Muon(Muon const& _src) :
   Lepton(new MuonArray(1, _src.getName())),
   mediumPrompt(gStore.getData(this).mediumPrompt[0]),
   globalHighPt(gStore.getData(this).globalHighPt[0]),
@@ -488,7 +488,7 @@ panda::Muon::Muon(Muon const& _src) :
   operator=(_src);
 }
 
-panda::Muon::Muon(datastore& _data, UInt_t _idx) :
+suep::Muon::Muon(datastore& _data, UInt_t _idx) :
   Lepton(_data, _idx),
   mediumPrompt(_data.mediumPrompt[_idx]),
   globalHighPt(_data.globalHighPt[_idx]),
@@ -533,7 +533,7 @@ panda::Muon::Muon(datastore& _data, UInt_t _idx) :
 {
 }
 
-panda::Muon::Muon(ArrayBase* _array) :
+suep::Muon::Muon(ArrayBase* _array) :
   Lepton(_array),
   mediumPrompt(gStore.getData(this).mediumPrompt[0]),
   globalHighPt(gStore.getData(this).globalHighPt[0]),
@@ -578,13 +578,13 @@ panda::Muon::Muon(ArrayBase* _array) :
 {
 }
 
-panda::Muon::~Muon()
+suep::Muon::~Muon()
 {
   destructor();
 }
 
 void
-panda::Muon::destructor(Bool_t _recursive/* = kFALSE*/)
+suep::Muon::destructor(Bool_t _recursive/* = kFALSE*/)
 {
   /* BEGIN CUSTOM Muon.cc.destructor */
   /* END CUSTOM */
@@ -593,8 +593,8 @@ panda::Muon::destructor(Bool_t _recursive/* = kFALSE*/)
     Lepton::destructor(kTRUE);
 }
 
-panda::Muon&
-panda::Muon::operator=(Muon const& _src)
+suep::Muon&
+suep::Muon::operator=(Muon const& _src)
 {
   Lepton::operator=(_src);
 
@@ -646,7 +646,7 @@ panda::Muon::operator=(Muon const& _src)
 }
 
 void
-panda::Muon::doBook_(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/)
+suep::Muon::doBook_(TTree& _tree, TString const& _name, utils::BranchList const& _branches/* = {"*"}*/)
 {
   Lepton::doBook_(_tree, _name, _branches);
 
@@ -693,7 +693,7 @@ panda::Muon::doBook_(TTree& _tree, TString const& _name, utils::BranchList const
 }
 
 void
-panda::Muon::doInit_()
+suep::Muon::doInit_()
 {
   Lepton::doInit_();
 
@@ -743,7 +743,7 @@ panda::Muon::doInit_()
 }
 
 void
-panda::Muon::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
+suep::Muon::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) const
 {
   /* BEGIN CUSTOM Muon.cc.print */
   if (_level >= 3) {
@@ -764,7 +764,7 @@ panda::Muon::print(std::ostream& _out/* = std::cout*/, UInt_t _level/* = 1*/) co
 }
 
 void
-panda::Muon::dump(std::ostream& _out/* = std::cout*/) const
+suep::Muon::dump(std::ostream& _out/* = std::cout*/) const
 {
   Lepton::dump(_out);
 
