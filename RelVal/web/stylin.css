@@ -1,0 +1,94 @@
+.header {
+    clear: both;
+    background-color: #ccffff;
+    padding: 1em;
+    margin:0.5em 0em 0.5em 0em;
+    overflow:hidden;
+}
+
+.header:hover {
+    background-color: #bbeeee;
+}
+
+.roomy {
+    float:left;
+    width:70%;
+}
+
+.metalink {
+    padding: 1em;
+    margin:0.5em 0em 0.5em 0em;
+    background-color: #dddddd;
+    float: left;
+    width: 15%;
+    overflow:hidden;
+}
+
+.metalink:hover {
+    background-color: #cccccc;
+}
+
+.indexlink {
+    padding: 1em;
+    margin:0.5em 0em 0.5em 0em;
+    background-color: #ffffff;
+    overflow:hidden;
+}
+
+.indexlink:hover {
+    background-color: #eeeeee;
+}
+
+h3 {
+    margin: auto;
+    text-align: center;
+}
+
+.plot {
+    box-sizing: border-box;
+    float: left;
+    margin:1px;
+    width: calc(25% - 2px);
+    border: #ffffff 2px solid;
+}
+
+.plot_head {
+    padding-left: 1em;
+}
+
+.lin_indicator {
+    float: right;
+    color: #00ff00;
+    padding-right: 1em;
+}
+
+.log_indicator {
+    float: right;
+    color: #ff0000;
+    padding-right: 1em;
+}
+
+.log_button {
+    float: right;
+}
+
+.metadata {
+    padding: 2em;
+    margin: 0.5em;
+    font-family: "Courier 10 Pitch", Courier, monospace;
+    font-size: 95%;
+    line-height: 140%;
+    background-color: #dddddd;
+}
+
+div.warn {
+    background-color:  #ffcccc;
+}
+
+div.warn:hover {
+    background-color:  #eebbbb;
+}
+
+span.warn {
+    border-color: #ff0000;
+}
